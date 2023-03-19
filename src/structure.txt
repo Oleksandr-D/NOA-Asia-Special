@@ -1,0 +1,41 @@
+app/
+  compoments/
+    header.component
+    footer.component
+  pages/
+    home.component
+    product.component/
+      product-info.component
+    thai-market.component
+    delivery.component
+    favorites.component
+    about.component
+    vacancies.component
+    contact.component
+    checkout.component
+    authorization.component
+    user-profile.component/
+      personal-data.component
+      password-change.component
+      order-history.component
+
+  admin.component/
+    admin-category.component
+    admin-product.component
+    admin-vacancies.component
+    admin-orders.component
+  shared/
+    styles/
+      _variables.scss
+      _base.scss
+    services/
+    interfaces/
+    pipes/
+    guards/
+
+
+
+
+
+
+
