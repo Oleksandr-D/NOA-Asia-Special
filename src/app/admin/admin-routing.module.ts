@@ -13,7 +13,7 @@ const routes: Routes = [
       { path: 'product', component: AdminProductComponent },
       { path: 'vacancies', component: AdminVacanciesComponent },
       { path: 'order', component: AdminOrdersComponent },
-      { path: '', pathMatch: 'full', redirectTo: 'discount' },
+      { path: '', pathMatch: 'full', redirectTo: 'category' },
     ]
   },
 ];

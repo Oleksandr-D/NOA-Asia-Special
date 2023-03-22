@@ -8,6 +8,11 @@ const routes: Routes = [
       import('./pages/home/home.module').then((m) => m.HomeModule),
   },
   {
+    path: 'product/:category',
+    loadChildren: () =>
+      import('./pages/product/product.module').then((m) => m.ProductModule),
+  },
+  {
     path: 'admin',
     // canActivate: [AuthGuard],
     loadChildren: () =>
@@ -55,8 +60,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/vacancies/vacancies.module').then((m) => m.VacanciesModule),
   },
-
-
+  {
+    path: 'user-profile',
+    // canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/user-profile/user-profile.module').then((m) => m.UserProfileModule
+      ),
+  },
 ];
 
 @NgModule({
