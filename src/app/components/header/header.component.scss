@@ -1,13 +1,14 @@
 @import 'src/app/shared/styles/variables';
 @import '../../shared/styles/fonts';
+@import 'src/app/shared/styles/base';
 
-.content-block{
+.content-block {
   overflow: hidden;
   position: relative;
   font-family: $main-font;
 }
 
-.header-informer{
+.header-informer {
   position: fixed;
   background-color: #141414;
   color: #fff;
@@ -38,7 +39,7 @@
     color: #2d7d7d;
   }
 
-   a::before {
+  a::before {
     position: absolute;
     content: '';
     bottom: -2px;
@@ -46,17 +47,80 @@
     width: 100%;
     height: 2px;
     background-color: #2d7d7d;
-    -webkit-transition: all 0.3s;
-    -o-transition: all 0.3s;
     transition: all 0.3s;
   }
 
-   a:hover::before {
+  a:hover::before {
     width: 0;
     left: auto;
     right: 0;
   }
-
 }
 
+.decor-left {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 768px;
+}
 
+header {
+  position: fixed;
+  width: 100%;
+  height: 105px;
+  z-index: 9;
+  top: 51.2px;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+  background-image: url('../../../assets/Images/bg-header.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 3px 6px 0 rgba(117, 117, 117, 0.153);
+}
+
+.header-menu {
+  position: relative;
+
+  ul {
+    display: flex;
+  }
+}
+
+.dropdown-item {
+  padding: 42px 30px;
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  height: 105px;
+}
+
+.wrapper-languague {
+  color: #fff;
+  margin-right: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 42px 0;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.btn-grey{
+  letter-spacing: .15em;
+  font-size: 14px;
+  background-color: #323232;
+  color: #fff;
+  margin-right: 40px;
+  border-radius: 6px;
+  padding: 20px 30px;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
