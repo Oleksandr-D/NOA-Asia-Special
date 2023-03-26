@@ -2,13 +2,16 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 a {
   text-decoration: none;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
   margin-top: 0;
   margin-bottom: 0;

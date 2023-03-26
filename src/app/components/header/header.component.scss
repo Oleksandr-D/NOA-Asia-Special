@@ -66,6 +66,7 @@
 }
 
 header {
+  background-image: url('../../../assets/images/bg-header.jpg');
   position: relative;
   position: fixed;
   width: 100%;
@@ -77,7 +78,6 @@ header {
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s;
-  background-image: url('../../../assets/images/bg-header.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 0 3px 6px 0 rgba(117, 117, 117, 0.153);
@@ -102,7 +102,15 @@ header {
   display: flex;
   align-items: center;
   height: 105px;
-  a{
+
+  a {
+    margin-right: 40px;
+  }
+
+  .phone {
+    position: relative;
+    display: flex;
+    align-items: center;
     margin-right: 40px;
   }
 }
@@ -118,13 +126,13 @@ header {
   cursor: pointer;
 }
 
-.btn-grey{
+.btn-grey {
   @include btn;
   background-color: #323232;
   margin-right: 40px;
 }
 
-.btn-icon{
+.btn-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -135,4 +143,76 @@ header {
   position: absolute;
   margin-top: 2px;
   margin-left: 2px;
+}
+
+
+.header-phone-info {
+  position: absolute;
+  left: -95px;
+  top: 60px;
+  width: 240px;
+  text-align: center;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .05);
+  padding: 15px 10px;
+  background-color: #F5F5F5;
+  color: $text-main;
+  border-radius: 6px;
+  opacity: 0;
+  z-index: 2;
+  visibility: hidden;
+  transform: translateY(30px);
+  transition: all 0.5s;
+
+  .title {
+    font-size: 14px;
+    line-height: 1.3em;
+
+    a {
+      margin-right: 0px;
+      cursor: pointer;
+      color: $button-secondary-text;
+      font-family: $main-font-bold;
+    }
+  }
+
+  .text {
+    color: #6d6d6d;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.2em;
+  }
+}
+
+.phone:hover .header-phone-info {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header-phone-info::before {
+  position: absolute;
+  content: '';
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  border-bottom: 10px solid #F5F5F5;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.user-login {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  font-family: $main-font-bold;
+
+  img {
+    width: 16px;
+    margin-right: 10px;
+  }
 }
