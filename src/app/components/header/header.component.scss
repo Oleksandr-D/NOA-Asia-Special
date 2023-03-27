@@ -83,6 +83,25 @@ header {
   box-shadow: 0 3px 6px 0 rgba(117, 117, 117, 0.153);
 }
 
+
+.header-logo {
+  a {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 180px;
+    height: 105px;
+
+    img {
+      position: absolute;
+      display: block;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
 .header-menu {
   position: relative;
 
@@ -95,8 +114,75 @@ header {
   padding: 42px 30px;
   color: #fff;
   font-size: 14px;
+  font-family: $main-font-bold;
   text-transform: uppercase;
+  transition: all 0.3s;
 }
+
+.dropdown-item:hover {
+  color: $button-secondary-text;
+  cursor: pointer;
+}
+
+
+
+.header-submenu {
+  position: fixed;
+  top: 156px;
+  width: 62%;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.11);
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 10px 9px 10px 10px;
+  z-index: 2;
+  left: 50%;
+  top: 15%;
+  transform: translateX(-50%);
+  background-color: #F5F5F5;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+
+  .header-item {
+    width: 16.6%;
+    vertical-align: top;
+    padding: 8px 0;
+    text-align: center;
+    transition: all 0.3s;
+
+    span {
+      font-size: 14px;
+      font-weight: 500;
+      color: $secondary-text;
+      font-family: $main-font-bold;
+      text-transform: uppercase;
+    }
+
+    .header-item-imgs {
+      // width: 110px;
+      // height: 110px;
+      margin: 0 auto 10px auto;
+
+      // img {
+      //   width: 100%;
+      //   height: auto;
+      // }
+    }
+  }
+}
+
+.show-submenu:hover .header-submenu {
+  opacity: 1;
+  visibility: visible;
+  top: 16.5%;
+}
+
+
+
+
+
 
 .header-right {
   display: flex;
@@ -176,7 +262,7 @@ header {
   }
 
   .text {
-    color: #6d6d6d;
+    color: $secondary-text;
     text-align: center;
     font-size: 12px;
     line-height: 1.2em;
@@ -214,5 +300,49 @@ header {
   img {
     width: 16px;
     margin-right: 10px;
+  }
+}
+
+.burger {
+  position: relative;
+  margin-right: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .burger-btn {
+    position: absolute;
+    display: block;
+    width: 18px;
+    height: 14px;
+    transform: translate(1px, 1px);
+    transition: all 0.3s;
+  }
+
+  .burger-btn::before,
+  .burger-btn::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.3s;
+  }
+
+  .burger-btn::after {
+    top: auto;
+    bottom: 0;
+  }
+
+  span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
   }
 }
