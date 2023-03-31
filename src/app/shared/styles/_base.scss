@@ -4,6 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border: 0;
 }
 
 a {
@@ -20,4 +21,8 @@ ul {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+button {
+  background: none;
 }
