@@ -7,7 +7,7 @@
   <img loading="lazy" src="../../../assets/images/decor_left.svg" alt="" class="decor-left">
   <header>
     <div class="header-logo">
-      <a href="https://noa.ua/">
+      <a [routerLink]="['/']">
         <img loading="lazy" src="../../../assets/images/logo_one-1.svg" alt=""></a>
     </div>
     <div class="header-menu">
@@ -17,7 +17,7 @@
             <a class="dropdown-item">Mеню</a>
             <ul class="header-submenu">
               <li class="header-item">
-                <a href="#">
+                <a [routerLink]="['/product/culinasia-menu']">
                   <div class="header-item-imgs">
                     <img src="https://noa.ua/wp-content/uploads/2023/01/ramen-kari-z-krevetkamy-4-110x110.webp"
                       alt="menu_item">
@@ -28,22 +28,22 @@
             </ul>
           </li>
           <li class="show-submenu">
-            <a class="dropdown-item">Thai Market</a>
+            <a [routerLink]="['/thai-market']" class="dropdown-item">Thai Market</a>
             <ul class="header-submenu">
               <li class="header-item">
-                <a href="#">
+                <a [routerLink]="['/thai-market']">
                   <div class="header-item-imgs">
                     <img
                       src="https://noa.ua/wp-content/uploads/2022/07/krevetky-v-sofrito-shoyu-tare-110x110.png.pagespeed.ce_.g_jwcyf7ts-1.png"
                       alt="menu_item">
                   </div>
-                  <span>Culinasia menu</span>
+                  <span>Thai Satay</span>
                 </a>
               </li>
             </ul>
           </li>
           <li>
-            <a class="dropdown-item">Доставка</a>
+            <a [routerLink]="['/delivery']" class="dropdown-item">Доставка</a>
           </li>
         </ul>
       </nav>
@@ -51,7 +51,7 @@
     <div class="header-right">
       <div class="wrapper-languague">ENG</div>
       <a class="btn-grey" href="https://xpz.im/NOA0" class="btn btn-grey">ЗАЛИШИТИ ВІДГУК</a>
-      <a href="#" class="btn-icon">
+      <a [routerLink]="['/favorites']" class="btn-icon">
         <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="23.5" cy="23.5" r="23.5" fill="#2D7D7D"></circle>
           <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="47" height="47">
@@ -128,10 +128,18 @@
         <button class="menu-close-btn" (click)="toggleMenu()"></button>
         <nav class="menu-list">
           <ul>
-            <li>Про нас</li>
-            <li>Доставка</li>
-            <li>Вакансії</li>
-            <li>Контакти</li>
+            <a (click)="toggleMenu()" [routerLink]="['/about']">
+              <li>Про нас</li>
+            </a>
+            <a (click)="toggleMenu()" [routerLink]="['/delivery']">
+              <li>Доставка</li>
+            </a>
+            <a (click)="toggleMenu()" [routerLink]="['/vacancies']">
+              <li>Вакансії</li>
+            </a>
+            <a (click)="toggleMenu()" [routerLink]="['/contact']">
+              <li>Контакти</li>
+            </a>
           </ul>
         </nav>
       </div>

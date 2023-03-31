@@ -4,16 +4,14 @@
 @import '../../shared/styles/mixins';
 
 .content-block {
-  overflow: hidden;
+  // overflow: hidden;
   // position: relative;
   font-family: $main-font;
 }
 
 .header-informer {
-  position: fixed;
   background-color: #141414;
   color: #fff;
-  left: 0;
   z-index: 9;
   display: flex;
   align-items: center;
@@ -68,12 +66,9 @@
 header {
   background-image: url('../../../assets/images/bg-header.jpg');
   position: relative;
-  position: fixed;
   width: 100%;
   height: 105px;
   z-index: 9;
-  top: 51.2px;
-  left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -137,7 +132,6 @@ header {
   border-bottom-left-radius: 10px;
   padding: 10px 9px 10px 10px;
   z-index: 2;
-
   transform: translateX(-50%);
   background-color: #F5F5F5;
   opacity: 0;
@@ -150,6 +144,7 @@ header {
     padding: 8px 0;
     text-align: center;
     transition: all 0.3s;
+    border-radius: 5px;
 
     span {
       font-size: 14px;
@@ -170,6 +165,10 @@ header {
       // }
     }
   }
+}
+
+.header-item:hover {
+  background-color: #fff;
 }
 
 .show-submenu:hover .header-submenu {
@@ -411,17 +410,21 @@ header {
   ul {
     width: 70%;
 
-    li {
-      @include btns;
-      color: $secondary-text;
-      font-size: 16px;
-      padding: 15px 25px;
+    a {
+      margin: 0;
+      li {
+        @include btns;
+        color: $secondary-text;
+        font-size: 16px;
+        padding: 15px 25px;
+      }
+
+      li:hover {
+        color: #fff;
+        background-color: $button-secondary-text;
+      }
     }
 
-    li:hover {
-      color: #fff;
-      background-color: $button-secondary-text;
-    }
   }
 }
 
