@@ -78,7 +78,6 @@ header {
   box-shadow: 0 3px 6px 0 rgba(117, 117, 117, 0.153);
 }
 
-
 .header-logo {
   a {
     position: relative;
@@ -412,6 +411,7 @@ header {
 
     a {
       margin: 0;
+
       li {
         @include btns;
         color: $secondary-text;
@@ -424,7 +424,6 @@ header {
         background-color: $button-secondary-text;
       }
     }
-
   }
 }
 

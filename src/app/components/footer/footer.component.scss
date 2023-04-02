@@ -1,0 +1,143 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/base';
+@import '../../shared/styles/mixins';
+
+footer {
+  position: relative;
+  width: 100%;
+  font-family: $main-font;
+}
+
+.container {
+  width: 100%;
+  max-width: 1840px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.menu-item {
+  li {
+    margin-bottom: 35px;
+  }
+
+  a {
+    font-family: $main-font-bold;
+    color: $text-main;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
+
+.right-items {
+  li {
+    a {
+      font-family: $main-font;
+      font-size: 14px;
+      color: $secondary-text;
+      text-transform: inherit;
+    }
+  }
+}
+
+.footer-icon-block {
+  position: relative;
+  display: flex;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.btn-icon {
+  margin-right: 15px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.bg-icon {
+  position: absolute;
+  margin-left: 1px;
+  margin-top: 14px;
+}
+
+.footer-info-block {
+  margin-bottom: 35px;
+}
+
+.footer-phone {
+  line-height: 1.5em;
+
+  a {
+    color: $text-main;
+  }
+}
+
+.right {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.footer-icon-block:last-child {
+  margin-bottom: 0;
+}
+
+.footer-social {
+  width: auto;
+  margin-right: 20px;
+}
+
+.btn-icon.facebook,
+.btn-icon.facebook {
+  margin-right: 5px;
+}
+
+.footer-bottom {
+  padding: 40px 0 30px 0;
+
+  .col-6 {
+    
+    p {
+      color: $secondary-text;
+      font-size: 15px;
+      line-height: 1.2em;
+    }
+  }
+}
+
+.footer-pay {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  span:first-child {
+    margin-right: 5px;
+  }
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65px;
+    height: 40px;
+    border: 1px solid #ECECEC;
+    border-radius: 5px;
+  }
+}
+
+.footer-dev-logo-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  color: $secondary-text;
+  font-size: 14px;
+
+  b {
+    color: $text-main;
+  }
+
+  b:hover {
+    color: $button-secondary-text;
+  }
+}
