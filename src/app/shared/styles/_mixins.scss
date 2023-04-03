@@ -12,3 +12,51 @@
   text-align: center;
   font-family: $main-font-bold;
 }
+
+@mixin title {
+  font-family: $main-font-bold;
+  font-size: 42px;
+  line-height: 1.2em;
+  color: $text-main;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+
+  span {
+    color: $button-secondary-text;
+  }
+}
+
+@mixin breadcrumbs {
+  font-family: $main-font;
+  position: relative;
+  top: 20px;
+  left: 20px;
+  margin-bottom: 50px;
+
+  .breadcrumbs-after,
+  li {
+    display: inline-block;
+    letter-spacing: 0.01em;
+    font-size: 13px;
+    color: $text-main;
+  }
+
+  .breadcrumbs-after::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid $button-secondary-text;
+    margin: 0 15px 0 10px;
+  }
+}
+
+@mixin simple-page-text{
+  font-family: $main-font;
+  color: $secondary-text;
+  width: 100%;
+  line-height: 1.2em;
+  font-size: 20px;
+}

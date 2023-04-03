@@ -61,6 +61,13 @@ const routes: Routes = [
       import('./pages/vacancies/vacancies.module').then((m) => m.VacanciesModule),
   },
   {
+    path: 'oferta',
+    loadChildren: () =>
+      import('./pages/oferta/oferta.module').then((m) => m.OfertaModule),
+  },
+
+
+  {
     path: 'user-profile',
     // canActivate: [AuthGuard],
     loadChildren: () =>
