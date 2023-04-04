@@ -76,6 +76,55 @@ h1.title {
   }
 }
 
-.spacer-120{
-   height: 120px;
+form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  mat-form-field {
+    width: 45%;
+    margin: 2%;
+  }
+
+  .message {
+    width: 100%;
+  }
+
+  button{
+    width: 50%;
+    @include btns;
+    border: 2px solid $button-secondary-text;
+    background-color: $button-secondary-text;
+    padding: 18px 30px;
+  }
+  button:hover{
+    background-color: #ffffff;
+    color: $text-main;
+    border: 2px solid $button-secondary-text;
+  }
+  div {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+
+// .example-form {
+//   min-width: 150px;
+//   max-width: 500px;
+//   width: 100%;
+// }
+
+// .example-full-width {
+//   width: 100%;
+// }
+
+
+
+
+
+.spacer-120 {
+  height: 120px;
 }

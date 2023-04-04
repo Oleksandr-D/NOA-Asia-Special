@@ -201,9 +201,37 @@
     <div class="row">
       <div class="col-xl-6 col-lg-6 col-xl-6 align-self-center">
         <h3 class="title">У тебе виникли запитання? Напиши нам!</h3>
-        <form>
-       
-
+        <form [formGroup]="questionForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Ім`я</mat-label>
+            <input matInput type="text" formControlName="name" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Прізвище</mat-label>
+            <input matInput type="text" formControlName="surname" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Телефон</mat-label>
+            <span matPrefix>+380 &nbsp;</span>
+            <input matInput type="tel" formControlName="tel" placeholder="хх-xxx-xx-xx" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+            <mat-error *ngIf="questionForm.controls['email'].hasError('email') && !questionForm.controls['email'].hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="questionForm.controls['email'].hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="message" appearance="fill">
+            <mat-label>Повідомлення</mat-label>
+            <textarea matInput formControlName="message" required></textarea>
+          </mat-form-field>
+          <div>
+          <button type="submit">Надіслати</button>
+          </div>
 
         </form>
 
