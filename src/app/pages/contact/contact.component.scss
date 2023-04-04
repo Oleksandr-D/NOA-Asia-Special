@@ -1,0 +1,81 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/base';
+@import '../../shared/styles/mixins';
+
+.breadcrumbs {
+  @include breadcrumbs;
+}
+
+section {
+  font-family: $main-font;
+  color: $text-main;
+}
+
+h1.title {
+  @include title;
+  margin-bottom: 40px;
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 85px;
+}
+
+.conatct-item {
+  width: 350px;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 20px;
+
+  .title {
+    @include title;
+    text-align: start;
+    font-weight: 500;
+    margin-bottom: 25px;
+    font-size: 20px;
+    line-height: 1.3em;
+  }
+}
+
+.conatct-grey {
+  width: 100%;
+  background: #F5F5F5;
+  border-radius: 6px;
+  padding: 20px 30px;
+}
+
+.contact-line {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.contatc-icon {
+  vertical-align: top;
+  margin-right: 30px;
+  width: 30px;
+  text-align: center;
+
+  img {
+    position: relative;
+    top: 6px;
+  }
+}
+
+.text-style-2 {
+  @include simple-page-text;
+  line-height: 30px;
+  font-size: 18px;
+
+  b {
+    display: block;
+    margin: 0 2px;
+  }
+}
+
+.spacer-120{
+   height: 120px;
+}
