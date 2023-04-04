@@ -76,11 +76,17 @@ h1.title {
   }
 }
 
+h3 {
+  font-family: $main-font-bold;
+  text-align: center;
+}
+
 form {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 50px;
 
   mat-form-field {
     width: 45%;
@@ -91,40 +97,68 @@ form {
     width: 100%;
   }
 
-  button{
+  button {
     width: 50%;
     @include btns;
     border: 2px solid $button-secondary-text;
     background-color: $button-secondary-text;
     padding: 18px 30px;
   }
-  button:hover{
+
+  button:hover {
     background-color: #ffffff;
     color: $text-main;
     border: 2px solid $button-secondary-text;
   }
+
   div {
     width: 100%;
     text-align: center;
   }
 }
 
-
-
-// .example-form {
-//   min-width: 150px;
-//   max-width: 500px;
-//   width: 100%;
-// }
-
-// .example-full-width {
-//   width: 100%;
-// }
-
-
-
-
-
 .spacer-120 {
   height: 120px;
+}
+
+.map-block {
+  height: 560px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gm-style {
+  font: 400 11px Roboto, Arial, sans-serif;
+  text-decoration: none;
+}
+
+.gm-style-moc {
+  background-color: rgba(0, 0, 0, .45);
+  pointer-events: none;
+  text-align: center;
+  transition: opacity ease-in-out;
+}
+
+.gm-style-mot {
+  color: white;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 22px;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.gm-control-active>img:nth-child(1) {
+  display: block;
+}
+
+.gm-control-active>img {
+  box-sizing: content-box;
+  display: none;
+  left: 50%;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

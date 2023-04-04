@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  Component
+} from '@angular/core';
+import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -11,7 +13,7 @@ export class ContactComponent {
 
   constructor(
     private fb: FormBuilder
-  ){}
+  ) {}
 
   ngOnInit(): void {
     this.initAuthForm();
@@ -19,14 +21,15 @@ export class ContactComponent {
 
   initAuthForm(): void {
     this.questionForm = this.fb.group({
-      name: [null, [Validators.required,]],
-      surname:[null, [Validators.required]],
-      tel:[null, [Validators.required]],
-      email:[null, [Validators.required, Validators.email]],
-      message:[null, [Validators.required]],
-     
+      name: [null, [Validators.required, ]],
+      surname: [null, [Validators.required]],
+      tel: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]],
+      message: [null, [Validators.required]],
     });
   }
+
+  
 
 
 
