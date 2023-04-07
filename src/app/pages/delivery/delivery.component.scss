@@ -73,7 +73,8 @@ h1.title {
   top: 20px;
 }
 
-.bike-cont {
+.bike-cont,
+.text {
   position: relative;
   display: block;
   width: 100%;
@@ -128,4 +129,66 @@ h1.title {
 
 .bike-cont.red ul li:before {
   border: 2px solid #EF2F3D;
+}
+
+.delivery-text {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.text {
+  @include simple-page-text;
+  font-size: 18px;
+  line-height: 1.5em;
+
+  h2 {
+    font-size: 42px;
+    line-height: 1.2em;
+    color: $text-main
+  }
+}
+
+h1 {
+  @include h1;
+}
+
+.spacer-100 {
+  height: 100px;
+}
+
+h2.title {
+  @include title;
+}
+
+.pay-main {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.pay-page-block {
+  display: flex;
+}
+
+.pay-imgs {
+  margin-right: 20px;
+}
+
+.pay-cont {
+  width: 250px;
+
+  .text {
+    letter-spacing: 0.03em;
+    line-height: 1.5em;
+    font-size: 15px;
+  }
+}
+
+h5.title {
+  @include title;
+  text-align: start;
+  font-size: 20px;
+  letter-spacing: 0.03em;
+  margin-bottom: 15px;
 }

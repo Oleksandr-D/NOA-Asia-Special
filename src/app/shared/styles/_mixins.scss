@@ -53,10 +53,17 @@
   }
 }
 
-@mixin simple-page-text{
+@mixin simple-page-text {
   font-family: $main-font;
   color: $secondary-text;
   width: 100%;
   line-height: 1.2em;
   font-size: 20px;
+}
+
+@mixin h1 {
+  font-family: $main-font;
+  color: $text-main;
+  font-size: 46px;
+  line-height: 1.2em;
 }
