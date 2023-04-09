@@ -1,0 +1,48 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/base';
+@import '../../shared/styles/mixins';
+
+.breadcrumbs {
+  @include breadcrumbs;
+}
+
+section {
+  font-family: $main-font;
+  color: $text-main;
+}
+
+h1.title {
+  @include title;
+}
+
+.news-item {
+  margin-bottom: 40px;
+
+  .news-imgs {
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    transition: 0.25s;
+  }
+
+  img:hover {
+    transform: scale(1.1);
+  }
+
+  h5 {
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    line-height: 1.3em;
+    font-family: $main-font-bold;
+  }
+}
+
+.spacer-120 {
+  height: 120px;
+}
