@@ -11,6 +11,10 @@ app/
     favorites.component
     about.component
     vacancies.component
+    kuhar-wok.component
+    sushyst.component
+    kyhar-ramen.component
+    barmen.component
     contact.component
     checkout.component
     authorization.component

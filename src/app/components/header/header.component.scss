@@ -411,6 +411,7 @@ header {
 
     a {
       margin: 0;
+      padding: 15px 25px;
 
       li {
         @include btns;
@@ -425,6 +426,11 @@ header {
       }
     }
   }
+}
+
+.menu-list ul .route-active li {
+  color: #fff;
+  background-color: $button-secondary-text;
 }
 
 .menu {

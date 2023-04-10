@@ -1,0 +1,74 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/base';
+@import '../../shared/styles/mixins';
+
+.breadcrumbs {
+  @include breadcrumbs-vacancies;
+}
+
+section {
+  font-family: $main-font;
+  color: $text-main;
+  position: relative;
+}
+
+.baner {
+  height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.baner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .31);
+  z-index: 1;
+}
+
+.baner-bg {
+  background-image: url('../../../assets/images/vacansies/kyhar-Wok/vok-1720x600.jpg');
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.banner-content {
+  z-index: 1;
+  color: #ECECEC;
+}
+
+.banner-info {
+  display: flex;
+}
+
+.title {
+  @include title;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.text {
+  width: 260px;
+  font-size: 20px;
+  line-height: 1.2em;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+}
+
+.spacer-60 {
+  height: 60px;
+}

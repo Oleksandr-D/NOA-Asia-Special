@@ -53,6 +53,25 @@
   }
 }
 
+@mixin breadcrumbs-vacancies {
+  @include breadcrumbs;
+  margin: 0;
+  z-index: 3;
+
+  li {
+    color: #ECECEC;
+  }
+
+  li a {
+    color: #ECECEC;
+  }
+
+  .breadcrumbs-after::after {
+    border: 2px solid #ECECEC;
+    ;
+  }
+}
+
 @mixin simple-page-text {
   font-family: $main-font;
   color: $secondary-text;

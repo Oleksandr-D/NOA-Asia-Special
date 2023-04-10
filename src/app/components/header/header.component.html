@@ -128,16 +128,16 @@
         <button class="menu-close-btn" (click)="toggleMenu()"></button>
         <nav class="menu-list">
           <ul>
-            <a (click)="toggleMenu()" [routerLink]="['/about']">
+            <a (click)="toggleMenu()" [routerLink]="['/about']" routerLinkActive="route-active">
               <li>Про нас</li>
             </a>
-            <a (click)="toggleMenu()" [routerLink]="['/delivery']">
+            <a (click)="toggleMenu()" [routerLink]="['/delivery']" routerLinkActive="route-active">
               <li>Доставка</li>
             </a>
-            <a (click)="toggleMenu()" [routerLink]="['/vacancies']">
+            <a (click)="toggleMenu()" [routerLink]="['/vacancies']" routerLinkActive="route-active">
               <li>Вакансії</li>
             </a>
-            <a (click)="toggleMenu()" [routerLink]="['/contact']">
+            <a (click)="toggleMenu()" [routerLink]="['/contact']" routerLinkActive="route-active">
               <li>Контакти</li>
             </a>
           </ul>
