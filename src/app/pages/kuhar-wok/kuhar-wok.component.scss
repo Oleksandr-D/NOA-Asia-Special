@@ -237,19 +237,32 @@ form {
 .advantages-item-img {
   position: relative;
   margin-bottom: 30px;
+  overflow: hidden;
 
   img {
     position: relative;
     width: 100%;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  img:hover {
+    transform: scale(1.1);
   }
 }
 
 .slider-title {
   @include title;
+  width: fit-content;
   margin: 0;
   font-size: 20px;
   text-transform: uppercase;
   text-align: start;
+  cursor: pointer;
+}
+
+.slider-title:hover{
+  color: $button-secondary-text;
 }
 
 .carousel {
