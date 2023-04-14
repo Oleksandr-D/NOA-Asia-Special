@@ -1,1 +1,219 @@
-<p>kyhar-ramen works!</p>
+<section class="container">
+  <div class="row">
+    <div class="col-12">
+      <ul class="breadcrumbs">
+        <li class="breadcrumbs-after">
+          <a [routerLink]="['/']">
+            <span>Головна</span>
+          </a>
+        </li>
+        <li class="breadcrumbs-after">
+          <a [routerLink]="['/vacancies']">
+            <span>Вакансії</span>
+          </a>
+        </li>
+        <li>
+          <span>Кухар рамен</span>
+        </li>
+      </ul>
+      <div class="baner">
+        <div class="baner-bg"></div>
+        <div class="banner-content">
+          <h2 class="title">Вакансія кухаря рамен</h2>
+          <div class="banner-info">
+            <div class="text">
+              <p><b>Місто</b></p>
+              <p>Львів</p>
+            </div>
+            <div class="text">
+              <p><b>Місце праці</b></p>
+              <p>ресторан NOA</p>
+            </div>
+            <div class="text">
+              <p><b>Зайнятість</b></p>
+              <p>гнучкий графік</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="spacer-60"></div>
+<section class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="simple-page-text">
+        <h5><strong>Момофуку Андо в 1958 році винайшов рамен швидкого приготування.<br>
+            Але ми хочемо наголосити, що саме наш рамен нічого спільного немає зі словом ”швидко”.<br>
+            Наші пекарі дуже довго вимішують тісто для локшини, потім наші кухарі дуже довго готують
+            той відомий наваристий бульйон для рамена і вже аж потім, кухар – раменщик приступає до
+            найприємнішого – до складання всієї страви.
+          </strong>
+        </h5>
+        <p><strong>Впевнені, що ти точно легко справишся із:</strong></p>
+        <ul>
+          <li>приготування всіх необхідних заготовок для раменів – ми все покажемо</li>
+          <li>приготуванням фінальної версії готової</li>
+          <li>дотриманням санітарних норм в роботі</li>
+        </ul>
+        <p><strong>Mи гарантуємо:</strong></p>
+        <ul>
+          <li>позмінний графік — 2\2 або 3\3</li>
+          <li>зрозумілу систему оплати праці 2 рази на місяць</li>
+          <li>знижка -40% на меню закладу</li>
+          <li>таксі за рахунок компанії</li>
+          <li>винагорода до 1500 грн за кожного друга, якого привів до нас</li>
+          <li>компенсація вартості медогляду</li>
+          <li>обіди за рахунок компанії</li>
+          <li>можливість стати менеджером або шефом</li>
+        </ul>
+        <p><strong>Окрім цього:</strong></p>
+        <ul>
+          <li>ми навчаємо тебе та платимо за стажування</li>
+          <li>за перший рік твоя зарплата зросте на 20% (через 6 міс + 10%, і ще через 6 міс + 10%)</li>
+        </ul>
+        <p>Приєднуйся до команди! —
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfuzgcigF4_Wlk3Is5JhBovCgrnRYliXRJQdub-q-UXEZLfog/viewform"
+            target="_blank" rel="noopener">
+            <strong>залишай заявку</strong>
+          </a> або телефонуй за номером
+        </p>
+        <p>+380676996634 Марія<br>+380671070761 Анастасія</p>
+        <p>Детальніше про відкриті вакансії:&nbsp;
+          <a href="https://rabota.ua/ua/company3616782" target="_blank" rel="noopener noreferrer" data-tip="">
+            <strong>rabota.ua</strong>
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="cv-form">
+        <h4 class="title">Заявка на вакансію</h4>
+        <p>Заповніть дану заявку і ми зв’яжемося з вами найблищим часом</p>
+        <form [formGroup]="questionForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Ваше ім'я</mat-label>
+            <input matInput type="text" formControlName="name" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Ваше прізвище</mat-label>
+            <input matInput type="text" formControlName="surname" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Телефон</mat-label>
+            <span matPrefix>+380 &nbsp;</span>
+            <input matInput type="tel" formControlName="tel" placeholder="хх-xxx-xx-xx" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Ваш e-mail</mat-label>
+            <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+            <mat-error
+              *ngIf="questionForm.controls['email'].hasError('email') && !questionForm.controls['email'].hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="questionForm.controls['email'].hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="message" appearance="fill">
+            <mat-label>Чому ви хочете працювати з нами?</mat-label>
+            <textarea matInput formControlName="message" required></textarea>
+          </mat-form-field>
+          <div class="upload-wrapper">
+            <p>
+              <img src="https://noa.ua/wp-content/themes/tomatina/img/icons/download.svg" alt="">
+            </p>
+            <div class="file-name">
+              <p>Прикріпити файл (pdf, pptx, xlsx, xls, doc, docx, jpg) до 5 MB</p>
+              <input accept=".pdf,.pptx,.xlsx,.xls,.doc,.docx,.jpg,.png" aria-invalid="false" type="file" name="file">
+            </div>
+            <div class="remove-file">
+            </div>
+          </div>
+          <div>
+            <button type="submit">Надіслати</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="spacer-80"></div>
+<section class="container">
+  <div class="title">Інші
+    <span>вакансії</span>
+  </div>
+  <div class="slider">
+    <div class="col-12 show-carousel">
+      <div id="carouselExampleIndicators" class="carousel  slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1">
+          </button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2">
+          </button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="20000">
+            <div class="wraper-carousel-item">
+              <div class="advantages-item">
+                <div class="advantages-item-img">
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <img [routerLink]="['/vacancies/sychyst']"
+                    src="../../../assets/images/vacansies/syshyst/syshi_614x370.jpg">
+                </div>
+                <h5 [routerLink]="['/vacancies/sychyst']" class="slider-title">Кухар суші</h5>
+              </div>
+              <div class="advantages-item">
+                <div class="advantages-item-img">
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                  <img [routerLink]="['/vacancies/barmen']"
+                    src="../../../assets/images/vacansies/barmen/barmen_614x370.jpg">
+                </div>
+                <h5 [routerLink]="['/vacancies/barmen']" class="slider-title">Бармен</h5>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="20000">
+            <div class="wraper-carousel-item">
+              <div class="advantages-item">
+                <div class="advantages-item-img">
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <img [routerLink]="['/vacancies/sychyst']"
+                    src="../../../assets/images/vacansies/syshyst/syshi_614x370.jpg">
+                </div>
+                <h5 [routerLink]="['/vacancies/sychyst']" class="slider-title">Кухар суші</h5>
+              </div>
+              <div class="advantages-item">
+                <div class="advantages-item-img">
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                  <img [routerLink]="['/vacancies/kyhar-wok']"
+                    src="../../../assets/images/vacansies/kyhar-Wok/kuhar_wok_ramen_614x370.jpg">
+                </div>
+                <h5 [routerLink]="['/vacancies/kyhar-wok']" class="slider-title">Кухар wok</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="spacer-120"></div>
