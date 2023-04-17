@@ -25,3 +25,9 @@ table {
 button {
   background: none;
 }
+
+.btn:focus,
+.btn:active {
+  outline: none;
+  border: none;
+}

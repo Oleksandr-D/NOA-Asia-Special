@@ -86,3 +86,129 @@
   font-size: 46px;
   line-height: 1.2em;
 }
+
+@mixin fav-btn {
+  background-image: url(../../../assets/images/product/love-empty-icon.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 23px;
+  height: 20px;
+  line-height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+@mixin product-image {
+  .product-image {
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .product-labels {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0;
+
+      li {
+        padding: 8px 10px;
+        margin-bottom: 5px;
+        font-size: 10px;
+        line-height: 1;
+        color: #fff;
+        border-radius: 3px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+      }
+
+      li:first-child {
+        background-color: #ff6400;
+      }
+
+      li:last-child {
+        background-color: #0a0202;
+      }
+    }
+  }
+}
+
+
+@mixin product-title-wrap {
+  .product-title-wrap {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 10px 0;
+    font-family: $main-font-bold;
+
+    a {
+      font-size: 18px;
+      overflow: hidden;
+      max-height: 3em;
+    }
+
+    a:hover {
+      color: $button-secondary-text;
+    }
+  }
+}
+
+
+@mixin product-controls {
+  .product-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+
+    .thumb-input-number {
+      color: $text-main;
+      display: inline-flex;
+      align-items: center;
+      font-size: 14px;
+      line-height: 1;
+
+      button {
+        width: 30px;
+        height: 30px;
+        transition: 0.25s;
+        font-size: 18px;
+        font-weight: 700;
+        background-color: #F5F5F5;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background-color: $button-secondary-text;
+        color: #fff;
+      }
+
+      input {
+        width: 50px;
+        height: 26px;
+        font-weight: 700;
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+
+    .btns {
+      @include btns;
+      background-color: $button-secondary-text;
+      border: 2px solid #2d7d7d;
+      padding: 10px 15px;
+    }
+
+    .btns:hover {
+      background-color: #fff;
+      color: $text-main;
+    }
+  }
+}
