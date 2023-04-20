@@ -1,2 +1,31 @@
-<p>admin works!</p>
-<p>admin works!</p>
+<div class="spacer-40"></div>
+<div class="container-fluid">
+    <div class="admin-wraper">
+        <nav class="nav nav-pills" id="v-pills-tab"
+             role="tablist" aria-orientation="vertical">
+            <button class="nav-link" [routerLink]="[ 'category'  ]" 
+                    routerLinkActive="activ"
+                    type="button">
+                    Категорії
+            </button>
+            <button class="nav-link" [routerLink]="[ 'product' ]"
+                     routerLinkActive="btna"
+                     type="button">
+                     Товари
+            </button>
+            <button class="nav-link" [routerLink]="[ 'order' ]"
+                     routerLinkActive="btna" type="button">
+                     Замовлення
+           </button>
+           <div class="spacer-200"></div>
+           <button class="btns" (click)="logOut()"
+                   type="button">
+                 ВИХІД
+           </button>
+        </nav>
+        <div class="tab-content w-100" id="v-pills-tabContent">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<div class="spacer-200" ></div>
