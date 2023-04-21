@@ -1,0 +1,87 @@
+@import '../../shared/styles/base';
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/variables';
+
+.row {
+  font-family: $main_font;
+}
+
+.btns {
+  @include btns;
+}
+
+.btns:hover {
+  background-color: initial;
+  color: rgb(0, 0, 0);
+}
+
+.btns:disabled {
+  cursor: not-allowed;
+  background-color: rgb(233, 233, 233);
+  color: rgb(150, 150, 150);
+  border: 2px solid rgb(233, 233, 233);
+}
+
+.btn {
+  color: $button-secondary-text;
+  transition: 0.35s;
+  font-family: $main_font_bold;
+}
+
+.btn:disabled {
+  pointer-events: all;
+  cursor: not-allowed;
+}
+
+.btn:hover {
+  color: $text_main;
+}
+
+.form-control {
+  background-color: rgb(233, 233, 233);
+}
+
+table {
+  text-align: center;
+}
+
+th:last-child {
+  width: 230px;
+}
+
+.category-image {
+  height: 50px;
+}
+
+@media screen and (max-width: 575px) {
+  .table> :not(caption)>*>* {
+    padding: 0px 2px;
+    font-size: 10px;
+  }
+
+  .btn {
+    padding: 0px;
+    font-size: 14px;
+  }
+
+  .category-image {
+    height: 30px;
+    padding: 2px 0px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .btn {
+    font-size: 100%;
+  }
+
+  .category-image {
+    height: 20px;
+  }
+
+  .btns {
+    font-size: 14px;
+    padding: 10px 0px;
+  }
+}
