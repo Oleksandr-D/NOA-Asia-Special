@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 // import { ToastrService } from 'ngx-toastr';
-// import { ImageService } from 'src/app/shared/services/image/image.service';
+import { ImageService } from '../../shared/services/image/image.service';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class AdminCategoryComponent implements OnInit {
     private fb: FormBuilder,
     private categoryService: CategoryService,
     // private toastr: ToastrService,
-   // private imageService: ImageService
+   private imageService: ImageService
   ) {}
 
   ngOnInit(): void {
@@ -111,37 +111,36 @@ export class AdminCategoryComponent implements OnInit {
       //   this.toastr.success('Категорію успішно видалено!');
       // })
     }
+   
   }
 
   upload(event: any): void {
     const file = event.target.files[0];
-    // this.uploadPercent = this.imageService.uploadPercent;
-    // this.imageService
-      // .uploadFile('images', file.name, file)
-      // .then((data) => {
-      //   this.categoryForm.patchValue({
-      //     imagePath: data,
-      //   });
-      //   if (this.uploadPercent === 100) {
-      //     this.isUploaded = true;
-      //   }
-      // })
-      // .catch((err) => {
-      //   console.log(err);
-      // });
+    this.uploadPercent = this.imageService.uploadPercent;
+    this.imageService.uploadFile('images', file.name, file).then((data) => {
+        this.categoryForm.patchValue({
+          imagePath: data,
+        });
+        if (this.uploadPercent === 100) {
+          this.isUploaded = true;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   deleteImage(): void {
-    // this.imageService
-    //   .deleteUploadFile(this.valueByControl('imagePath'))
-    //   .then(() => {
-    //     console.log('File deleted');
-    //     this.isUploaded = false;
-    //     this.uploadPercent = 0;
-    //     this.categoryForm.patchValue({
-    //       imagePath: null,
-    //     });
-    //   });
+    this.imageService
+      .deleteUploadFile(this.valueByControl('imagePath'))
+      .then(() => {
+        alert('Файл видалено');
+        this.isUploaded = false;
+        this.uploadPercent = 0;
+        this.categoryForm.patchValue({
+          imagePath: null,
+        });
+      });
   }
 
   valueByControl(control: string): string {
