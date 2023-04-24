@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { ImageService } from '../../shared/services/image/image.service';
 
 
@@ -23,8 +23,8 @@ export class AdminCategoryComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryService,
-    // private toastr: ToastrService,
-   private imageService: ImageService
+    private toastr: ToastrService,
+    private imageService: ImageService
   ) {}
 
   ngOnInit(): void {
@@ -41,41 +41,26 @@ export class AdminCategoryComponent implements OnInit {
   }
 
   loadCategories(): void {
-    //for json server
-    // this.categoryService.getAll().subscribe(data => {
-    //   this.adminCategories = data;
-    // })
-    //for firebase
-    // this.categoryService.getAllFirebase().subscribe((data) => {
-    //   this.adminCategories = data as ICategoryResponse[];
-    // });
+    this.categoryService.getAllFirebase().subscribe((data) => {
+    this.adminCategories = data as ICategoryResponse[];
+    });
   }
 
   addCategory(): void {
     if (this.editStatus) {
-      //this for json server
-      // this.categoryService.update(this.categoryForm.value, this.currentCategoryId).subscribe(() => {
-      //   this.loadCategories();
-      //   this.toastr.success('Категорію успішно оновлено!');
-      // })
-      //for firebase
-    //   this.categoryService.updateFirebase(
-    //       this.categoryForm.value,
-    //       this.currentCategoryId as string
-    //     )
-    //     .then(() => {
-    //       this.loadCategories();
-    //       this.toastr.success('Категорію успішно оновлено!');
-    //     });
-    // } else {
-      //this for json server
-      // this.categoryService.create(this.categoryForm.value).subscribe(() => {
-      //   this.loadCategories();
-      //for firebase
-      // this.categoryService.createFirebase(this.categoryForm.value).then(() => {
-      //   this.loadCategories();
-      //   this.toastr.success('Категорію успішно додано!');
-      // });
+      this.categoryService.updateFirebase(
+          this.categoryForm.value,
+          this.currentCategoryId as string
+        )
+        .then(() => {
+          this.loadCategories();
+          this.toastr.success('Категорію успішно оновлено!');
+        });
+    } else {
+        this.categoryService.createFirebase(this.categoryForm.value).then(() => {
+        this.loadCategories();
+        this.toastr.success('Категорію успішно додано!');
+      });
        }
     this.editStatus = false;
     this.categoryForm.reset();
@@ -100,18 +85,11 @@ export class AdminCategoryComponent implements OnInit {
 
   deleteCategory(category: ICategoryResponse): void {
     if (confirm('Видалити цю катигорію?')) {
-      //this for json server
-      // this.categoryService.delete(category.id as number).subscribe(() => {
-      //   this.loadCategories();
-      //   this.toastr.success('Категорію успішно видалено!');
-      // })
-      //for firebase
-      // this.categoryService.deleteFirebase(category.id as string).then(() => {
-      //   this.loadCategories();
-      //   this.toastr.success('Категорію успішно видалено!');
-      // })
+      this.categoryService.deleteFirebase(category.id as string).then(() => {
+        this.loadCategories();
+        this.toastr.success('Категорію успішно видалено!');
+      })
     }
-   
   }
 
   upload(event: any): void {

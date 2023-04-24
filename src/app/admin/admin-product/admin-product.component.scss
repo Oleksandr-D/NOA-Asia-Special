@@ -1,0 +1,117 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/base';
+
+.btns {
+  @include btns;
+  background-color: $button-secondary-text;
+  border: 2px solid $button-secondary-text;
+}
+
+.btns:hover {
+  background-color: initial;
+  color: rgb(0, 0, 0);
+}
+
+.btns:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.btns:disabled {
+  cursor: not-allowed;
+  background-color: rgb(233, 233, 233);
+  color: rgb(150, 150, 150);
+  border: 2px solid rgb(233, 233, 233);
+}
+
+.btn {
+  @include btn;
+}
+
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.btn:disabled {
+  pointer-events: all;
+  cursor: not-allowed;
+}
+
+.btn:hover {
+  color: $text_main;
+}
+
+table {
+  text-align: center;
+}
+
+.form-control,
+.form-select {
+   background-color: rgb(233, 233, 233);
+ }
+
+.image-wraper {
+  width: 300px;
+  display: flex;
+  padding: 20px 0px;
+
+  img {
+    width: 200px;
+  }
+}
+
+.product-img {
+  height: 50px;
+}
+
+@media screen and (max-width:770px) {
+  .table>:not(caption)>*>* {
+    padding: 0px 2px;
+    font-size: 10px;
+  }
+
+  .btn {
+    padding: 2px;
+    font-size: 100%;
+  }
+
+  .discount-image {
+    height: 30px;
+  }
+
+  .load-discount-image {
+    height: 150px;
+  }
+
+  .product-img {
+    height: 20px;
+    margin-top: 5px;
+  }
+
+  form {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width:380px) {
+  .btn {
+    padding: 0.5rem 0 0 0;
+    font-size: 8px;
+  }
+
+  .product-img {
+    margin-top: 10px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .btns {
+    font-size: 14px;
+    padding: 10px 0px;
+  }
+}
