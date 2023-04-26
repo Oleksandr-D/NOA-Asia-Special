@@ -5,7 +5,7 @@ import { IProductResponse } from 'src/app/shared/interfaces/product/product.inte
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 import { ImageService } from 'src/app/shared/services/image/image.service';
-//import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-product',
@@ -27,7 +27,7 @@ export class AdminProductComponent implements OnInit {
     private categoryService: CategoryService,
     private productService:ProductService,
     private imageService:ImageService,
-    //private toastr: ToastrService
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -66,13 +66,13 @@ export class AdminProductComponent implements OnInit {
       this.productService.updateFirebase(this.productForm.value, this.currentProductId as string).then(()=>{
         this.loadCategories();
         this.loadProducts();
-       // this.toastr.success('Товар успішно оновлено!');
+        this.toastr.success('Товар успішно оновлено!');
     })
     } else {
     this.productService.createFirebase(this.productForm.value).then(() => {
       this.loadCategories();
       this.loadProducts();
-      //this.toastr.success('Товар успішно додано!');
+      this.toastr.success('Товар успішно додано!');
       })
     }
   this.editStatus = false;
@@ -127,7 +127,7 @@ export class AdminProductComponent implements OnInit {
     if (confirm('Видалити цей продукт?')){
       this.productService.deleteFirebase(product.id as string).then(()=>{
         this.loadProducts();
-        //this.toastr.success('Товар успішно видалено!');
+        this.toastr.success('Товар успішно видалено!');
     })}
   }    
 

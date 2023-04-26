@@ -56,16 +56,16 @@
     </ul>
   </div>
   <div class="row">
-    <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+    <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of userProducts">
       <div class="product">
         <div class="product-image-wrapper">
-          <a class="product-image" href="#">
+          <a class="product-image">
             <picture>
               <!-- <source srcset="https://noa.ua/wp-content/uploads/2023/01/rol-z-lososem-bez-rysu-350x350.webp"
                 type="image/webp">
               <source srcset="https://noa.ua/wp-content/uploads/2023/01/rol-z-lososem-bez-rysu-350x350.webp"
                 type="image/webp"> -->
-              <img src="https://noa.ua/wp-content/uploads/2023/01/rol-z-lososem-bez-rysu-350x350.webp" alt="">
+              <img [routerLink]="['/product/' + product.category.path, product.id ]" [src]="product.imagePath" [alt]="product.name">
             </picture>
             <ul class="product-labels">
               <li>CULINASIA MENU</li>
@@ -85,18 +85,15 @@
         </div>
         <div class="product-title-wrap">
           <h6>
-            <a href="#">Тай з куркою темпура і додатковий текст 🌶</a>
+            <a [routerLink]="['/product/' + product.category.path, product.id ]">{{product.name}}</a>
           </h6>
-          <div class="product-price-wrap">9999</div>
+          <div class="product-price-wrap">{{product.price*product.count}}</div>
         </div>
-        <div class="product-desc">
-          Лосось, норі, авокадо, суші-сир, огірок, шиітаки, мигдалеві
-          пластівці, соус манго світ чилі, ікра тобіко, васабі, нитки чилі, фрі морква та рукола
-        </div>
+        <div class="product-desc">{{product.description}}</div>
         <div class="product-controls">
           <div class="thumb-input-number">
             <button type="button" class="decrement">-</button>
-            <input value="999" readonly="" class="product-qty" tabindex="-1" max="999">
+            <input [value]="product.count" readonly="" class="product-qty" tabindex="-1" max="99">
             <button type="button" class="increment">+</button>
           </div>
           <button class="btns">Замовити</button>
