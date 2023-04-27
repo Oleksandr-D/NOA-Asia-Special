@@ -1,1 +1,49 @@
-<p>product-info works!</p>
+<div class="container">
+  <ul class="breadcrumbs">
+    <li class="breadcrumbs-after">
+      <a [routerLink]="['/']">
+        <span>Головна</span>
+      </a>
+    </li>
+    <li class="breadcrumbs-after">
+      <a [routerLink]="[ '/product/' + currentProduct.category.path ]">
+        <span>{{currentProduct.category.name}}</span>
+      </a>
+    </li>
+    <li>
+      <span>{{currentProduct.name}}</span>
+    </li>
+  </ul>
+</div>
+
+<section class="container">
+  <div class="row justify-content-evenly">
+    <div class="col-xl-6 col-md-8 align-self-center">
+      <img class="img img-fluid rounded-start" [src]="currentProduct.imagePath" [alt]="currentProduct.name">
+    </div>
+    <div class=" col-xl-5 col-md-11">
+      <div class="card-body">
+         <div>
+            <div class="card-text mb-4">{{currentProduct.weight}} г</div>
+          </div>
+        <h5 class="card-title"> {{currentProduct.name}}</h5>
+        <span class="card-text"><b>Склад:</b></span>
+        <span class="card-text ms-2">{{currentProduct.description}}</span>
+        <div class="product-controls">
+          <div class="product-price">
+            <b>{{currentProduct.price*currentProduct.count}}</b> грн
+          </div>
+          <div class="thumb-input-number">
+            <button type="button" (click)="productCount(currentProduct, false)">-</button>
+            <input type="text" [value]="currentProduct.count" readonly max="99">
+            <button type="button" (click)="productCount(currentProduct, true)">+</button>
+          </div>
+          <button class="btn-order" (click)="addToBasket(currentProduct)">
+            Замовити
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="spacer-100"></div>

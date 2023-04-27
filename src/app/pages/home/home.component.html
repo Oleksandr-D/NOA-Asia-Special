@@ -92,11 +92,11 @@
         <div class="product-desc">{{product.description}}</div>
         <div class="product-controls">
           <div class="thumb-input-number">
-            <button type="button" class="decrement">-</button>
-            <input [value]="product.count" readonly="" class="product-qty" tabindex="-1" max="99">
-            <button type="button" class="increment">+</button>
+            <button type="button" (click)="productCount(product, false)">-</button>
+            <input [value]="product.count" readonly="" tabindex="-1" max="99">
+            <button type="button" (click)="productCount(product, true)">+</button>
           </div>
-          <button class="btns">Замовити</button>
+          <button class="btns" (click)="addToBasket(product)">Замовити</button>
         </div>
       </div>
     </div>
