@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadProducts(): void {
-    this.productService.getAllByCategoryFirebase('страви-підтримки').then((data) => {
+    this.productService.getAllByCategoryFirebase('Cтрави підтримки').then((data) => {
       this.userProducts = data as IProductResponse[];
     });
   }

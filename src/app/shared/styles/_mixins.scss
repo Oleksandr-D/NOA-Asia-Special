@@ -155,10 +155,14 @@
     margin: 10px 0 10px 0;
     font-family: $main-font-bold;
 
+    h6 {
+      min-height: 3.25em;
+    }
+
     a {
       font-size: 18px;
       overflow: hidden;
-      max-height: 3em;
+
     }
 
     a:hover {

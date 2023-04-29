@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
@@ -8,25 +9,43 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
   templateUrl: './product-info.component.html',
   styleUrls: ['./product-info.component.scss']
 })
-export class ProductInfoComponent implements OnInit {
+export class ProductInfoComponent implements OnInit, OnDestroy {
   public currentProduct!: IProductResponse;
+  public userProducts: Array<IProductResponse> = [];
+  private eventSubscription!: Subscription;
 
   constructor(
     //private orderService:OrderService,
     private productService: ProductService,
-    private activatedRoute: ActivatedRoute
-  ) {}
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+  ) {
+    this.eventSubscription = this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.getOneProduct();
+      }
+    })
+  }
 
   ngOnInit(): void {
-    this.getOneProduct();
+    this.loadProducts();
+  }
+
+  ngOnDestroy(): void {
+    this.eventSubscription.unsubscribe();
   }
 
   getOneProduct():void{
     const PRODUCT_ID = this.activatedRoute.snapshot.paramMap.get('id');
     this.productService.getOneFirebase(PRODUCT_ID as string).subscribe(data =>{
       this.currentProduct = data as IProductResponse;
-      console.log('=>', this.currentProduct)
     })
+  }
+
+  loadProducts(): void {
+    this.productService.getAllByCategoryFirebase('Cтрави підтримки').then((data) => {
+      this.userProducts = data as IProductResponse[];
+    });
   }
 
   productCount(product: IProductResponse, value: boolean): void {

@@ -37,7 +37,7 @@
       margin-right: 5px;
     }
 
-    .categories-list-item.active a {
+    .categories-list-item a.active {
       background-color: #2d7d7d;
       color: #fff;
       border-radius: 6px;
@@ -106,7 +106,7 @@
   .product-desc {
     line-height: 1.5em;
     font-size: 15px;
-    // height: 66px;
+    height: 66px;
   }
 }
 
@@ -119,19 +119,8 @@
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
 }
 
-.btn-close {
-  width: 40px;
-  height: 40px;
-  font-size: 20px;
-  line-height: 40px;
-  text-align: center;
-  transition: 0.25s;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.btn-close:before {
-  content: "\02715";
+.fav-btn {
+  @include fav-btn;
 }
 
 .spacer-60 {

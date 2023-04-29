@@ -1,1 +1,68 @@
-<p>product works!</p>
+<div class="spacer-60"></div>
+<section class="container">
+   <div class="categories-menu">
+     <ul class="categories-list">
+       <li class="categories-list-item">
+         <a [routerLink]="[ '/product/Страви підтримки' ]" routerLinkActive="active">Страви Підтримки</a>
+       </li>
+       <li class="categories-list-item">
+         <a [routerLink]="[ '/product/Culinasa menu' ]" routerLinkActive="active">Culinasia special</a></li>
+       <li class="categories-list-item">
+         <a [routerLink]="[ '/product/Сніданки до 18:00' ]" routerLinkActive="active">Сніданки до 18:00</a></li>
+       <li class="categories-list-item"><a href="" class="">Стартери</a></li>
+       <li class="categories-list-item"><a href="" class="">Рамен</a></li>
+       <li class="categories-list-item"><a href="" class="">AsianWok</a></li>
+       <li class="categories-list-item"><a href="" class="">Asian Poke</a></li>
+       <li class="categories-list-item"><a href="" class="">Суші-бургери</a></li>
+       <li class="categories-list-item"><a href="" class="">Хот роли</a></li>
+       <li class="categories-list-item"><a href="" class="">Роли макі та суші</a></li>
+       <li class="categories-list-item"><a href="" class="">Роли</a></li>
+       <li class="categories-list-item"><a href="" class="">Cети</a></li>
+       <li class="categories-list-item"><a href="" class="">Десерти</a></li>
+       <li class="categories-list-item"><a href="" class="">Напої</a></li>
+       <li class="categories-list-item"><a href="" class="">Алкогольні напої 18+</a></li>
+     </ul>
+   </div>
+   <div class="row">
+     <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of userProducts">
+       <div class="product">
+         <div class="product-image-wrapper">
+           <a class="product-image">
+             <picture>
+               <img [routerLink]="['/product/' + product.category.path, product.id ]" [src]="product.imagePath" [alt]="product.name">
+             </picture>
+             <ul class="product-labels">
+               <li>CULINASIA MENU</li>
+               <li>NO RICE</li>
+             </ul>
+           </a>
+           <div class="image-top-right">
+             <button class="fav-btn"></button>
+           </div>
+           <div class="floating-buttons">
+             <button class="btns">Додати складники
+             </button>
+             <button class="btns">Швидке замовлення
+             </button>
+           </div>
+         </div>
+         <div class="product-title-wrap">
+           <h6>
+             <a [routerLink]="['/product/' + product.category.path, product.id ]">{{product.name}}</a>
+           </h6>
+           <div class="product-price-wrap">{{product.price*product.count}}</div>
+         </div>
+         <div class="product-desc">{{product.description}}</div>
+         <div class="product-controls">
+           <div class="thumb-input-number">
+             <button type="button" (click)="productCount(product, false)">-</button>
+             <input [value]="product.count" readonly="" tabindex="-1" max="99">
+             <button type="button" (click)="productCount(product, true)">+</button>
+           </div>
+           <button class="btns" (click)="addToBasket(product)">Замовити</button>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <div class="spacer-60"></div>
