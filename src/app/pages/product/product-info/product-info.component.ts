@@ -42,10 +42,11 @@ export class ProductInfoComponent implements OnInit, OnDestroy {
     })
   }
 
-  loadProducts(): void {
-    this.productService.getAllByCategoryFirebase('Cтрави підтримки').then((data) => {
-      this.userProducts = data as IProductResponse[];
-    });
+  loadProducts():void {
+    const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
+    this.productService.getAllByCategoryFirebase(categoryName).then(data => {
+      this.userProducts = data as IProductResponse[];  
+    })
   }
 
   productCount(product: IProductResponse, value: boolean): void {

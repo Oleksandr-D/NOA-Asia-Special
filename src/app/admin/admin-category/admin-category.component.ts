@@ -81,6 +81,10 @@ export class AdminCategoryComponent implements OnInit {
     this.editStatus = true;
     this.currentCategoryId = category.id as number;
     this.isUploaded = true;
+    window.scroll({
+      top:0,
+      behavior:'smooth'
+    })
   }
 
   deleteCategory(category: ICategoryResponse): void {
