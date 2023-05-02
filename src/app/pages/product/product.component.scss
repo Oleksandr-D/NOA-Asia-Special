@@ -26,7 +26,13 @@
       color: $secondary-text;
       transition: 0.25s;
       text-transform: uppercase;
-      margin-right: 5px;
+      margin: 2px;
+    }
+
+    .categories-list-item a:hover {
+      background-color: $button-secondary-text;
+      color: #fff;
+      border-radius: 6px;
     }
 
     .categories-list-item a.active {

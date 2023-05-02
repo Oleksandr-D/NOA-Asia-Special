@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
+import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
@@ -9,14 +11,16 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements OnDestroy {
+export class ProductComponent implements OnInit, OnDestroy {
   public userProducts: Array < IProductResponse >= [];
   private eventSubscription!: Subscription;
+  public categories: Array<ICategoryResponse> = [];
 
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private categoryService: CategoryService
   ){
     this.eventSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -25,8 +29,18 @@ export class ProductComponent implements OnDestroy {
     })
   }
 
+  ngOnInit(): void {
+    this.loadCategories();
+  }
+
   ngOnDestroy(): void {
     this.eventSubscription.unsubscribe();
+  }
+
+  loadCategories(): void {
+    this.categoryService.getAllFirebase().subscribe((data) => {
+    this.categories = data as ICategoryResponse[];
+    });
   }
  
   loadProducts():void {

@@ -77,7 +77,9 @@
           </h6>
           <div class="product-price-wrap">{{product.price*product.count}}</div>
         </div>
-        <div class="product-desc">{{product.description}}</div>
+        <div class="product-desc">{{product.description | slice:0:90}}
+          <span *ngIf="product.description.length>90">...</span>
+        </div>
         <div class="product-controls">
           <div class="thumb-input-number">
             <button type="button" (click)="productCount(product, false)">-</button>

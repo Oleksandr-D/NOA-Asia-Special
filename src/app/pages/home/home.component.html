@@ -36,42 +36,9 @@
   </h1>
   <div class="categories-menu">
     <ul class="categories-list">
-      <li class="categories-list-item">
-        <a [routerLink]="[ '/product/Cтрави-підтримки' ]" routerLinkActive="active" href="">Страви Підтримки</a>
+     <li class="categories-list-item" *ngFor="let category of categories">
+        <a [routerLink]="['/product/' + category.path]">{{ category.name }}</a>
       </li>
-      <li class="categories-list-item">
-        <a [routerLink]="[ '/product/Culinasa menu' ]" routerLinkActive="active">Culinasia special</a>
-      </li>
-      <li class="categories-list-item">
-        <a [routerLink]="[ '/product/Сніданки до 18:00' ]" routerLinkActive="active">Сніданки до 18:00</a>
-      </li>
-      <li class="categories-list-item ">
-        <a [routerLink]="[ '/product/Стартери' ]" routerLinkActive="active">Стартери</a>
-      </li>
-      <li class="categories-list-item ">
-        <a href="" class="">Рамен</a>
-      </li>
-      <li class="categories-list-item ">
-        <a href="" class="">AsianWok</a>
-      </li>
-      <li class="categories-list-item ">
-        <a href="" class="">Asian Poke</a></li>
-      <li class="categories-list-item ">
-        <a href="" class="">Суші-бургери</a></li>
-      <li class="categories-list-item ">
-        <a href="" class="">Хот роли</a></li>
-      <li class="categories-list-item ">
-        <a href="" class="">Роли макі та суші</a></li>
-      <li class="categories-list-item ">
-        <a href="" class="">Роли</a></li>
-      <li class="categories-list-item ">
-        <a href="" class="">Cети</a></li>
-      <li class="categories-list-item ">
-        <a href="" class="">Десерти</a></li>
-      <li class="categories-list-item ">
-        <a href="" class="">Напої</a></li>
-      <li class="categories-list-item ">
-        <a href="" class="">Алкогольні напої 18+</a></li>
     </ul>
   </div>
   <div class="row">
@@ -80,7 +47,8 @@
         <div class="product-image-wrapper">
           <a class="product-image">
             <picture>
-              <img [routerLink]="['/product/' + product.category.path, product.id ]" [src]="product.imagePath" [alt]="product.name">
+              <img [routerLink]="['/product/' + product.category.path, product.id ]" [src]="product.imagePath"
+                [alt]="product.name">
             </picture>
             <ul class="product-labels">
               <li>CULINASIA MENU</li>
@@ -103,7 +71,9 @@
           </h6>
           <div class="product-price-wrap">{{product.price*product.count}}</div>
         </div>
-        <div class="product-desc">{{product.description}}</div>
+        <div class="product-desc">{{product.description | slice:0:100}}
+          <span *ngIf="product.description.length>100">...</span>
+        </div>
         <div class="product-controls">
           <div class="thumb-input-number">
             <button type="button" (click)="productCount(product, false)">-</button>

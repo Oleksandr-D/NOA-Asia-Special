@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
+import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
@@ -9,18 +11,27 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 })
 export class HomeComponent implements OnInit {
   public userProducts: Array<IProductResponse> = [];
+  public categories: Array<ICategoryResponse> = [];
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private categoryService: CategoryService
   ) {}
 
   ngOnInit(): void {
     this.loadProducts();
+    this.loadCategories();
   }
 
   loadProducts(): void {
-    this.productService.getAllByCategoryFirebase('Cтрави-підтримки').then((data) => {
+    this.productService.getAllByCategoryFirebase('Роли').then((data) => {
       this.userProducts = data as IProductResponse[];
+    });
+  }
+
+  loadCategories(): void {
+    this.categoryService.getAllFirebase().subscribe((data) => {
+    this.categories = data as ICategoryResponse[];
     });
   }
 

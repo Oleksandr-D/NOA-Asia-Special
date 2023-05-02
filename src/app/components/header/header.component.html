@@ -16,14 +16,13 @@
         <ul>
           <li class="show-submenu">
             <a class="dropdown-item">Mеню</a>
-            <ul class="header-submenu">
-              <li class="header-item">
-                <a [routerLink]="['/product/culinasia-menu']">
+            <ul class="header-submenu" >
+              <li class="header-item" *ngFor="let category of categories">
+                <a [routerLink]="['/product/' + category.path]">
                   <div class="header-item-imgs">
-                    <img src="https://noa.ua/wp-content/uploads/2023/01/ramen-kari-z-krevetkamy-4-110x110.webp"
-                      alt="menu_item">
+                    <img [src]="category.imagePath" alt="" class="category-image">
                   </div>
-                  <span>Culinasia menu</span>
+                  <span>{{ category.name }}</span>
                 </a>
               </li>
             </ul>

@@ -37,11 +37,18 @@
       margin-right: 5px;
     }
 
-    .categories-list-item a.active {
-      background-color: #2d7d7d;
+    .categories-list-item a:hover {
+      background-color: $button-secondary-text;
       color: #fff;
       border-radius: 6px;
     }
+
+    li:first-child a {
+      background-color: $button-secondary-text;
+      color: #fff;
+      border-radius: 6px;
+    }
+
   }
 }
 
