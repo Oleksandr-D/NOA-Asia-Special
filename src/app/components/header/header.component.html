@@ -30,14 +30,12 @@
           <li class="show-submenu">
             <a [routerLink]="['/thai-market']" class="dropdown-item">Thai Market</a>
             <ul class="header-submenu">
-              <li class="header-item">
-                <a [routerLink]="['/thai-market']">
+              <li class="header-item" *ngFor="let category of thaiMarketCategories">
+                <a [routerLink]="['/product/' + category.path]">
                   <div class="header-item-imgs">
-                    <img
-                      src="https://noa.ua/wp-content/uploads/2022/07/krevetky-v-sofrito-shoyu-tare-110x110.png.pagespeed.ce_.g_jwcyf7ts-1.png"
-                      alt="menu_item">
+                    <img [src]="category.imagePath" alt="" class="category-image">
                   </div>
-                  <span>Thai Satay</span>
+                  <span>{{ category.name }}</span>
                 </a>
               </li>
             </ul>

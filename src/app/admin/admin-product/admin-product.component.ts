@@ -22,6 +22,7 @@ export class AdminProductComponent implements OnInit {
   public isUploaded = false;
   private currentProductId!: number | string;
   public isOpen = false;
+  //public combinedProducts: Array<ICategoryResponse> = [ ...this.adminCategories];
 
   constructor(
     private fb:FormBuilder,
