@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICategoryRequest, ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
-import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { ToastrService } from 'ngx-toastr';
 import { ImageService } from '../../shared/services/image/image.service';
+import { ThaiMarketService } from 'src/app/shared/services/thai-market/thai-market.service';
 
 @Component({
-  selector: 'app-admin-category',
-  templateUrl: './admin-category.component.html',
-  styleUrls: ['./admin-category.component.scss']
+  selector: 'app-admin-thai-market',
+  templateUrl: './admin-thai-market.component.html',
+  styleUrls: ['./admin-thai-market.component.scss']
 })
-export class AdminCategoryComponent implements OnInit {
-
-  public adminCategories: Array<ICategoryResponse> = [];
+export class AdminThaiMarketComponent implements OnInit {
+  public adminThaiCategories: Array<ICategoryResponse> = [];
   public categoryForm!: FormGroup;
   public editStatus = false;
   public uploadPercent = 0;
   public isUploaded = false;
   private currentCategoryId!:string | number;
-  
+
   constructor(
     private fb: FormBuilder,
-    private categoryService: CategoryService,
+    private thaiMarketService: ThaiMarketService,
     private toastr: ToastrService,
     private imageService: ImageService,
   ) {}
@@ -36,18 +35,20 @@ export class AdminCategoryComponent implements OnInit {
       name: [null, Validators.required],
       path: [null, Validators.required],
       imagePath: [null, Validators.required],
+      thai:[true],
     });
   }
 
   loadCategories(): void {
-    this.categoryService.getAllFirebase().subscribe((data) => {
-      this.adminCategories = data as ICategoryResponse[];
+    this.thaiMarketService.getAllFirebase().subscribe((data) => {
+      this.adminThaiCategories = data as ICategoryResponse[];
     });
   }
 
   addCategory(): void {
+    this.categoryForm.value.thai = true;
     if (this.editStatus) {
-      this.categoryService.updateFirebase(
+      this.thaiMarketService.updateFirebase(
           this.categoryForm.value,
           this.currentCategoryId as string
         )
@@ -56,7 +57,7 @@ export class AdminCategoryComponent implements OnInit {
           this.toastr.success('Категорію успішно оновлено!');
         });
     } else {
-      this.categoryService.createFirebase(this.categoryForm.value).then(() => {
+      this.thaiMarketService.createFirebase(this.categoryForm.value).then(() => {
         this.loadCategories();
         this.toastr.success('Категорію успішно додано!');
       });
@@ -76,6 +77,7 @@ export class AdminCategoryComponent implements OnInit {
       name: category.name,
       path: category.path,
       imagePath: category.imagePath,
+      thai:category.thai
     });
     this.editStatus = true;
     this.currentCategoryId = category.id;
@@ -88,7 +90,7 @@ export class AdminCategoryComponent implements OnInit {
 
   deleteCategory(category: ICategoryResponse): void {
     if (confirm('Видалити цю катигорію?')) {
-        this.categoryService.deleteFirebase(category.id as string).then(() => {
+        this.thaiMarketService .deleteFirebase(category.id as string).then(() => {
         this.loadCategories();
         this.toastr.success('Категорію успішно видалено!');
          });
@@ -129,3 +131,10 @@ export class AdminCategoryComponent implements OnInit {
   }
 
 }
+
+
+
+
+
+
+

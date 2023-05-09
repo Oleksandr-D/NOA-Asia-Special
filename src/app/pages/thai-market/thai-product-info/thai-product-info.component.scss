@@ -1,0 +1,225 @@
+@import "../../../shared/styles/variables";
+@import "../../../shared/styles/mixins";
+@import "../../../shared/styles/fonts";
+@import "../../../shared/styles/base";
+
+.breadcrumbs {
+  @include breadcrumbs;
+}
+
+section {
+  font-family: $main-font;
+  color: $text-main;
+  position: relative;
+}
+
+.spacer-100 {
+  height: 100px;
+}
+
+.product-img {
+  height: 50vh;
+}
+
+.card-title {
+  @include title;
+}
+
+.card-text {
+  @include simple-page-text;
+}
+
+.product-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.product-price {
+  font-size: 26px;
+  width: 107px;
+}
+
+.thumb-input-number {
+  display: inline-flex;
+
+  button {
+    width: 40px;
+    font-weight: bold;
+    background-color: #e7e7e7;
+    font-size: 28px;
+    border-radius: 6px;
+    transition: 0.35s;
+  }
+
+  button:hover {
+    background-color: $button-secondary-text;
+    color: #fff;
+  }
+
+  input {
+    width: 40px;
+    height: 55px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+  }
+}
+
+.btn-order {
+  @include btns;
+  border: 2px solid $button-secondary-text;
+  background-color: $button-secondary-text;
+}
+
+.btn-order:hover {
+  background-color: initial;
+  color: $text-main;
+  border: 2px solid $button-secondary-text;
+}
+
+.title {
+  @include title;
+
+  span {
+    text-transform: lowercase;
+  }
+}
+
+.product {
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  height: 100%;
+
+  @include product-title-wrap;
+  @include product-controls;
+
+  .product-image-wrapper {
+    position: relative;
+    @include product-image;
+  }
+
+  .image-top-right {
+    width: 100%;
+    top: 0;
+    right: 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .floating-buttons {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.25s;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, white 100%);
+
+    .btns {
+      color: $button-secondary-text;
+      font-family: $main-font-bold;
+      line-height: 16px;
+      padding: 15px 0;
+      flex: 0 0 49%;
+      letter-spacing: 0.1em;
+      font-size: 10px;
+      text-transform: uppercase;
+      transition: 0.3s;
+      text-align: center;
+      background: #F5F5F5;
+      border-radius: 6px;
+    }
+
+    .btns:hover {
+      background-color: $button-secondary-text;
+      color: #fff;
+    }
+  }
+
+  .product-desc {
+    line-height: 1.5em;
+    font-size: 15px;
+    height: 66px;
+  }
+}
+
+.product:hover .floating-buttons {
+  opacity: 1;
+  bottom: 10px;
+}
+
+.product:hover {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.fav-btn {
+  @include fav-btn;
+}
+
+@media screen and (max-width: 770px) {
+  .breadcrumb-item {
+    font-size: 10px;
+  }
+
+  .card-title {
+    font-size: 34px;
+    margin: 10px 0px;
+  }
+
+  .product-controls {
+    margin-top: 20px;
+  }
+
+  .container {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .container {
+    width: 100%;
+  }
+
+  .card-body {
+    padding: 5px;
+  }
+
+  .product-price {
+    width: 70px;
+    font-size: 16px;
+    margin-right: 10px;
+
+    b {
+      font-size: 21px;
+    }
+  }
+
+  .thumb-input-number {
+    width: 120px;
+    justify-content: space-evenly;
+
+    button {
+      font-size: 22px;
+      padding-bottom: 0px;
+      margin: 2px;
+    }
+
+    input {
+      height: 45px;
+      font-size: 18px;
+    }
+  }
+
+  .btn-order {
+    padding: 10px 5px;
+  }
+}

@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-8 col-xl-4">
+    <form [formGroup]="categoryForm" class="was-validated" (ngSubmit)="addCategory()">
+      <div class="mb-3">
+        <label for="name" class="form-label is-invalid">Назва</label>
+        <input formControlName="name" name="name" type="text" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="path" class="form-label is-invalid">Шлях</label>
+        <input formControlName="path" name="path" type="text" class="form-control" id="path" required>
+      </div>
+      <ng-container *ngIf="!isUploaded || editStatus">
+        <div class="mb-3">
+          <label for="formFile" class="form-label"></label>
+          <input class="form-control" type="file" id="formFile" (change)="upload($event)" required>
+        </div>
+        <div class="progress mb-3">
+          <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="uploadPercent"
+            aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="isUploaded">
+        <div class="d-flex flex-wrap justify-content-center">
+          <img [src]="valueByControl('imagePath')" class="p-3 col-xl-6 col-md-6 col-sm-12" height="200px" alt="">
+          <button type="button" class="btn btn-del-img w-50 mb-3 " (click)="deleteImage()">
+            Видалити
+          </button>
+        </div>
+      </ng-container>
+      <button [disabled]="categoryForm.invalid" type="submit" class="btns w-100">
+        {{ editStatus ? 'ЗБЕРІГТИ' : 'ДОДАТИ КАТЕГОРІЮ' }}
+      </button>
+    </form>
+  </div>
+  <div class="col-12 col-xl-8">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Назва</th>
+          <th scope="col">Шлях</th>
+          <th scope="col">Зображення</th>
+          <th scope="col">Дії</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of adminThaiCategories">
+          <td>{{ category.id }}</td>
+          <td>{{ category.name }}</td>
+          <td>{{ category.path }}</td>
+          <td>
+            <img [src]="category.imagePath" alt="" class="category-image">
+          </td>
+          <td>
+            <button (click)="editCategory(category)" type="button" class="btn me-2">
+              Редагувати
+            </button>
+            <button [disabled]="editStatus" (click)="deleteCategory(category)" type="button" class="btn">
+              Видалити
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

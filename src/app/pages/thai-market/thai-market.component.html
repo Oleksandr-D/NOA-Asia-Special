@@ -5,7 +5,8 @@
    <div class="categories-menu">
      <ul class="categories-list">
       <li class="categories-list-item" *ngFor="let category of categories">
-         <a [routerLink]="['/thai-market/' + category.path]">{{ category.name }}</a>
+        <a [routerLink]="['/thai-market/' + category.path]" 
+         routerLinkActive="active">{{ category.name }}</a>
        </li>
      </ul>
    </div>
@@ -15,7 +16,7 @@
          <div class="product-image-wrapper">
            <a class="product-image">
              <picture>
-               <img [routerLink]="['/product/' + product.category.path, product.id ]" [src]="product.imagePath"
+               <img [routerLink]="['/thai-market/' + product.category.path, product.id ]" [src]="product.imagePath"
                  [alt]="product.name">
              </picture>
              <ul class="product-labels">
@@ -35,7 +36,7 @@
          </div>
          <div class="product-title-wrap">
            <h6>
-             <a [routerLink]="['/product/' + product.category.path, product.id ]">{{product.name}}</a>
+             <a [routerLink]="['/thai-market/' + product.category.path, product.id ]">{{product.name}}</a>
            </h6>
            <div class="product-price-wrap">{{product.price*product.count}}</div>
          </div>

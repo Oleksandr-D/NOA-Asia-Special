@@ -14,7 +14,7 @@
            <div class="col-sm-4 col-12 mb-3">
              <label for="name" class="form-label">Категорія</label>
              <select formControlName="category"  class="form-select" required>
-               <option  [ngValue]="category" *ngFor="let category of adminCategories">
+               <option  [ngValue]="category" *ngFor="let category of allCategories">
                   {{category.name}}
                </option>
              </select>

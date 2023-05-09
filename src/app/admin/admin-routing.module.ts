@@ -5,7 +5,8 @@ import { AdminProductComponent } from "./admin-product/admin-product.component";
 import { AdminCategoryComponent } from "./admin-category/admin-category.component";
 import { AdminComponent } from "./admin.component";
 import { AdminOrdersComponent } from "./admin-orders/admin-orders.component";
-
+import { AdminThaiMarketComponent } from './admin-thai-market/admin-thai-market.component'
+ 
 const routes: Routes = [
   {
     path: '', component: AdminComponent, children: [
@@ -13,6 +14,7 @@ const routes: Routes = [
       { path: 'product', component: AdminProductComponent },
       { path: 'vacancies', component: AdminVacanciesComponent },
       { path: 'order', component: AdminOrdersComponent },
+      { path: 'thai-market', component: AdminThaiMarketComponent  },
       { path: '', pathMatch: 'full', redirectTo: 'category' },
     ]
   },

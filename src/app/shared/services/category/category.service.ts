@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ICategoryRequest } from '../../interfaces/category/category.interface';
 import { Firestore, CollectionReference, addDoc,
-         collectionData, doc, updateDoc, deleteDoc 
+         collectionData, doc, updateDoc, deleteDoc,
         } from '@angular/fire/firestore';
 import { DocumentData, collection } from '@firebase/firestore';
 
@@ -34,5 +34,4 @@ export class CategoryService {
     const categoryDocumentReferense = doc(this.afs, `categories/${id}`);
     return deleteDoc(categoryDocumentReferense);
   }
-
 }

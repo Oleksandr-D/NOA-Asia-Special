@@ -1,61 +1,53 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
-import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
-import { ThaiMarketService } from 'src/app/shared/services/thai-market/thai-market.service';
 
 @Component({
-  selector: 'app-thai-market',
-  templateUrl: './thai-market.component.html',
-  styleUrls: ['./thai-market.component.scss']
+  selector: 'app-thai-product-info',
+  templateUrl: './thai-product-info.component.html',
+  styleUrls: ['./thai-product-info.component.scss']
 })
-export class ThaiMarketComponent implements OnInit, OnDestroy {
+export class ThaiProductInfoComponent implements OnInit, OnDestroy {
+  public currentProduct!: IProductResponse;
   public userProducts: Array<IProductResponse> = [];
-  public categories: Array<ICategoryResponse> = [];
   private eventSubscription!: Subscription;
-  
+
   constructor(
+    //private orderService:OrderService,
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private thaiService: ThaiMarketService
-  ){
+  ) {
     this.eventSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.loadProducts();
+        this.getOneProduct();
       }
     })
   }
 
   ngOnInit(): void {
-    this.loadCategories();
+    this.loadProducts();
   }
 
   ngOnDestroy(): void {
     this.eventSubscription.unsubscribe();
   }
 
+  getOneProduct():void{
+    const PRODUCT_ID = this.activatedRoute.snapshot.paramMap.get('id');
+    this.productService.getOneFirebase(PRODUCT_ID as string).subscribe(data =>{
+      this.currentProduct = data as IProductResponse;
+    })
+  }
+
   loadProducts():void {
     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
     this.productService.getAllByCategoryFirebase(categoryName).then(data => {
       this.userProducts = data as IProductResponse[];  
-      console.log('this.userProducts ==>', this.userProducts);
-      
     })
   }
-
-  loadCategories(): void {
-    this.thaiService.getAllFirebase().subscribe((data) => {
-    this.categories = data as ICategoryResponse[];
-    });
-  }
-
-
-
-
 
   productCount(product: IProductResponse, value: boolean): void {
     if (value) {
@@ -66,11 +58,11 @@ export class ThaiMarketComponent implements OnInit, OnDestroy {
   }
 
   addToBasket(product: IProductResponse): void {
-    let basket: Array<IProductResponse> = [];
+    let basket: Array < IProductResponse >= [];
     if (localStorage.length > 0 && localStorage.getItem('basket')) {
       basket = JSON.parse(localStorage.getItem('basket') as string);
-      if (basket.some((prod) => prod.id === product.id)) {
-        const index = basket.findIndex((prod) => prod.id === product.id);
+      if (basket.some(prod => prod.id === product.id)) {
+        const index = basket.findIndex(prod => prod.id === product.id);
         basket[index].count += product.count;
       } else {
         basket.push(product);
@@ -82,7 +74,4 @@ export class ThaiMarketComponent implements OnInit, OnDestroy {
     product.count = 1;
     //this.orderService.changeBasket.next(true);
   }
-
-
-
 }

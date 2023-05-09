@@ -6,6 +6,7 @@ import { CategoryService } from 'src/app/shared/services/category/category.servi
 import { ProductService } from 'src/app/shared/services/product/product.service';
 import { ImageService } from 'src/app/shared/services/image/image.service';
 import { ToastrService } from 'ngx-toastr';
+import { ThaiMarketService } from 'src/app/shared/services/thai-market/thai-market.service';
 
 @Component({
   selector: 'app-admin-product',
@@ -16,32 +17,44 @@ import { ToastrService } from 'ngx-toastr';
 export class AdminProductComponent implements OnInit {
   public adminProducts:Array <IProductResponse>=[];
   public adminCategories: Array<ICategoryResponse> = [];
+  public adminThaiCategories: Array<ICategoryResponse> = [];
+  
   public productForm!:FormGroup;
   public editStatus = false;
   public uploadPercent =0;
   public isUploaded = false;
   private currentProductId!: number | string;
   public isOpen = false;
-  //public combinedProducts: Array<ICategoryResponse> = [ ...this.adminCategories];
-
+  public allCategories: Array<ICategoryResponse> = [];
   constructor(
     private fb:FormBuilder,
     private categoryService: CategoryService,
+    private thaiMarketService:ThaiMarketService,
     private productService:ProductService,
     private imageService:ImageService,
     private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
-    this.loadCategories();
+    this.loadAllCategories();
     this.loadProducts();
     this.initProductForm();
   }
 
-  loadCategories(): void {
-    this.categoryService.getAllFirebase().subscribe(data => {
+  // loadCategories(): void {
+  //   this.categoryService.getAllFirebase().subscribe(data => {
+  //     this.adminCategories = data as ICategoryResponse[];
+  //   })
+  // }
+
+    loadAllCategories(): void {
+    this.categoryService.getAllFirebase().subscribe((data) => {
       this.adminCategories = data as ICategoryResponse[];
-    })
+      this.thaiMarketService.getAllFirebase().subscribe((data) => {
+        this.adminThaiCategories = data as ICategoryResponse[];
+        this.allCategories = [...this.adminCategories, ...this.adminThaiCategories];
+      });
+    });
   }
 
   loadProducts(): void {
@@ -66,13 +79,13 @@ export class AdminProductComponent implements OnInit {
   addProduct():void {
     if(this.editStatus){  
       this.productService.updateFirebase(this.productForm.value, this.currentProductId as string).then(()=>{
-        this.loadCategories();
+        this.loadAllCategories();
         this.loadProducts();
         this.toastr.success('Товар успішно оновлено!');
     })
     } else {
     this.productService.createFirebase(this.productForm.value).then(() => {
-      this.loadCategories();
+      this.loadAllCategories();
       this.loadProducts();
       this.toastr.success('Товар успішно додано!');
       })

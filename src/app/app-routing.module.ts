@@ -13,6 +13,11 @@ const routes: Routes = [
       import('./pages/product/product.module').then((m) => m.ProductModule),
   },
   {
+    path: 'thai-market/:category',
+    loadChildren: () =>
+      import('./pages/thai-market/thai-market.module').then((m) => m.ThaiMarketModule),
+  },
+  {
     path: 'admin',
     // canActivate: [AuthGuard],
     loadChildren: () =>
@@ -49,11 +54,6 @@ const routes: Routes = [
     path: 'favorites',
     loadChildren: () =>
       import('./pages/favorites/favorites.module').then((m) => m.FavoritesModule),
-  },
-  {
-    path: 'thai-market',
-    loadChildren: () =>
-      import('./pages/thai-market/thai-market.module').then((m) => m.ThaiMarketModule),
   },
   {
     path: 'vacancies',

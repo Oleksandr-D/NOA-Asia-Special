@@ -147,21 +147,19 @@ header {
 
     span {
       font-size: 13px;
-      font-weight: 500;
       color: $secondary-text;
       font-family: $main-font-bold;
       text-transform: uppercase;
     }
 
     .header-item-imgs {
-      // width: 110px;
-      // height: 110px;
+      width: 110px;
+      height: 110px;
       margin: 0 auto 10px auto;
 
-      // img {
-      //   width: 100%;
-      //   height: auto;
-      // }
+      img {
+        width: 100%;
+      }
     }
   }
 }
@@ -562,6 +560,6 @@ header {
   }
 }
 
-.admin{
+.admin {
   color: #fff;
 }

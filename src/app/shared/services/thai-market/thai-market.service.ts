@@ -27,15 +27,13 @@ export class ThaiMarketService {
   }
 
   updateFirebase(category: ICategoryRequest, id: string) {
-    const categoryDocumentReferense = doc(this.afs, `categories/${id}`);
+    const categoryDocumentReferense = doc(this.afs, `thai-market/${id}`);
     return updateDoc(categoryDocumentReferense, {...category});
   }
   
   deleteFirebase(id: string) {
-    const categoryDocumentReferense = doc(this.afs, `categories/${id}`);
+    const categoryDocumentReferense = doc(this.afs, `thai-market/${id}`);
     return deleteDoc(categoryDocumentReferense);
   }
-
-
 
 }

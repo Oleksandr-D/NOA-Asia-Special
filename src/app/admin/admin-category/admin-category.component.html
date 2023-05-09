@@ -2,12 +2,6 @@
    <div class="col-12 col-lg-8 col-xl-4">
        <form [formGroup]="categoryForm" class="was-validated" 
               (ngSubmit)="addCategory()">
-           <div class="mb-2">
-             <label for="thai" class="form-label">Категорія Thai-market
-             </label>
-             <input formControlName="thai" name="thai" type="checkbox" 
-                    id="thai">
-           </div>
            <div class="mb-3">
                <label for="name" class="form-label is-invalid">Назва</label>
                <input formControlName="name" name="name" type="text" 
@@ -58,7 +52,7 @@
                </tr>
            </thead>
            <tbody>
-               <tr *ngFor="let category of allCategories">
+               <tr *ngFor="let category of adminCategories">
                    <td>{{ category.id }}</td>
                    <td>{{ category.name }}</td>
                    <td>{{ category.path }}</td>
