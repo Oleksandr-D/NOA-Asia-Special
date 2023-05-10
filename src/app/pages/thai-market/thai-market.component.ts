@@ -1,9 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
-import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 import { ThaiMarketService } from 'src/app/shared/services/thai-market/thai-market.service';
 
@@ -12,39 +10,42 @@ import { ThaiMarketService } from 'src/app/shared/services/thai-market/thai-mark
   templateUrl: './thai-market.component.html',
   styleUrls: ['./thai-market.component.scss']
 })
-export class ThaiMarketComponent implements OnInit, OnDestroy {
-  public userProducts: Array<IProductResponse> = [];
+export class ThaiMarketComponent implements OnInit {
+  public thaiWokProducts: Array<IProductResponse> = [];
+  public thaiSatayProducts: Array<IProductResponse> = [];
+  public thaiLavaGrillProducts: Array<IProductResponse> = [];
   public categories: Array<ICategoryResponse> = [];
-  private eventSubscription!: Subscription;
-  
+
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private thaiService: ThaiMarketService
-  ){
-    this.eventSubscription = this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.loadProducts();
-      }
-    })
-  }
+  ){ }
 
   ngOnInit(): void {
     this.loadCategories();
+    this.loadProducts();
   }
 
-  ngOnDestroy(): void {
-    this.eventSubscription.unsubscribe();
-  }
+  loadProducts(): void {
+    Promise.all([
+      this.productService.getAllByCategoryFirebase("Thai lava grill"),
+      this.productService.getAllByCategoryFirebase('Thai wok'),
+      this.productService.getAllByCategoryFirebase('Thai satay'),
 
-  loadProducts():void {
-    const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    this.productService.getAllByCategoryFirebase(categoryName).then(data => {
-      this.userProducts = data as IProductResponse[];  
-      console.log('this.userProducts ==>', this.userProducts);
-      
-    })
+    ]).then(([ thaiLavaGrillProducts, thaiWokProducts, thaiSatayProducts, ]) => {
+      this.thaiWokProducts = thaiWokProducts as IProductResponse[];
+      this.thaiSatayProducts = thaiSatayProducts as IProductResponse[];
+      this.thaiLavaGrillProducts = thaiLavaGrillProducts as IProductResponse[];
+      this.productService.getAllByCategoryFirebase('Thai lava grill')
+        .then((data) => {
+          this.thaiLavaGrillProducts = data as IProductResponse[];
+        })
+        .catch((error) => {
+          console.log('Error fetching Thai lava grill products:', error);
+        });
+    });
   }
 
   loadCategories(): void {
@@ -52,10 +53,6 @@ export class ThaiMarketComponent implements OnInit, OnDestroy {
     this.categories = data as ICategoryResponse[];
     });
   }
-
-
-
-
 
   productCount(product: IProductResponse, value: boolean): void {
     if (value) {

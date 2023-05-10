@@ -28,10 +28,10 @@
             </ul>
           </li>
           <li class="show-submenu">
-            <a [routerLink]="['/thai-market/Thai wok']" class="dropdown-item">Thai Market</a>
+            <a [routerLink]="['thai-market']" class="dropdown-item">Thai Market</a>
             <ul class="header-submenu">
               <li class="header-item" *ngFor="let category of thaiMarketCategories">
-                <a [routerLink]="['/thai-market/' + category.path]">
+                <a [routerLink]="['/thai-product/' + category.path]">
                   <div class="header-item-imgs">
                     <img [src]="category.imagePath" alt="" class="category-image">
                   </div>

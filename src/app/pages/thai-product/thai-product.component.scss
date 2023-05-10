@@ -1,0 +1,132 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/base';
+@import '../../shared/styles/mixins';
+
+.spacer-60 {
+  height: 60px;
+}
+
+.spacer-100 {
+  height: 100px;
+}
+
+h1 {
+  @include title;
+  margin-bottom: 40px;
+}
+
+.categories-menu {
+  font-family: $main-font-bold;
+  margin-bottom: 30px;
+  text-align: center;
+
+  .categories-list {
+    display: inline-flex;
+    flex-wrap: wrap;
+    background: #F5F5F5;
+    border-radius: 6px;
+    padding: 3px;
+
+    .categories-list-item a {
+      display: inline-block;
+      padding: 15px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: $secondary-text;
+      transition: 0.25s;
+      text-transform: uppercase;
+      margin-right: 5px;
+    }
+
+    .categories-list-item a:hover {
+      background-color: $button-secondary-text;
+      color: #fff;
+      border-radius: 6px;
+    }
+
+    .categories-list-item a.active {
+      background-color: $button-secondary-text;
+      color: #fff;
+      border-radius: 6px;
+    }
+  }
+}
+
+.product {
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  height: 100%;
+
+  @include product-title-wrap;
+  @include product-controls;
+
+  .product-image-wrapper {
+    position: relative;
+    @include product-image;
+  }
+
+  .image-top-right {
+    width: 100%;
+    top: 0;
+    right: 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .floating-buttons {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.25s;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, white 100%);
+
+    .btns {
+      color: $button-secondary-text;
+      font-family: $main-font-bold;
+      line-height: 16px;
+      padding: 15px 0;
+      flex: 0 0 49%;
+      letter-spacing: 0.1em;
+      font-size: 10px;
+      text-transform: uppercase;
+      transition: 0.3s;
+      text-align: center;
+      background: #F5F5F5;
+      border-radius: 6px;
+    }
+
+    .btns:hover {
+      background-color: $button-secondary-text;
+      color: #fff;
+    }
+  }
+
+  .product-desc {
+    line-height: 1.5em;
+    font-size: 15px;
+    height: 66px;
+  }
+}
+
+.product:hover .floating-buttons {
+  opacity: 1;
+  bottom: 10px;
+}
+
+.product:hover {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.fav-btn {
+  @include fav-btn;
+}

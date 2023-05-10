@@ -5,19 +5,20 @@
    <div class="categories-menu">
      <ul class="categories-list">
       <li class="categories-list-item" *ngFor="let category of categories">
-        <a [routerLink]="['/thai-market/' + category.path]" 
+        <a [routerLink]="['/thai-product/' + category.path]"
          routerLinkActive="active">{{ category.name }}</a>
        </li>
      </ul>
    </div>
+   <h1>Thai Wok</h1>
    <div class="row">
-     <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of userProducts">
+     <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of thaiWokProducts">
        <div class="product">
          <div class="product-image-wrapper">
            <a class="product-image">
              <picture>
-               <img [routerLink]="['/thai-market/' + product.category.path, product.id ]" [src]="product.imagePath"
-                 [alt]="product.name">
+               <img [routerLink]="['/thai-market/' + product.category.path, product.id ]"
+                 [src]="product.imagePath" [alt]="product.name">
              </picture>
              <ul class="product-labels">
                <li>CULINASIA MENU</li>
@@ -54,5 +55,101 @@
        </div>
      </div>
    </div>
+</section>
+<div class="spacer-100"></div>
+<section class="container">
+  <h1>Thai Satay</h1>
+  <div class="row">
+    <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of thaiSatayProducts">
+      <div class="product">
+        <div class="product-image-wrapper">
+          <a class="product-image">
+            <picture>
+              <img [routerLink]="['/thai-product/' + product.category.path, product.id ]"
+                   [src]="product.imagePath" [alt]="product.name">
+            </picture>
+            <ul class="product-labels">
+              <li>CULINASIA MENU</li>
+              <li>NO RICE</li>
+            </ul>
+          </a>
+          <div class="image-top-right">
+            <button class="fav-btn"></button>
+          </div>
+          <div class="floating-buttons">
+            <button class="btns">Додати складники
+            </button>
+            <button class="btns">Швидке замовлення
+            </button>
+          </div>
+        </div>
+        <div class="product-title-wrap">
+          <h6>
+            <a [routerLink]="['/thai-market/' + product.category.path, product.id ]">{{product.name}}</a>
+          </h6>
+          <div class="product-price-wrap">{{product.price*product.count}}</div>
+        </div>
+        <div class="product-desc">{{product.description | slice:0:100}}
+          <span *ngIf="product.description.length>100">...</span>
+        </div>
+        <div class="product-controls">
+          <div class="thumb-input-number">
+            <button type="button" (click)="productCount(product, false)">-</button>
+            <input [value]="product.count" readonly="" tabindex="-1" max="99">
+            <button type="button" (click)="productCount(product, true)">+</button>
+          </div>
+          <button class="btns" (click)="addToBasket(product)">Замовити</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="spacer-100"></div>
+<section class="container">
+  <h1>Thai LAVA GRILL</h1>
+  <div class="row">
+    <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of thaiLavaGrillProducts">
+      <div class="product">
+        <div class="product-image-wrapper">
+          <a class="product-image">
+            <picture>
+              <img [routerLink]="['/thai-product/' + product.category.path, product.id ]"
+                   [src]="product.imagePath" [alt]="product.name">
+            </picture>
+            <ul class="product-labels">
+              <li>CULINASIA MENU</li>
+              <li>NO RICE</li>
+            </ul>
+          </a>
+          <div class="image-top-right">
+            <button class="fav-btn"></button>
+          </div>
+          <div class="floating-buttons">
+            <button class="btns">Додати складники
+            </button>
+            <button class="btns">Швидке замовлення
+            </button>
+          </div>
+        </div>
+        <div class="product-title-wrap">
+          <h6>
+            <a [routerLink]="['/thai-market/' + product.category.path, product.id ]">{{product.name}}</a>
+          </h6>
+          <div class="product-price-wrap">{{product.price*product.count}}</div>
+        </div>
+        <div class="product-desc">{{product.description | slice:0:100}}
+          <span *ngIf="product.description.length>100">...</span>
+        </div>
+        <div class="product-controls">
+          <div class="thumb-input-number">
+            <button type="button" (click)="productCount(product, false)">-</button>
+            <input [value]="product.count" readonly="" tabindex="-1" max="99">
+            <button type="button" (click)="productCount(product, true)">+</button>
+          </div>
+          <button class="btns" (click)="addToBasket(product)">Замовити</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <div class="spacer-100"></div>

@@ -13,9 +13,14 @@ const routes: Routes = [
       import('./pages/product/product.module').then((m) => m.ProductModule),
   },
   {
-    path: 'thai-market/:category',
+    path: 'thai-market',
     loadChildren: () =>
       import('./pages/thai-market/thai-market.module').then((m) => m.ThaiMarketModule),
+  },
+  {
+  path: 'thai-product/:category',
+  loadChildren: () =>
+  import('./pages/thai-product/thai-product.module').then((m) => m.ThaiProductModule),
   },
   {
     path: 'admin',
@@ -65,8 +70,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/oferta/oferta.module').then((m) => m.OfertaModule),
   },
-
-
   {
     path: 'user-profile',
     // canActivate: [AuthGuard],
