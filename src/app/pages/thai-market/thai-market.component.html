@@ -1,12 +1,11 @@
 <div class="spacer-60"></div>
 <section class="container">
-   <h1>Thai <span>Market</span>
-   </h1>
+   <h1>Thai <span>Market</span></h1>
    <div class="categories-menu">
      <ul class="categories-list">
       <li class="categories-list-item" *ngFor="let category of categories">
         <a [routerLink]="['/thai-product/' + category.path]"
-         routerLinkActive="active">{{ category.name }}</a>
+           routerLinkActive="active">{{ category.name }}</a>
        </li>
      </ul>
    </div>
@@ -18,7 +17,7 @@
            <a class="product-image">
              <picture>
                <img [routerLink]="['/thai-market/' + product.category.path, product.id ]"
-                 [src]="product.imagePath" [alt]="product.name">
+                    [src]="product.imagePath" [alt]="product.name">
              </picture>
              <ul class="product-labels">
                <li>CULINASIA MENU</li>
@@ -133,7 +132,9 @@
         </div>
         <div class="product-title-wrap">
           <h6>
-            <a [routerLink]="['/thai-market/' + product.category.path, product.id ]">{{product.name}}</a>
+            <a [routerLink]="['/thai-market/' + product.category.path, product.id ]">
+              {{product.name}}
+            </a>
           </h6>
           <div class="product-price-wrap">{{product.price*product.count}}</div>
         </div>
@@ -153,3 +154,113 @@
   </div>
 </section>
 <div class="spacer-100"></div>
+<section class="seo">
+  <div class="container-fluid">
+    <img loading="lazy" src="../../../assets/images/home/seo_decor_one.svg" alt="" class="seo-decor-leaf">
+    <img loading="lazy" src="../../../assets/images/home/seo_decor_two.svg" alt="" class="seo-decor">
+    <div class="row justify-content-center">
+      <div class="col-xl-8 col-lg-7 col-md-6 ">
+        <h3 class="title"><span>Новий</span>  формат азійської кухні з Thai Market</h3>
+        <div class="text">
+          <p>Досі вважаєте, що швидка їжа не може бути смачною? А на замовлення в закладі
+             потрібно чекати мінімум 20 хвилин? Запрошуємо відвідати Thai Market NOA: ми
+             розвіємо цей міф! Швидкі та смачні страви приготують для вас найкращі знавці
+             тайської кухні. Смакуйте у закладі або замовляйте додому, у будь-який куточок
+             Львова!
+          </p>
+        </div>
+        <h2 class="">Досліджуйте нові тайські страви та насолоджуйтесь</h2>
+        <div class="text">
+          <p>Thai Market — це принципово новий формат тайської кухні у Львові. Нові рецепти,
+             швидке приготування улюблених страв, миттєва подача: як у закладах швидкої кухні,
+             тільки смачніше та корисніше.
+          </p>
+        </div>
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                      aria-expanded="true" aria-controls="collapseOne">
+                      ЧИТАТИ БІЛЬШЕ
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                 data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <h2>Досліджуйте нові тайські страви та насолоджуйтесь</h2>
+                <p>Наші шеф-кухарі подбали про те, щоб в меню Тайського Маркету були страви,
+                   які допоможуть не лише швидко втамувати голод, а й по-справжньому насолодитися.
+                   Добірні продукти (рис, креветки, овочі, курятина, яловичина), традиційні
+                   спеції та соуси, приготовані власноруч — встояти просто неможливо.
+                </p>
+                <ul>
+                  <li>THAI SATAY — тут зібрані найрізноманітніші варіації тайського шашлику сатай
+                     (сате). З курятини, креветок, тунця. Сатай обов'язково подається з рисом,
+                      овочами, зеленню, спеціями та соусами.
+                  </li>
+                  <li>THAI LAVA GRILL — страви тайської, японської та китайської кухні,
+                      приготовані на грилі. Тут на вас чекають тайські бургери — чудова
+                      альтернатива класичному американському фаст-фуду. Булочка бріош, курка,
+                      яловичина або креветки, смачний соус — встояти просто неможливо!
+                  </li>
+                  <li>THAI WOK — улюблені страви вок, які ми подаємо просто миттєво. Вок готуємо у
+                      спеціальному посуді, та подаємо одразу після приготування: гарячим. Адже саме
+                      так страва найкраще зберігає смак та аромат. Рис, локшина, яловичина, курячі
+                      крильця або морепродукти — обирайте те, що до душі саме вам.
+                  </li>
+                </ul>
+                <p>Меню Тайського Маркету постійно доповнюється новими, ще більш смачними
+                   стравами тайської та китайської кухні. Шеф-кухарі постійно шукають нові
+                   рецепти та вдосконалюють їх, застосовуючи для цього всю свою майстерність.
+                   Дбаємо про те, щоб ви могли куштувати найсмачніші новинки та ділитися ними
+                   з друзями. А наші страви — ніколи вам не набридали.
+                </p>
+                <p>Страви також відрізняються за рівнем гостроти. Тому знайти щось смачне для
+                   себе зможуть як фанати гострої, так і злегка пікантної їжі. Також ми можемо
+                   змінити гостроту страви за вашим бажанням.
+                </p>
+                <h2>Thai Market: доставка улюблених тайських страв</h2>
+                <p>Бажаєте спробувати смачні страви тайської кухні, не виходячи з дому?
+                   Немає нічого простішого! NOA вже поспішає доставити улюблену їжу з Thai
+                   Market прямісінько за вашою адресою. Пікантний WOK, тайські бургери, сатай,
+                   страви гриль — асортимент вразить навіть найбільш вимогливих гурманів.
+                </p>
+                <p>Наші шеф-кухарі — справжні майстри своєї страви. Готують для вас, як для себе.
+                   А кур'єри — дуже швидкі. Вони миттєво доставлять замовлення за потрібною
+                   адресою. Смакуйте улюблені страви та новинки азійської кухні вдома та в
+                   офісі!
+                </p>
+                <p>Наша доставка працює за такими правилами:</p>
+                <ul>
+                  <li>Страви готуємо щодня та не маємо вихідних. Приймаємо замовлення з
+                     10:00 до 21:00. Насолоджуйтесь улюбленими стравами, коли забажаєте!
+                  </li>
+                  <li>Привозимо їжу в Зеленій зоні за 45 хвилин, у Жовтій — за 55, у Червоній
+                      — за 65. Дбаємо про те,
+                      щоб ви могли отримати своє замовлення якомога швидше.
+                  </li>
+                  <li>Безкоштовна доставка замовлень на суму від 300 гривень.
+                  </li>
+                  <li>Можлива оплата замовлення можна зручними способами — на сайті через систему
+                      LiqPay, карткою або готівкою кур'єру. 
+                  </li>
+                </ul>
+                <p>Швидко, смачно, з любов'ю: ми готуємо азійські страви, в які ви закохаєтесь!
+                   Замовляйте доставку або завітайте до нас у гості, щоб насолодитися атмосферою
+                   справжнього тайського кафе у місті Львові!
+                </p>
+              </div>
+              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne" aria-expanded="true"
+                      aria-controls="collapseOne">
+                      згорнути
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="spacer-100"></div>
+

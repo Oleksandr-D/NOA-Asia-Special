@@ -29,6 +29,10 @@ footer {
     font-size: 16px;
     cursor: pointer;
   }
+
+  a:hover {
+    color: $button-secondary-text;
+  }
 }
 
 .right-items {

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { ProductService } from 'src/app/shared/services/product/product.service';
@@ -18,8 +17,6 @@ export class ThaiMarketComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
     private thaiService: ThaiMarketService
   ){ }
 

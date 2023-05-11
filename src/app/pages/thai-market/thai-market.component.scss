@@ -130,3 +130,72 @@ h1 {
 .fav-btn {
   @include fav-btn;
 }
+
+.seo {
+  font-family: $main-font;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+
+  .seo-decor {
+    position: absolute;
+    right: 0px;
+    top: 134px;
+    z-index: -1;
+  }
+
+  .seo-decor-leaf {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 30px;
+  }
+
+  .title {
+    @include title;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 34px;
+    line-height: 1.2em;
+    text-align: center;
+  }
+
+  .text {
+    @include simple-page-text;
+    font-size: 16px;
+  }
+
+  li {
+    position: relative;
+  }
+
+  li:before {
+    content: "";
+    position: absolute;
+    left: -30px;
+    top: 9px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #599921;
+  }
+
+  .accordion-body {
+    height: 100%;
+  }
+
+  .accordion-button {
+    font-family: $main-font-bold;
+    width: fit-content;
+    color: $button-secondary-text;
+    text-transform: uppercase;
+  }
+
+  .accordion-button::after {
+    margin-left: 20px;
+  }
+}

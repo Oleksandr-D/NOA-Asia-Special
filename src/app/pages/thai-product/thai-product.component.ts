@@ -12,10 +12,10 @@ import {ThaiMarketService} from '../../shared/services/thai-market/thai-market.s
   styleUrls: ['./thai-product.component.scss']
 })
 export class ThaiProductComponent implements OnInit, OnDestroy {
-
   public userProducts: Array<IProductResponse> = [];
   public categories: Array<ICategoryResponse> = [];
   private eventSubscription!: Subscription;
+  public currentUrl: string = '';
 
   constructor(
     private productService: ProductService,
@@ -26,6 +26,7 @@ export class ThaiProductComponent implements OnInit, OnDestroy {
     this.eventSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.loadProducts();
+        this.currentUrl = this.router.url;
       }
     })
   }
