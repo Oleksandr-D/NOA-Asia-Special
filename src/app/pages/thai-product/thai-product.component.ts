@@ -1,10 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {IProductResponse} from '../../shared/interfaces/product/product.interface';
-import {ICategoryResponse} from '../../shared/interfaces/category/category.interface';
-import {Subscription} from 'rxjs';
-import {ProductService} from '../../shared/services/product/product.service';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {ThaiMarketService} from '../../shared/services/thai-market/thai-market.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { IProductResponse } from '../../shared/interfaces/product/product.interface';
+import { ICategoryResponse } from '../../shared/interfaces/category/category.interface';
+import { Subscription } from 'rxjs';
+import { ProductService } from '../../shared/services/product/product.service';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ThaiMarketService } from '../../shared/services/thai-market/thai-market.service';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
   selector: 'app-thai-product',
@@ -21,7 +22,8 @@ export class ThaiProductComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private thaiService: ThaiMarketService
+    private thaiService: ThaiMarketService,
+    private orderService: OrderService,
   ){
     this.eventSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -75,7 +77,6 @@ export class ThaiProductComponent implements OnInit, OnDestroy {
     }
     localStorage.setItem('basket', JSON.stringify(basket));
     product.count = 1;
-    //this.orderService.changeBasket.next(true);
+    this.orderService.changeBasket.next(true);
   }
-
 }

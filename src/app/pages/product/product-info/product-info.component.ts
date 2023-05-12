@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class ProductInfoComponent implements OnInit, OnDestroy {
   private eventSubscription!: Subscription;
 
   constructor(
-    //private orderService:OrderService,
+    private orderService:OrderService,
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -72,7 +73,14 @@ export class ProductInfoComponent implements OnInit, OnDestroy {
     }
     localStorage.setItem('basket', JSON.stringify(basket));
     product.count = 1;
-    //this.orderService.changeBasket.next(true);
+    this.orderService.changeBasket.next(true);
+  }
+
+  toTop():void{
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
   }
 
 }

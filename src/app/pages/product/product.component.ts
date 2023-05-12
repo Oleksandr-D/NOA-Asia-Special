@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class ProductComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private orderService: OrderService,
   ){
     this.eventSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -73,15 +75,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     }
     localStorage.setItem('basket', JSON.stringify(basket));
     product.count = 1;
-    //this.orderService.changeBasket.next(true);
+    this.orderService.changeBasket.next(true);
   }
-
-
-  
-
-
-
-
-
 
 }
