@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
    public basket: Array<IProductResponse> = [];
    public total = 0;
    public count = 0;
+   public isOpen = false;
 
    constructor(
     private categoryService: CategoryService,
@@ -65,5 +66,46 @@ export class HeaderComponent implements OnInit {
       this.loadBasket();
     });
   } 
+
+  openModal(): void {
+    this.isOpen = !this.isOpen;
+    this.orderService.changeBasket.next(true);
+  }
+
+  productCount(product: IProductResponse, value: boolean): void {
+    let basket: Array<IProductResponse> = [];
+    basket = JSON.parse(localStorage.getItem('basket') as string);
+    if (basket.some((prod) => prod.id === product.id)) {
+      const index = basket.findIndex((prod) => prod.id === product.id);
+      if (value) {
+        ++product.count;
+        basket[index].count += 1;
+      } else if (!value && product.count > 1) {
+        --product.count;
+        basket[index].count -= 1;
+      }
+    }
+    localStorage.setItem('basket', JSON.stringify(basket));
+    this.getTotalPrice();
+    this.orderService.changeBasket.next(true);
+  }
+
+  deleteFromBasket(product: IProductResponse): void {
+    let basket: Array<IProductResponse> = [];
+    basket = JSON.parse(localStorage.getItem('basket') as string);
+    const index = basket.findIndex((prod) => prod.id === product.id);
+    this.basket.splice(index, 1);
+    basket.splice(index, 1);
+    localStorage.setItem('basket', JSON.stringify(basket));
+    this.orderService.changeBasket.next(true);
+  }
+
+  orderScroll() {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+}
+
 
 }
