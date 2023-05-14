@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
@@ -58,9 +60,7 @@ export class HomeComponent implements OnInit {
     }
     localStorage.setItem('basket', JSON.stringify(basket));
     product.count = 1;
-    //this.orderService.changeBasket.next(true);
+    this.orderService.changeBasket.next(true);
   }
-
-
 
 }

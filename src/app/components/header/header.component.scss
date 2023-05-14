@@ -472,7 +472,8 @@ header {
   color: $button-secondary-text;
 }
 
-.my-menu-overlay {
+.my-menu-overlay,
+.basket-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -481,14 +482,16 @@ header {
   opacity: 0;
   display: none;
   transition: opacity 0.3s ease-in-out;
-  z-index: 998;
+  z-index: 5;
   backdrop-filter: blur(2px);
   background: rgba(0, 0, 0, .41);
 }
 
-.menu-overlay-active {
+.menu-overlay-active,
+.basket-overlay-active {
   opacity: 1;
   display: block;
+
 }
 
 .basket {
@@ -503,7 +506,7 @@ header {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: 8;
+  z-index: 5;
   cursor: pointer;
   opacity: 1;
   transition: all 0.5s;
@@ -563,14 +566,13 @@ header {
 .basket-modal-wraper {
   position: fixed;
   right: 0;
-  width: 664px;
-  max-height: calc(100vh - 95px);
-  top: 95px;
+  top: 0;
+  width: 680px;
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  border-radius: 0 0 10px 10px;
-  z-index: 2;
+  border-radius: 0 0 0 8px;
+  z-index: 6;
   font-family: $main_font;
 
   .cart-popup-out {
@@ -579,7 +581,7 @@ header {
   }
 
   .cart-items {
-    max-height: calc(100vh - 200px);
+    max-height: calc(100vh - 110px);
     padding: 0;
     overflow: auto;
   }
@@ -602,10 +604,9 @@ header {
   .title-basket {
     color: $text_main;
     font-weight: bold;
-    font-size: 20px;
-    line-height: 1.75em;
     overflow: hidden;
-    margin-bottom: 15px;
+    margin:0 5px 5px 0;
+    font-size: 16px;
     transition: 0.35s;
     cursor: pointer;
   }
@@ -615,19 +616,15 @@ header {
   }
 
   .btn-basket {
-    border-radius: 10px;
-    border: 2px solid #b5d8f7;
-    background-color: rgb(255, 255, 255);
-    transition: 0.35s;
-    padding: 16px 22px;
-    font-size: 16px;
-    line-height: 20px;
-    font-family: $main_font_bold;
+    @include btns;
+    background-color: $button-secondary-text;
+    border: 2px solid $button-secondary-text;
   }
 
   .btn-basket:hover {
     background-color: initial;
-    border: 2px solid rgb(255, 255, 255);
+    color: $text-main;
+    border: 2px solid $button-secondary-text;
   }
 
   .btn-basket:disabled {
@@ -638,7 +635,7 @@ header {
 
   .basket-products {
     min-height: 100px;
-    padding: 9px 20px 9px 20px;
+    padding: 10px 30px;
     display: flex;
     align-items: center;
   }
@@ -662,10 +659,6 @@ header {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-  }
-
-  .basket-products-desc .title-basket {
-    font-size: 16px;
   }
 
   .basket-products-controls {
@@ -785,12 +778,20 @@ header {
     background: #5a5a5a;
     transition: 0.35s;
   }
+
+  .cart-bottom {
+    padding: 20px 20px 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid $button-secondary-text;
+  }
+
+  .card-total-price {
+    font-size: 22px;
+  }
+
 }
-
-
-
-
-
 
 .admin {
   color: #fff;

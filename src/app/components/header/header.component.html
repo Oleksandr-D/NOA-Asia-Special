@@ -120,7 +120,8 @@
           <span></span>
         </div>
       </div>
-      <div (click)="toggleMenu()" class="my-menu-overlay" [ngClass]="{'menu-overlay-active': isMenuOpen}">
+      <div (click)="toggleMenu()" class="my-menu-overlay" 
+           [ngClass]="{'menu-overlay-active': isMenuOpen }">
       </div>
       <div class="menu" [ngClass]="{'menu-open': isMenuOpen}">
         <button class="menu-close-btn" (click)="toggleMenu()"></button>
@@ -142,7 +143,8 @@
         </nav>
       </div>
     </div>
-    <div class="basket" (click)="openModal()" [ngClass]="{'menu-overlay-active': isOpen}">
+    <div class="basket" (click)="openModal()">
+      <div class="basket-overlay" [ngClass]="{'basket-overlay-active': isOpen}"></div>
       <img class="basket-circle" loading="lazy" src="../../../assets/images/basket/basket_blue.svg" alt="">
       <div class="basket-imgs">
         <img loading="lazy" src="../../../assets/images/basket/basket.svg" alt="">
@@ -197,7 +199,7 @@
             </ng-container>
           </div>
           <div class="cart-bottom">
-            <div class="cart-price-wrap">
+            <div>
               Сума: <b class="card-total-price">{{total}}</b> грн</div>
             <button class="btn-basket" type="button" (click)="openModal(); orderScroll()"
               [routerLink]="[ '/checkout' ]">
