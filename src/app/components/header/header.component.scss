@@ -568,6 +568,7 @@ header {
   right: 0;
   top: 0;
   width: 680px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -578,12 +579,57 @@ header {
   .cart-popup-out {
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   .cart-items {
-    max-height: calc(100vh - 110px);
+    max-height: calc(100vh - 205.8px);
     padding: 0;
     overflow: auto;
+  }
+
+  .basket-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 60px 20px 30px;
+    font-family: $main-font-bold;
+
+    h4 {
+      font-size: 26px;
+    }
+
+    .clear-basket {
+      width: 62%;
+      font-size: 12px;
+      vertical-align: middle;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .btn-close {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      line-height: 40px;
+      transition: 0.3s;
+      color: $text-main;
+      vertical-align: middle;
+      position: relative;
+    }
+
+    .btn-close::before {
+      content: "\02715";
+      position: absolute;
+      top: -5px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .clear-basket:hover,
+    .btn-close:hover::before {
+      color: $button-secondary-text;
+    }
+
   }
 
   .cart-empty-message {
@@ -605,7 +651,7 @@ header {
     color: $text_main;
     font-weight: bold;
     overflow: hidden;
-    margin:0 5px 5px 0;
+    margin: 0 5px 5px 0;
     font-size: 16px;
     transition: 0.35s;
     cursor: pointer;
@@ -780,6 +826,10 @@ header {
   }
 
   .cart-bottom {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    width: 680px;
     padding: 20px 20px 20px 25px;
     display: flex;
     justify-content: space-between;

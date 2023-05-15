@@ -98,14 +98,26 @@ export class HeaderComponent implements OnInit {
     basket.splice(index, 1);
     localStorage.setItem('basket', JSON.stringify(basket));
     this.orderService.changeBasket.next(true);
+    if(basket.length === 0 ){
+      this.openModal();
+    }
   }
 
-  orderScroll() {
+  orderScroll():void {
     window.scroll({
       top: 0,
       behavior: 'smooth',
     });
-}
+  }
 
+  clearBasket():void{
+    localStorage.removeItem('basket');
+    let basket: Array<IProductResponse> = [];
+    this.basket = basket;
+    this.orderService.changeBasket.next(true);
+    this.isOpen = false;
+  }
+ 
+  
 
 }

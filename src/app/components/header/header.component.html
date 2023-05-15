@@ -120,8 +120,7 @@
           <span></span>
         </div>
       </div>
-      <div (click)="toggleMenu()" class="my-menu-overlay" 
-           [ngClass]="{'menu-overlay-active': isMenuOpen }">
+      <div (click)="toggleMenu()" class="my-menu-overlay" [ngClass]="{'menu-overlay-active': isMenuOpen }">
       </div>
       <div class="menu" [ngClass]="{'menu-open': isMenuOpen}">
         <button class="menu-close-btn" (click)="toggleMenu()"></button>
@@ -143,7 +142,7 @@
         </nav>
       </div>
     </div>
-    <div class="basket" (click)="openModal()">
+    <div class="basket" (click)="openModal()" *ngIf="basket.length > 0">
       <div class="basket-overlay" [ngClass]="{'basket-overlay-active': isOpen}"></div>
       <img class="basket-circle" loading="lazy" src="../../../assets/images/basket/basket_blue.svg" alt="">
       <div class="basket-imgs">
@@ -158,49 +157,40 @@
     <ng-container *ngIf="isOpen">
       <div class="basket-modal-wraper">
         <div class="cart-popup-out">
+          <div class="basket-header">
+            <h4>Кошик</h4>
+            <button class="clear-basket" (click)="clearBasket()">Очистити кошик</button>
+            <button class="btn-close" (click)="openModal()"></button>
+          </div>
           <div class="cart-items">
-            <ng-container *ngIf="basket.length === 0">
-              <div class="cart-empty-message">
-                <div class="cart-empty-img">
-                  <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/icons/cart-empty-img.svg" alt="">
-                </div>
-                <div class="title-basket">Кошик порожній</div>
-                <button class="btns" [routerLink]="[ '/' ]" (click)="openModal()">
-                  Перейти до каталогу
-                </button>
-              </div>
-            </ng-container>
-            <ng-container *ngIf="basket.length > 0">
-              <div class="basket-products" *ngFor="let products of basket ">
-                <span class="basket-products-img">
-                  <img class="img" [src]="products.imagePath" (click)="openModal()"
-                    [routerLink]="['/product/' + products.category.path, products.id ]">
+            <div class="basket-products" *ngFor="let products of basket ">
+              <span class="basket-products-img">
+                <img class="img" [src]="products.imagePath" (click)="openModal()"
+                  [routerLink]="['/product/' + products.category.path, products.id ]">
+              </span>
+              <div class="basket-products-desc">
+                <span class="title-basket" (click)="openModal()"
+                  [routerLink]="['/product/' + products.category.path, products.id ]">
+                  {{products.name}}
                 </span>
-                <div class="basket-products-desc">
-                  <span class="title-basket" (click)="openModal()"
-                    [routerLink]="['/product/' + products.category.path, products.id ]">
-                    {{products.name}}
-                  </span>
-                  <div class="basket-products-controls">
-                    <div class="thumb-input-number">
-                      <button (click)="productCount(products, false)" type="button">-</button>
-                      <input class="product-qty" [value]="products.count" readonly="" max="999">
-                      <button (click)="productCount(products, true)" type="button">+</button>
-                    </div>
-                    <div class="basket-products-price">
-                      <b>{{products.price*products.count}}</b> грн
-                    </div>
-                    <button (click)="deleteFromBasket(products)" type="button" class="remove-product">
-                      <div class="trash"></div>
-                    </button>
+                <div class="basket-products-controls">
+                  <div class="thumb-input-number">
+                    <button (click)="productCount(products, false)" type="button">-</button>
+                    <input class="product-qty" [value]="products.count" readonly="" max="999">
+                    <button (click)="productCount(products, true)" type="button">+</button>
                   </div>
+                  <div class="basket-products-price">
+                    <b>{{products.price*products.count}}</b> грн
+                  </div>
+                  <button (click)="deleteFromBasket(products)" type="button" class="remove-product">
+                    <div class="trash"></div>
+                  </button>
                 </div>
               </div>
-            </ng-container>
+            </div>
           </div>
           <div class="cart-bottom">
-            <div>
-              Сума: <b class="card-total-price">{{total}}</b> грн</div>
+            <div>Сума: <b class="card-total-price">{{total}}</b> грн</div>
             <button class="btn-basket" type="button" (click)="openModal(); orderScroll()"
               [routerLink]="[ '/checkout' ]">
               ОФОРМИТИ ЗАМОВЛЕННЯ
