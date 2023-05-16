@@ -1,1 +1,205 @@
-<p>checkout works!</p>
+<section class="container">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="spacer-60"></div>
+      <div>
+        <h2 class="title-center">Оформлення замовлення</h2>
+      </div>
+      <form class="mt-4" [formGroup]="orderForm" (ngSubmit)="toOrder()">
+        <div class="row justify-content-center">
+          <div class="col-xl-6 col-lg-10 col-12 p-4">
+            <div class="basket-products" *ngFor="let products of basket ">
+              <span class="basket-products-img">
+                <img class="img" [src]="products.imagePath"
+                  [routerLink]="['/product/' + products.category.path, products.id ]">
+              </span>
+              <div class="basket-products-desc">
+                <span class="title-basket" [routerLink]="['/product/' + products.category.path, products.id ]">
+                  {{products.name}}
+                </span>
+                <div class="basket-products-controls">
+                  <div class="thumb-input-number">
+                    <button (click)="productCount(products, false)" type="button">-</button>
+                    <input class="product-qty" [value]="products.count" readonly="" max="999">
+                    <button (click)="productCount(products, true)" type="button">+</button>
+                  </div>
+                  <div class="basket-products-price">
+                    <b>{{products.price*products.count}}</b> грн
+                  </div>
+                  <button (click)="deleteFromOrder(products)" type="button" class="remove-product">
+                    <div class="trash"></div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xl-6 col-lg-10 col-12 p-4">
+            <div class="form-group">
+              <div class="form-title title">
+                <i class="number-title"><b>1</b></i>
+                <h5>
+                  Контактні дані
+                </h5>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Ім`я</mat-label>
+                    <input matInput type="text" formControlName="name" required>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Прізвище</mat-label>
+                    <input matInput type="text" formControlName="surname" required>
+                  </mat-form-field>
+                </div>
+                <mat-form-field>
+                  <mat-label>Телефон</mat-label>
+                  <span matPrefix>+380 &nbsp;</span>
+                  <input matInput type="tel" formControlName="tel" placeholder="хх-xxx-xx-xx" required>
+                  <mat-error
+                    *ngIf="orderForm.controls['tel'].hasError('pattern') && !orderForm.controls['tel'].hasError('required')">
+                    Будь ласка, введіть дійсний номер телефону
+                  </mat-error>
+                  <mat-error *ngIf="orderForm.controls['tel'].hasError('required')">
+                    Необхідно вказати <strong>номер телефону</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Email</mat-label>
+                  <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+                  <mat-error
+                    *ngIf="orderForm.controls['email'].hasError('email') && !orderForm.controls['email'].hasError('required')">
+                    Будь ласка, введіть дійсну адресу електронної пошти
+                  </mat-error>
+                  <mat-error *ngIf="orderForm.controls['email'].hasError('required')">
+                    Необхідно вказати <strong>адресу електронної пошти</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-title">
+                <i class="number-title">
+                  <b>2</b>
+                </i>
+                <h5>
+                  Інформація про доставку
+                </h5>
+              </div>
+              <mat-radio-group formControlName="delivery" aria-label="Select an option">
+                <mat-radio-button value="pickup" [checked]="true">Самовивіз</mat-radio-button>
+                <mat-radio-button value="shipping">Доставка</mat-radio-button>
+              </mat-radio-group>
+              <mat-form-field appearance="fill">
+                <mat-label>Ресторан за адресою</mat-label>
+                <mat-select formControlName="restaurantAddress">
+                  <mat-option value="ТРЦ Victoria Gardens, Кульпарківська 226А">ТРЦ Victoria Gardens, Кульпарківська
+                    226А</mat-option>
+                  <mat-option value="Староєврейська 4">Староєврейська 4</mat-option>
+                  <mat-option value="Крива Липа 8">Крива Липа 8</mat-option>
+                  <mat-option value="ТРЦ Spartak, Мазепи 1Б">ТРЦ Spartak, Мазепи 1Б</mat-option>
+                  <mat-option value="ТРЦ King Cross, Стрийська, 30">ТРЦ King Cross, Стрийська, 30</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <mat-form-field>
+                    <input matInput [matDatepicker]="picker" formControlName="dataPicker" placeholder="Оберіть дату*">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Виберіть часовий інтервал</mat-label>
+                    <mat-select formControlName="timeInterval">
+                      <mat-option value="13:23 - 13:33">13:23 - 13:33</mat-option>
+                      <mat-option value="13:33 - 13:43">13:33 - 13:43</mat-option>
+                      <mat-option value="13:43 - 13:53">13:43 - 13:53</mat-option>
+                      <mat-option value="13:53 - 14:03">13:53 - 14:03</mat-option>
+                      <mat-option value="14:03 - 14:13">14:03 - 14:13</mat-option>
+                      <mat-option value="14:13 - 14:23">14:13 - 14:23</mat-option>
+                      <mat-option value="14:23 - 14:33">14:23 - 14:33</mat-option>
+                      <mat-option value="14:33 - 14:43">14:33 - 14:43</mat-option>
+                      <mat-option value="14:43 - 14:53">14:43 - 14:53</mat-option>
+                      <mat-option value="14:53 - 15:03">14:53 - 15:03</mat-option>
+                      <mat-option value="15:03 - 15:13">15:03 - 15:13</mat-option>
+                      <mat-option value="15:13 - 15:23">15:13 - 15:23</mat-option>
+                      <mat-option value="15:23 - 15:33">15:23 - 15:33</mat-option>
+                      <mat-option value="15:33 - 15:43">15:33 - 15:43</mat-option>
+                      <mat-option value="15:43 - 15:53">15:43 - 15:53</mat-option>
+                      <mat-option value="15:53 - 16:03">15:53 - 16:03</mat-option>
+                      <mat-option value="16:03 - 16:13">16:03 - 16:13</mat-option>
+                      <mat-option value="16:13 - 16:23">16:13 - 16:23</mat-option>
+                      <mat-option value="16:23 - 16:33">16:23 - 16:33</mat-option>
+                      <mat-option value="16:33 - 16:43">16:33 - 16:43</mat-option>
+                      <mat-option value="16:43 - 16:53">16:43 - 16:53</mat-option>
+                      <mat-option value="16:53 - 17:03">16:53 - 17:03</mat-option>
+                      <mat-option value="17:03 - 17:13">17:03 - 17:13</mat-option>
+                      <mat-option value="17:13 - 17:23">17:13 - 17:23</mat-option>
+                      <mat-option value="17:23 - 17:33">17:23 - 17:33</mat-option>
+                      <mat-option value="17:33 - 17:43">17:43 - 17:53</mat-option>
+                      <mat-option value="17:53 - 18:03">17:53 - 18:03</mat-option>
+                      <mat-option value="18:03 - 18:13">18:03 - 18:13</mat-option>
+                      <mat-option value="18:13 - 18:23">18:13 - 18:23</mat-option>
+                      <mat-option value="18:23 - 18:33">18:23 - 18:33</mat-option>
+                      <mat-option value="18:33 - 18:43">18:33 - 18:43</mat-option>
+                      <mat-option value="18:43 - 18:53">18:43 - 18:53</mat-option>
+                      <mat-option value="18:53 - 19:03">18:53 - 19:03</mat-option>
+                      <mat-option value="19:03 - 19:13">19:03 - 19:13</mat-option>
+                      <mat-option value="19:13 - 19:23">19:13 - 19:23</mat-option>
+                      <mat-option value="19:23 - 19:33">19:23 - 19:33</mat-option>
+                      <mat-option value="19:33 - 19:43">19:33 - 19:43</mat-option>
+                      <mat-option value="19:43 - 19:53">19:43 - 19:53</mat-option>
+                      <mat-option value="19:53 - 20:03">19:53 - 20:03</mat-option>
+                      <mat-option value="20:03 - 20:13">20:03 - 20:13</mat-option>
+                      <mat-option value="20:13 - 20:23">20:13 - 20:23</mat-option>
+                      <mat-option value="20:23 - 20:33">20:23 - 20:33</mat-option>
+                      <mat-option value="20:33 - 20:43">20:33 - 20:43</mat-option>
+                      <mat-option value="20:43 - 20:53">20:43 - 20:53</mat-option>
+                      <mat-option value="20:53 - 21:03">20:53 - 21:03</mat-option>
+                      <mat-option value="21:03 - 21:13">21:03 - 21:13</mat-option>
+                      <mat-option value="21:13 - 21:23">21:13 - 21:23</mat-option>
+                      <mat-option value="21:23 - 21:33">21:23 - 21:33</mat-option>
+                      <mat-option value="21:33 - 21:43">21:33 - 21:43</mat-option>
+                      <mat-option value="21:43 - 21:53">21:43 - 21:53</mat-option>
+                      <mat-option value="21:53 - 22:03">21:53 - 22:03</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-title">
+                <i class="number-title">
+                  <b>3</b>
+                </i>
+                <h5>
+                  Інформація про оплату
+                </h5>
+              </div>
+              <mat-checkbox formControlName="delivery">Оплата готівкою</mat-checkbox>
+
+
+
+
+              <hr>
+              <div class="total-price">
+                Сума:
+                <b>{{total}}</b> грн
+              </div>
+              <button type="submit" class="btns w-100 mt-3">
+                ОФОРМИТИ ЗАМОВЛЕННЯ
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="spacer-120"></div>
+    </div>
+  </div>
+</section>

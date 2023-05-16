@@ -16,10 +16,10 @@ export class ContactComponent {
   ) {}
 
   ngOnInit(): void {
-    this.initAuthForm();
+    this.initContactForm();
   }
 
-  initAuthForm(): void {
+  initContactForm(): void {
     this.questionForm = this.fb.group({
       name: [null, [Validators.required, ]],
       surname: [null, [Validators.required]],
