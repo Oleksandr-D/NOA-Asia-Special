@@ -32,7 +32,16 @@
                 </div>
               </div>
             </div>
-
+            <div class="basket-products add-cutrely">
+              <h5><strong>Прибори</strong></h5>
+              <p>Вкажіть кількість осіб, на яке робите замовлення</p>
+              <div class="thumb-input-number m-0">
+                <button (click)="cutrelyCount(false)" type="button">-</button>
+                <input class="product-qty" [value]="cutrely" readonly="" max="999">
+                <button (click)="cutrelyCount(true)" type="button">+</button>
+              </div>
+              <p><b>Безкоштовно</b></p>
+            </div>
           </div>
           <div class="col-xl-6 col-lg-10 col-12 p-4">
             <div class="form-group">
@@ -96,8 +105,9 @@
               <mat-form-field appearance="fill">
                 <mat-label>Ресторан за адресою</mat-label>
                 <mat-select formControlName="restaurantAddress">
-                  <mat-option value="ТРЦ Victoria Gardens, Кульпарківська 226А">ТРЦ Victoria Gardens, Кульпарківська
-                    226А</mat-option>
+                  <mat-option value="ТРЦ Victoria Gardens, Кульпарківська 226А">ТРЦ Victoria Gardens,
+                    Кульпарківська 226А
+                  </mat-option>
                   <mat-option value="Староєврейська 4">Староєврейська 4</mat-option>
                   <mat-option value="Крива Липа 8">Крива Липа 8</mat-option>
                   <mat-option value="ТРЦ Spartak, Мазепи 1Б">ТРЦ Spartak, Мазепи 1Б</mat-option>
@@ -169,7 +179,6 @@
                       <mat-option value="21:53 - 22:03">21:53 - 22:03</mat-option>
                     </mat-select>
                   </mat-form-field>
-
                 </div>
               </div>
             </div>
@@ -182,12 +191,31 @@
                   Інформація про оплату
                 </h5>
               </div>
-              <mat-checkbox formControlName="delivery">Оплата готівкою</mat-checkbox>
-
-
-
-
+              <mat-radio-group formControlName="payment" aria-label="Select an option">
+                <mat-radio-button value="cashPayment">Оплата готівкою</mat-radio-button>
+                <mat-radio-button value="liqPay">Онлайн оплата LiqPay</mat-radio-button>
+              </mat-radio-group>
+              <ng-container *ngIf="orderForm.get('payment')?.value === 'cashPayment'">
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Решта з</mat-label>
+                      <input matInput type="number" formControlName="change">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-checkbox formControlName="exactPayment">Без решти</mat-checkbox>
+                  </div>
+                </div>
+              </ng-container>
               <hr>
+              <mat-checkbox formControlName="comment">Коментар / промокод / інше</mat-checkbox>
+              <ng-container *ngIf="orderForm.get('comment')?.value">
+                <mat-form-field class="message" appearance="fill">
+                  <mat-label>Повідомлення</mat-label>
+                  <textarea matInput formControlName="message"></textarea>
+                </mat-form-field>
+              </ng-container>
               <div class="total-price">
                 Сума:
                 <b>{{total}}</b> грн

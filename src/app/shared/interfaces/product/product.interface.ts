@@ -9,6 +9,8 @@ export interface IProductRequest {
    imagePath:string;
    category:ICategoryResponse;
    count:number;
+   cutrely?:number;
+   
 }
 export interface IProductResponse extends IProductRequest {
    id:number | string;

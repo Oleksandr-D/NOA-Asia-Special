@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ICheckoutOrder } from 'src/app/shared/interfaces/checkout-order/order.interface.';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-checkout',
@@ -13,10 +16,12 @@ export class CheckoutComponent implements OnInit {
   public total = 0;
   public count = 0;
   public orderForm!:FormGroup;
+  public cutrely = 0;
 
   constructor(
     private orderService: OrderService,
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +40,11 @@ export class CheckoutComponent implements OnInit {
       restaurantAddress:[null, [Validators.required]],
       dataPicker:[null, [Validators.required]],
       timeInterval:[null, [Validators.required]],
+      payment:['cashPayment', [Validators.required]],
+      change:[null],
+      exactPayment:[null],
+      comment:[null],
+      message:[null]
     });
   }
 
@@ -76,6 +86,14 @@ export class CheckoutComponent implements OnInit {
     this.orderService.changeBasket.next(true);
   }
 
+  cutrelyCount(value: boolean): void {
+      if (value) {
+        ++this.cutrely;
+      } else if (!value && this.cutrely > 1) {
+        --this.cutrely;
+      }
+  }
+
   deleteFromOrder(product: IProductResponse): void {
     let basket: Array<IProductResponse> = [];
     basket = JSON.parse(localStorage.getItem('basket') as string);
@@ -89,6 +107,18 @@ export class CheckoutComponent implements OnInit {
   toOrder(){
     let basket: Array<IProductResponse> = [];
     basket = JSON.parse(localStorage.getItem('basket') as string);
+    const checkoutOrder: ICheckoutOrder = {
+      cutrely: this.cutrely,
+      ...this.orderForm.value
+    };
+    basket.push(checkoutOrder as IProductResponse);
+    localStorage.setItem('basket', JSON.stringify(basket));
+    console.log('You ordered ==>', basket);
+    alert('Замовлення прийнято!');
+    this.orderForm.reset();
+    localStorage.removeItem('basket');
+    this.orderService.changeBasket.next(true);
+    this.router.navigateByUrl('/');
   }
 
 }

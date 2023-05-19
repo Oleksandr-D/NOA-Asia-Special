@@ -28,6 +28,17 @@ section {
   border-bottom: 1px solid #dcdcdc;
 }
 
+.add-cutrely {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: right;
+
+  p {
+    margin: 10px 0;
+  }
+}
+
 .basket-products-img {
   width: 122px;
   height: 92px;
@@ -258,6 +269,10 @@ section {
 mat-form-field {
   width: 100%;
   margin: 2%;
+}
+
+mat-radio-button {
+  margin-left: 20px;
 }
 
 hr {

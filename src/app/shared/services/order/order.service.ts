@@ -7,5 +7,5 @@ import { Subject } from 'rxjs';
 export class OrderService {
   public changeBasket = new Subject<boolean>();
   
-  constructor() { }
+  constructor() {}
 }

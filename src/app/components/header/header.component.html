@@ -142,7 +142,7 @@
         </nav>
       </div>
     </div>
-    <div class="basket" (click)="openModal()" *ngIf="basket.length > 0">
+    <div class="basket" (click)="openModal()" *ngIf="basket.length > 0 && router.url !== '/checkout'">
       <div class="basket-overlay" [ngClass]="{'basket-overlay-active': isOpen}"></div>
       <img class="basket-circle" loading="lazy" src="../../../assets/images/basket/basket_blue.svg" alt="">
       <div class="basket-imgs">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit {
     private categoryService: CategoryService,
     private thaiService: ThaiMarketService,
     private orderService: OrderService,
+    public router: Router
   ) {}
 
    ngOnInit(): void {
@@ -47,6 +49,8 @@ export class HeaderComponent implements OnInit {
   loadBasket(): void {
     if (localStorage.length > 0 && localStorage.getItem('basket')) {
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
+    }else{
+      this.basket = [];
     }
     this.getTotalPrice();
   }
