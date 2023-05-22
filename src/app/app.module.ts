@@ -14,6 +14,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -33,6 +34,7 @@ import { ToastrModule } from 'ngx-toastr';
     provideStorage(() => getStorage()),
     provideFirestore (() => getFirestore()),
     ToastrModule.forRoot(),
+    provideAuth(()=> getAuth()),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -79,4 +79,11 @@ export class ThaiMarketComponent implements OnInit {
     this.orderService.changeBasket.next(true);
   }
 
+  orderScroll():void {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+
 }

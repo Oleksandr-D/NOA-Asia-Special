@@ -25,9 +25,11 @@
             <button class="fav-btn"></button>
           </div>
           <div class="floating-buttons">
-            <button class="btns">Додати складники
+            <button class="btns">
+              Додати складники
             </button>
-            <button class="btns">Швидке замовлення
+            <button class="btns" (click)="addToBasket(product)" [routerLink]="['/checkout']">
+              Швидке замовлення
             </button>
           </div>
         </div>
