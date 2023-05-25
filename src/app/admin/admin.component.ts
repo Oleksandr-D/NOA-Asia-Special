@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-//import { AccountService } from '../shared/services/account/account.service';
+import { AccountService } from '../shared/services/account/account.service';
 
 @Component({
   selector: 'app-admin',
@@ -9,8 +9,9 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit  {
 
-  constructor(private router: Router, 
-    //private accountService: AccountService
+  constructor(
+    private router: Router, 
+    private accountService: AccountService
     ) {}
 
   ngOnInit(): void {}
@@ -18,6 +19,6 @@ export class AdminComponent implements OnInit  {
   logOut(): void {
     this.router.navigate(['/']);
     localStorage.removeItem('currentUser');
-    //this.accountService.isUserLogin$.next(true);
+    this.accountService.isUserLogin$.next(true);
   }
 }

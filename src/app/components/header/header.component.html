@@ -10,7 +10,6 @@
       <a [routerLink]="['/']">
         <img loading="lazy" src="../../../assets/images/logo_one-1.svg" alt=""></a>
     </div>
-    <a [routerLink]="['/auth']" class="admin">ADMIN</a>
     <div class="header-menu">
       <nav>
         <ul>
@@ -100,10 +99,13 @@
           <p class="text">Працюємо Пн - Нд з <b>10:00</b> до <b>22:50</b></p>
         </div>
       </div>
-      <a href="#" class="user-login open-popup" data-rel="1">
-        <img loading="lazy" width="16" height="20" src="../../../assets/images/user-icon.svg" alt="">
-        <span>Вхід</span>
-      </a>
+      <div class="login-wraper">
+        <a [routerLink]="[ '/'+ loginUrl]" routerLinkActive="active" class="user-login open-popup">
+          <img loading="lazy" width="16" height="20" src="../../../assets/images/user-icon.svg" alt="">
+          <span >{{ currentUser ? currentUser : 'ВХІД' }}</span>
+        </a>
+       <a [routerLink]="['/auth']" class="admin">ADMIN</a>
+      </div>
       <div class="burger" (click)="toggleMenu()">
         <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="23.5" cy="23.5" r="23.5" fill="#2D7D7D"></circle>

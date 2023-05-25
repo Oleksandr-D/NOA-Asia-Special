@@ -3,13 +3,16 @@ import { Firestore, doc, docData } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Auth,createUserWithEmailAndPassword,signInWithEmailAndPassword,} from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword,} from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
+import { AccountService } from 'src/app/shared/services/account/account.service';
+
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
   styleUrls: ['./authorization.component.scss']
 })
+
 export class AuthorizationComponent implements OnInit, OnDestroy {
   public authForm!: FormGroup;
   public loginSubscription!: Subscription;
@@ -20,7 +23,7 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
     private afs: Firestore,
     private toastr: ToastrService,
     private auth: Auth,
-    
+    private accountService: AccountService,
   ) {}
 
   ngOnInit(): void {
@@ -52,26 +55,17 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
   }
 
   async login(email: string, password: string): Promise<void> {
-    const credential = await signInWithEmailAndPassword(
-      this.auth,
-      email,
-      password
-    );
-    this.loginSubscription = docData(
-      doc(this.afs, 'users', credential.user.uid)
-    ).subscribe(
-      (user) => {
-        console.log('user', user);
-        console.log('credential.user.ui', credential.user.uid);
+    const credential = await signInWithEmailAndPassword(this.auth, email, password);
+    this.loginSubscription = docData(doc(this.afs, 'users', credential.user.uid))
+    .subscribe((user) => {
         const currentUser = { ...user, uid: credential.user.uid };
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        console.log('user[role]', user['role']);
-        if (user && user['role'] === 'USER') {
+          if (user && user['role'] === 'USER') {
           this.router.navigate(['/user-profile']);
         } else if (user && user['role'] === 'ADMIN') {
          this.router.navigate(['/admin']);
          }
-        // this.accountService.isUserLogin$.next(true);
+        this.accountService.isUserLogin$.next(true);
       },
       (e) => {
         console.log('error', e);

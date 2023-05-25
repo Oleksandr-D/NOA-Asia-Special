@@ -283,26 +283,38 @@ header {
   border-right: 10px solid transparent;
 }
 
-.user-login {
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
 
-  img {
-    width: 16px;
-    margin-right: 10px;
+.login-wraper {
+  position: relative;
+
+  .user-login {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 16px;
+      margin-right: 10px;
+    }
+
+    span {
+      font-family: $main-font-bold;
+      transition: all 0.3s;
+    }
+
+    span:hover {
+      color: $button-secondary-text;
+    }
   }
 
-  span {
-    font-family: $main-font-bold;
-    transition: all 0.3s;
-  }
-
-  span:hover {
-    color: $button-secondary-text;
+  .admin {
+    position: absolute;
+    top: 25px;
+    color: #fff;
+    font-size: 12px;
   }
 }
 
@@ -841,8 +853,4 @@ header {
     font-size: 22px;
   }
 
-}
-
-.admin {
-  color: #fff;
 }
