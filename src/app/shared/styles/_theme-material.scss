@@ -54,3 +54,19 @@ $custom-theme: mat.define-light-theme((color: (primary: $custom-theme-primary,
       accent: $custom-theme-accent,
       warn: $custom-theme-warn)));
 @include mat.all-component-themes($custom-theme);
+
+.dialog-back {
+  background-color: #00000051;
+  backdrop-filter: blur(3px);
+}
+
+.auth-dialog {
+  min-width: 50%;
+  min-height: 400px;
+}
+
+@media screen and (max-width:770px) {
+  .auth-dialog {
+    width: 100%;
+  }
+}

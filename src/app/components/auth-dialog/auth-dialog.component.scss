@@ -1,0 +1,126 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/fonts";
+@import "../../shared/styles/base";
+@import "../../shared/styles/mixins";
+
+.form-wrap {
+  width: 100%;
+  font-family: $main_font_bold;
+  padding: 60px 70px 70px 70px;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+}
+
+.btn-close {
+  width: 47px;
+  height: 47px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  background-color: $button-secondary-text;
+  border-radius: 50%;
+  color: #fff;
+  transition: 0.25s;
+  opacity: 1;
+}
+
+.btn-close:hover {
+  border: 1px solid $button-secondary-text;
+  background: #fff;
+  color: $button-secondary-text;
+}
+
+.btn-close:before {
+  content: "\02715";
+}
+
+.form-group {
+  margin-bottom: 20px;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+mat-form-field {
+  height: 70px;
+}
+
+.mat-dialog-container {
+  padding: 4px;
+}
+
+.btns {
+  @include btns;
+  width: 100%;
+  background-color: $button-secondary-text;
+  border: 2px solid $button-secondary-text;
+}
+
+.btns:hover {
+  background-color: initial;
+  color: $text-main;
+  border: 2px solid $button-secondary-text;
+}
+
+.btns:disabled {
+  cursor: not-allowed;
+  background-color: rgb(233, 233, 233);
+  color: rgb(103, 103, 103);
+  border: 2px solid rgb(233, 233, 233);
+}
+
+.tip-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: $button-secondary-text;
+  margin-top: 20px;
+  transition: 0.35s;
+
+  a {
+    position: relative;
+    cursor: pointer;
+  }
+
+  a::before {
+    position: absolute;
+    content: '';
+    width: 0px;
+    bottom: 0;
+    background-color: #2d7d7d;
+    height: 2px;
+    transition: all 0.3s;
+  }
+
+  a:hover::before {
+    width: 100%;
+  }
+
+  div {
+    width: 100%;
+    color: $text-main;
+    text-align: center;
+
+    a {
+      color: $button-secondary-text;
+      margin-left: 5px;
+    }
+  }
+}
+
+.password-confirmation-error {
+  padding: 5px 20px 20px 20px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.rules{
+  cursor: pointer;
+  color: $button-secondary-text;
+}
+
+

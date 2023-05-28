@@ -35,7 +35,7 @@ export class CheckoutComponent implements OnInit {
       name: [null, [Validators.required, ]],
       surname: [null, [Validators.required]],
       tel: [null, [Validators.required, Validators.pattern('^[0-9]{9}$') ]],
-      email: [null, [Validators.required, Validators.email]],
+      email: [null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
       delivery: [null, [Validators.required]],
       restaurantAddress:[null, [Validators.required]],
       dataPicker:[null, [Validators.required]],

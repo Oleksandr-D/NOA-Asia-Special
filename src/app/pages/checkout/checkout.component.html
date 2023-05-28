@@ -70,7 +70,7 @@
                   <input matInput type="tel" formControlName="tel" placeholder="хх-xxx-xx-xx" required>
                   <mat-error
                     *ngIf="orderForm.controls['tel'].hasError('pattern') && !orderForm.controls['tel'].hasError('required')">
-                    Будь ласка, введіть дійсний номер телефону
+                    Будь ласка, <strong>введіть дійсний номер</strong> телефону
                   </mat-error>
                   <mat-error *ngIf="orderForm.controls['tel'].hasError('required')">
                     Необхідно вказати <strong>номер телефону</strong>
@@ -78,10 +78,10 @@
                 </mat-form-field>
                 <mat-form-field>
                   <mat-label>Email</mat-label>
-                  <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+                  <input type="email" matInput formControlName="email" placeholder="Приклад: example@gmail.com">
                   <mat-error
-                    *ngIf="orderForm.controls['email'].hasError('email') && !orderForm.controls['email'].hasError('required')">
-                    Будь ласка, введіть дійсну адресу електронної пошти
+                    *ngIf="orderForm.controls['email'].hasError('pattern') && !orderForm.controls['email'].hasError('required')">
+                    Будь ласка, <strong>введіть дійсну адресу</strong> електронної пошти
                   </mat-error>
                   <mat-error *ngIf="orderForm.controls['email'].hasError('required')">
                     Необхідно вказати <strong>адресу електронної пошти</strong>

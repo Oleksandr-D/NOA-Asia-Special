@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ICategoryResponse } from 'src/app/shared/interfaces/category/category.interface';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
@@ -6,6 +7,7 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ThaiMarketService } from 'src/app/shared/services/thai-market/thai-market.service';
+import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -28,7 +30,8 @@ export class HeaderComponent implements OnInit {
     private thaiService: ThaiMarketService,
     private orderService: OrderService,
     private accountService: AccountService,
-    public router: Router
+    public router: Router,
+    public dialog: MatDialog
   ) {}
 
    ngOnInit(): void {
@@ -130,27 +133,34 @@ export class HeaderComponent implements OnInit {
 
   checkUserLogin(): void {
     const currentUser = JSON.parse(localStorage.getItem('currentUser') as string );
-    
     if (currentUser && currentUser.role === 'ADMIN') {
       this.loginUrl = 'admin';
       this.currentUser = currentUser.firstName;
 
     } else if (currentUser && currentUser.role === 'USER') {
-      //const user = JSON.parse(localStorage.getItem('currentUser') as string);
       this.loginUrl = 'user-profile';
       this.currentUser = currentUser.firstName;
     } else if (!currentUser) {
       this.currentUser = '';
       this.loginUrl = '';
     }
-
-
   }
  
   checkUpdatesUserLogin(): void {
     this.accountService.isUserLogin$.subscribe(() => {
       this.checkUserLogin();
     });
+  }
+
+  openLoginDialog(): void {
+    this.dialog.open(AuthDialogComponent, {
+        backdropClass: 'dialog-back',
+        panelClass: 'auth-dialog',
+        autoFocus: false,
+      })
+      .afterClosed()
+      .subscribe((result) => {
+      });
   }
 
 

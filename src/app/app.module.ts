@@ -17,12 +17,14 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 
 import { ToastrModule } from 'ngx-toastr';
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    AuthDialogComponent,
   ],
   imports: [
     BrowserModule,

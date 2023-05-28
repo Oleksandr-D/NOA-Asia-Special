@@ -1,5 +1,5 @@
 <div class="spacer-100"></div>
-<div class="row justify-content-center">
+<!-- <div class="row justify-content-center">
   <div class="col-12 col-lg-8 col-xl-4">
     <form [formGroup]="authForm" class="was-validated">
       <h2>Admin Login</h2>
@@ -13,6 +13,29 @@
       </div>
       <button [disabled]="authForm.invalid" type="submit" class="btns w-100" (click)="loginUser()">
         Увійти
+      </button>
+    </form>
+  </div>
+</div> -->
+<div class="row justify-content-center">
+  <div class="col-10 col-lg-6 col-xl-4">
+    <form [formGroup]="authForm" class="was-validated">
+      <h2>Admin Login</h2>
+      <div class="form-group">
+        <mat-form-field appearance="outline" color="primary">
+          <mat-label>*Ваш email</mat-label>
+          <input matInput formControlName="email" name="name" type="email" required>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="outline" color="primary">
+          <mat-label>*Пароль</mat-label>
+          <input matInput formControlName="password" name="path" type="password" required>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button [disabled]="authForm.invalid" type="submit" class="btns" (click)="loginUser()"
+        mat-dialog-close>
+        Увійти в кабінет
       </button>
     </form>
   </div>
