@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
    public isOpen = false;
    public currentUser = '';
    public loginUrl = '';
+   public isLogin = false;
 
    constructor(
     private categoryService: CategoryService,
@@ -136,13 +137,15 @@ export class HeaderComponent implements OnInit {
     if (currentUser && currentUser.role === 'ADMIN') {
       this.loginUrl = 'admin';
       this.currentUser = currentUser.firstName;
-
+      this.isLogin = true;
     } else if (currentUser && currentUser.role === 'USER') {
       this.loginUrl = 'user-profile';
       this.currentUser = currentUser.firstName;
+      this.isLogin = true;
     } else if (!currentUser) {
       this.currentUser = '';
       this.loginUrl = '';
+      this.isLogin = false;
     }
   }
  

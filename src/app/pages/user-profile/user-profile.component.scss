@@ -1,0 +1,81 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/fonts";
+@import "../../shared/styles/mixins";
+@import "../../shared/styles/base";
+
+.btns2 {
+  @include btns;
+  @include btns2;
+  margin-top: 30px;
+}
+
+.btns2:hover {
+  background-color: initial;
+  color: $text-main;
+  border: 2px solid $button-secondary-text;
+}
+
+section {
+  margin: 100px 0px 100px;
+  font-family: $main_font;
+}
+
+.categories-menu {
+  position: relative;
+}
+
+.categories-list {
+  text-align: center;
+  min-width: 176px;
+  padding: 0px;
+}
+
+ul {
+  list-style: none;
+}
+
+.categories-list-item {
+  cursor: pointer;
+  padding: 0;
+  min-width: 168px;
+  font-weight: 500;
+
+  a {
+    display: inline-block;
+    padding: 17px 10px;
+    font-size: 18px;
+    transition: 0.3s;
+  }
+
+  a:hover {
+    color: $button-secondary-text;
+  }
+}
+
+.categories-list-item.line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 100%;
+  height: 4px;
+  background: $button-secondary-text;
+}
+
+.active {
+  color: $button-secondary-text;
+  font-weight: bolder;
+}
+
+@media screen and (max-width: 1199px) {
+  section {
+    margin: 5px 0px 100px;
+  }
+
+  .categories-list-item {
+    a {
+      padding: 10px 10px;
+      font-size: 16px;
+    }
+  }
+}

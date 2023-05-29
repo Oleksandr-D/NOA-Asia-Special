@@ -1,1 +1,35 @@
-<p>personal-data works!</p>
+<section>
+  <form class="form p-4">
+    <div class="form-group">
+      <div class="form-title">
+        <i class="number-title"><b>1</b></i>
+        <h5>Особисті дані</h5>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <input type="text" name="first_name" placeholder="*Ваше ім'я" value="{{ user?.firstName }}" required="" />
+        </div>
+        <div class="col-md-6">
+          <input type="text" name="last_name" placeholder="*Ваше прізвище" value="{{ user?.lastName }}" required="" />
+        </div>
+      </div>
+      <input class="input" name="phone" type="text" inputmode="numeric" placeholder="*Ваш номер телефону"
+        value="{{ user?.phoneNumber }}" required="" />
+      <input type="email" name="email" class="input" placeholder="*Ваш емейл" value="{{ user?.email }}" required="" />
+    </div>
+    <div class="form-group">
+      <div class="form-title title">
+        <i class="number-title"><b>2</b></i>
+        <h5>Адреси</h5>
+      </div>
+      <div class="row justify-content-between">
+        <div class="col-md-5">
+          <button class="btns2">Додати адресу</button>
+        </div>
+        <div class="col-md-5">
+          <button class="btns2">Зберігти зміни</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>

@@ -4,8 +4,6 @@
 @import '../../shared/styles/mixins';
 
 .content-block {
-  // overflow: hidden;
-  // position: relative;
   font-family: $main-font;
 }
 
@@ -226,7 +224,6 @@ header {
   margin-left: 2px;
 }
 
-
 .header-phone-info {
   position: absolute;
   left: -95px;
@@ -283,7 +280,6 @@ header {
   border-right: 10px solid transparent;
 }
 
-
 .login-wraper {
   position: relative;
 
@@ -303,6 +299,7 @@ header {
     span {
       font-family: $main-font-bold;
       transition: all 0.3s;
+      cursor:pointer;
     }
 
     span:hover {

@@ -19,6 +19,12 @@
   font-family: $main_font_bold;
 }
 
+@mixin btns2{
+  width: 100%;
+  border: 2px solid $button-secondary-text;
+  background-color: $button-secondary-text;
+}
+
 @mixin title {
   font-family: $main-font-bold;
   font-size: 42px;

@@ -3,7 +3,7 @@ import { Firestore, doc, docData } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword,} from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword,} from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 

@@ -1,1 +1,23 @@
-<p>user-profile works!</p>
+<section class="container-fluid">
+  <div class="row justify-content-evenly">
+    <nav class="col-lg-5 col-xl-2">
+      <div class="categories-menu">
+        <ul class="categories-list">
+          <li class="categories-list-item line" [routerLink]="[ '/user-profile/personal-data' ]"
+            routerLinkActive="active">
+            <a>Особисті дані</a></li>
+          <li class="categories-list-item" [routerLink]="[ '/user-profile/order-history' ]" routerLinkActive="active">
+            <a>Історія замовлень</a></li>
+          <li class="categories-list-item" [routerLink]="[ '/user-profile/password-change' ]" routerLinkActive="active">
+            <a>Зміна паролю</a></li>
+        </ul>
+      </div>
+      <button class="btns2" (click)="logOut()" type="button">
+        ВИХІД
+      </button>
+    </nav>
+    <div class="col-xl-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>
