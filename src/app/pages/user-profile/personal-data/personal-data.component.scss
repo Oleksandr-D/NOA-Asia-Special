@@ -15,8 +15,11 @@
   border: 2px solid $button-secondary-text;
 }
 
-.form-group {
-  margin-bottom: 30px;
+.btns2:disabled {
+  cursor: not-allowed;
+  background-color: rgb(233, 233, 233);
+  color: rgb(103, 103, 103);
+  border: 2px solid rgb(233, 233, 233);
 }
 
 .form-group .form-title {
@@ -26,11 +29,6 @@
   h5 {
     font-family: $main_font_bold;
   }
-}
-
-.form [class*="col-"] {
-  padding-left: 5px;
-  padding-right: 5px;
 }
 
 .form-group .number-title {
@@ -44,20 +42,11 @@
   text-align: center;
 }
 
-input {
-  width: 100%;
+.form-group {
   margin-bottom: 20px;
-  font-size: 16px;
-  height: 56px;
-  border: 2px solid #e1e1e1;
-  border-radius: 10px;
-  line-height: 56px;
-  padding: 0 20px 0 20px;
-  transition: 0.35s;
-  text-overflow: ellipsis;
-  background: none;
-}
 
-input:focus {
-  border: 2px solid $button-secondary-text;
+  .form-field {
+    width: 100%;
+
+  }
 }
