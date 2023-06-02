@@ -47,6 +47,49 @@
 
   .form-field {
     width: 100%;
+  }
+}
 
+.btn-close {
+  width: 47px;
+  height: 47px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  background-color: $button-secondary-text;
+  border-radius: 50%;
+  color: #fff;
+  transition: 0.25s;
+  opacity: 1;
+}
+
+.btn-close:hover {
+  border: 1px solid $button-secondary-text;
+  background: #fff;
+  color: $button-secondary-text;
+}
+
+.btn-close:before {
+  content: "\02715";
+}
+
+.modal-dialog {
+  max-width: 600px;
+
+  .modal-title {
+    @include title;
+  }
+
+  select:focus {
+    box-shadow: 0px 0px 7px 0px $button-secondary-text;
+  }
+
+  select {
+    height: 50px;
+    border: 1px solid $button-secondary-text;
+  }
+
+  mat-form-field {
+    margin-top: 20px;
   }
 }

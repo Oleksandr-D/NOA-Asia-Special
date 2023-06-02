@@ -12,18 +12,19 @@
         </mat-form-field>
         <mat-form-field class="col-md-6" appearance="outline">
           <mat-label>Baше призвище</mat-label>
-          <input  matInput formControlName="lastName"  name="last-name" type="text">
+          <input matInput formControlName="lastName" name="last-name" type="text">
         </mat-form-field>
       </div>
       <div class="form-group">
         <mat-form-field class="form-field" appearance="outline">
           <mat-label>Ваш телефон</mat-label>
-          <span  style="padding-left: 20px;" matPrefix>+380 &nbsp;</span>
-          <input matInput type="tel" formControlName="phoneNumber"
-           name="phoneNumber"  placeholder="хх-xxx-xx-xx" required>
+          <span style="padding-left: 20px;" matPrefix>+380 &nbsp;</span>
+          <input matInput type="tel" formControlName="phoneNumber" name="phoneNumber"
+           placeholder="хх-xxx-xx-xx" required>
           <mat-error
-            *ngIf="userForm.controls['phoneNumber'].hasError('pattern') && !userForm.controls['phoneNumber'].hasError('required')">
-            Будь ласка, введіть <strong>дійсний номер</strong> телефону
+            *ngIf="userForm.controls['phoneNumber'].hasError('pattern') &&
+             !userForm.controls['phoneNumber'].hasError('required')">
+             Будь ласка, введіть <strong>дійсний номер</strong> телефону
           </mat-error>
           <mat-error *ngIf="userForm.controls['phoneNumber'].hasError('required')">
             Необхідно вказати <strong>номер телефону</strong>
@@ -35,12 +36,13 @@
           <mat-label>Ваш email</mat-label>
           <input matInput formControlName="email" name="email" type="email">
           <mat-error
-          *ngIf="userForm.controls['email'].hasError('pattern') && !userForm.controls['email'].hasError('required')">
-          Будь ласка, введіть <strong>дійсну адресу</strong> електронної пошти
-        </mat-error>
-        <mat-error *ngIf="userForm.controls['email'].hasError('required')">
-          Необхідно вказати <strong>адресу електронної пошти</strong>
-        </mat-error>
+            *ngIf="userForm.controls['email'].hasError('pattern') &&
+             !userForm.controls['email'].hasError('required')">
+             Будь ласка, введіть <strong>дійсну адресу</strong> електронної пошти
+          </mat-error>
+          <mat-error *ngIf="userForm.controls['email'].hasError('required')">
+            Необхідно вказати <strong>адресу електронної пошти</strong>
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -51,7 +53,85 @@
       </div>
       <div class="row justify-content-between">
         <div class="col-md-5">
-          <button class="btns2">Додати адресу</button>
+          <button type="button" class="btns2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Додати адресу
+          </button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <h1 class="modal-title" id="exampleModalLabel">Адреса</h1>
+                  <div class="col-sm-12">
+                    <select class="form-select" formControlName="address" aria-label="Default select example">
+                      <option selected>Виберіть місто</option>
+                      <option value="Львів">Львів</option>
+                      <option value="Брюховичі">Брюховичі</option>
+                      <option value="Великі Грибовичі">Великі Грибовичі</option>
+                      <option value="Дубляни">Дубляни</option>
+                      <option value="Жирівка">Жирівка</option>
+                      <option value="Зимна Вода">Зимна Вода</option>
+                      <option value="Зубра">Зубра</option>
+                      <option value="Ков'ярі">Ков'ярі</option>
+                      <option value="Кротошин">Кротошин</option>
+                      <option value="Лапаївка">Лапаївка</option>
+                      <option value="Липники">Липники</option>
+                      <option value="Малехів">Малехів</option>
+                      <option value="Малечковичі">Малечковичі</option>
+                      <option value="Малі Грибовичі">Малі Грибовичі</option>
+                      <option value="Муроване">Муроване</option>
+                      <option value="Наварія">Наварія</option>
+                      <option value="Пустомити">Пустомити</option>
+                      <option value="Рясне-Руське">Рясне-Руське</option>
+                      <option value="Сокільники">Сокільники</option>
+                      <option value="Солонка">Солонка</option>
+                      <option value="Холодновідка">Холодновідка</option>
+                      <option value="Рудно">Рудно</option>
+                    </select>
+                  </div>
+                  <div class="row">
+                    <mat-form-field class="col-md-8" appearance="outline">
+                      <mat-label>Введіть вулицю доставки</mat-label>
+                      <input matInput type="text" formControlName="street" required>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-4" appearance="outline">
+                      <mat-label>№ будинку</mat-label>
+                      <input matInput type="text" formControlName="house" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="row">
+                    <mat-form-field class="col-md-6" appearance="outline">
+                      <mat-label>№ квартири</mat-label>
+                      <input matInput type="text" formControlName="flat" required>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-6" appearance="outline">
+                      <mat-label>Під'їзд</mat-label>
+                      <input matInput type="text" formControlName="entrance" required>
+                    </mat-form-field>
+                  </div>
+                  <div class="row">
+                    <mat-form-field class="col-md-6" appearance="outline">
+                      <mat-label>Поверх</mat-label>
+                      <input matInput type="text" formControlName="floor" required>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-6" appearance="outline">
+                      <mat-label>Домофон</mat-label>
+                      <input matInput type="text" formControlName="intercom">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" [disabled]="userForm.invalid" class="btns2" data-bs-dismiss="modal"
+                    aria-label="Close">
+                    Зберігти
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-md-5">
           <button class="btns2" [disabled]="userForm.invalid" type="submit">Зберігти зміни</button>

@@ -32,6 +32,13 @@ export class PersonalDataComponent implements OnInit {
       lastName: [null, [Validators.required]],
       phoneNumber: [null, [Validators.required, Validators.pattern('^[0-9]{9}$') ]],
       email: [null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+      address:[null, [Validators.required]],
+      street:[null, [Validators.required]],
+      house:[null, [Validators.required]],
+      flat:[null, [Validators.required]],
+      entrance:[null, [Validators.required]],
+      floor:[null, [Validators.required]],
+      intercom:[null]
     });
   }
 
@@ -44,6 +51,13 @@ export class PersonalDataComponent implements OnInit {
         lastName: this.user.lastName,
         phoneNumber: this.user.phoneNumber,
         email: this.user.email,
+        address:this.user.address,
+        street:this.user.street,
+        house:this.user.house,
+        flat:this.user.flat,
+        entrance:this.user.entrance,
+        floor:this.user.floor,
+        intercom:this.user.intercom,
       });
       this.currentUserId = this.user.uid || this.user.id;
     }
