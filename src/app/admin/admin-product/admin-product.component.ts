@@ -26,6 +26,7 @@ export class AdminProductComponent implements OnInit {
   private currentProductId!: number | string;
   public isOpen = false;
   public allCategories: Array<ICategoryResponse> = [];
+  
   constructor(
     private fb:FormBuilder,
     private categoryService: CategoryService,

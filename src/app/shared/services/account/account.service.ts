@@ -11,13 +11,13 @@ export class AccountService {
   public isUserLogin$ = new Subject<boolean>();
   private userCollection!: CollectionReference<DocumentData>;
   
-  constructor(private afs: Firestore) { 
+  constructor(public afs: Firestore) { 
     this.userCollection = collection(this.afs, 'users');
   }
 
-  updateFirebase(discount: IUserRequest, id: string) {
+  updateFirebase(user: IUserRequest, id: string) {
     const categoryDocumentReferense = doc(this.afs, `users/${id}`);
-    return updateDoc(categoryDocumentReferense, { ...discount });
+    return updateDoc(categoryDocumentReferense, { ...user });
   }
 
   getOneFirebase(id: string) {

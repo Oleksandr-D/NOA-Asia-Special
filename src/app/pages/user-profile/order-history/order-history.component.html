@@ -1,1 +1,26 @@
-<p>order-history works!</p>
+<section>
+  <table class="table" *ngIf="user">
+    <thead>
+      <tr>
+        <th scope="col">№</th>
+        <th scope="col">Замовлення</th>
+        <th scope="col">Адреса</th>
+        <th scope="col">Сума</th>
+        <th scope="col">Статус</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let order of user.orders; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ order }}</td>
+        <td>Місто:{{user.address}}, вулиця:{{user.street}}, будинок:{{user.house}}, картира:{{user.flat}},
+          під'їзд:{{user.entrance}}, поверх:{{user.floor}}, домофон:{{user.intercom}} .
+        </td>
+        <td>99999</td>
+        <td>В очікуванні</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</section>

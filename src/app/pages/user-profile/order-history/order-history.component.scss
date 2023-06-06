@@ -1,0 +1,13 @@
+@import "../../../shared/styles/fonts";
+@import "../../../shared/styles/mixins";
+@import "../../../shared/styles/base";
+@import "../../../shared/styles/variables";
+
+
+section {
+   font-family: $main-font;
+}
+
+.table-group-divider{
+   border-top: 2px solid $button-secondary-text;
+}

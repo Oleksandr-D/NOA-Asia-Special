@@ -4,6 +4,9 @@ import { OrderService } from 'src/app/shared/services/order/order.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICheckoutOrder } from 'src/app/shared/interfaces/checkout-order/order.interface.';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { IUserRequest } from 'src/app/shared/interfaces/user/user.interface';
+import { AccountService } from 'src/app/shared/services/account/account.service';
 
 
 @Component({
@@ -17,11 +20,15 @@ export class CheckoutComponent implements OnInit {
   public count = 0;
   public orderForm!:FormGroup;
   public cutrely = 0;
+  private currentUserId!: string;
+  public userOrder: any= {};
 
   constructor(
     private orderService: OrderService,
     private fb:FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService,
+    private accountService: AccountService,
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +39,7 @@ export class CheckoutComponent implements OnInit {
 
   initOrderForm(): void {
     this.orderForm = this.fb.group({
-      name: [null, [Validators.required, ]],
+      firstName: [null, [Validators.required, ]],
       surname: [null, [Validators.required]],
       tel: [null, [Validators.required, Validators.pattern('^[0-9]{9}$') ]],
       email: [null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
@@ -104,21 +111,46 @@ export class CheckoutComponent implements OnInit {
     this.orderService.changeBasket.next(true);
   }
 
-  toOrder(){
-    let basket: Array<IProductResponse> = [];
-    basket = JSON.parse(localStorage.getItem('basket') as string);
+   toOrder(){
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+      const user = JSON.parse(currentUser);
+      this.currentUserId = user.uid || user.id;
+    }
+    const basket: Array<IProductResponse> = JSON.parse(localStorage.getItem('basket') as string);
     const checkoutOrder: ICheckoutOrder = {
       cutrely: this.cutrely,
-      ...this.orderForm.value
     };
-    basket.push(checkoutOrder as IProductResponse);
-    localStorage.setItem('basket', JSON.stringify(basket));
+    const newOrder: IProductResponse = { ...checkoutOrder, ...this.orderForm.value };
+   
+
+    const userOrder: any = {
+      orders: [...basket, newOrder],
+      addresses: [this.orderForm.value],
+    };
+    
+    this.userOrder = userOrder;
+    //this.saveUser();
+    this.createOrder()
     console.log('You ordered ==>', basket);
-    alert('Замовлення прийнято!');
+    console.log('userOrder ==>', userOrder);
+    this.toastr.success('Замовлення прийнято!');
     this.orderForm.reset();
     localStorage.removeItem('basket');
     this.orderService.changeBasket.next(true);
     this.router.navigateByUrl('/');
   }
+
+   saveUser(): void{
+    this.orderService.updateFirebase(this.userOrder, this.currentUserId as string);
+  }
+
+  createOrder():void{
+    this.orderService.createFirebaseOrder(this.userOrder, this.currentUserId).then(() => {
+   
+      this.toastr.success('Замовлення прийнято!!');
+      })
+  }
+
 
 }

@@ -63,7 +63,6 @@ export class PersonalDataComponent implements OnInit {
     }
   }
   
-
   checkUpdatesUserLogin(): void {
     this.accountService.isUserLogin$.subscribe(() => {
       this.update();

@@ -1,3 +1,5 @@
+import { IProductResponse } from "../product/product.interface";
+
 export interface IUserRequest {
    firstName:string,
    lastName: string,
@@ -9,7 +11,9 @@ export interface IUserRequest {
    flat:string,
    entrance:string,
    floor:string,
-   intercom:string
+   intercom:string,
+   orders: IProductResponse[];
+   addresses:any[];
 }
 
 export interface IUserResponse extends IUserRequest {
