@@ -5,9 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICheckoutOrder } from 'src/app/shared/interfaces/checkout-order/order.interface.';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { IUserRequest } from 'src/app/shared/interfaces/user/user.interface';
 import { AccountService } from 'src/app/shared/services/account/account.service';
-
 
 @Component({
   selector: 'app-checkout',
@@ -51,7 +49,7 @@ export class CheckoutComponent implements OnInit {
       change:[null],
       exactPayment:[null],
       comment:[null],
-      message:[null]
+      message:[null],
     });
   }
 
@@ -111,46 +109,28 @@ export class CheckoutComponent implements OnInit {
     this.orderService.changeBasket.next(true);
   }
 
-   toOrder(){
+  toOrder(){
     const currentUser = localStorage.getItem('currentUser');
     if (currentUser) {
       const user = JSON.parse(currentUser);
       this.currentUserId = user.uid || user.id;
     }
     const basket: Array<IProductResponse> = JSON.parse(localStorage.getItem('basket') as string);
-    const checkoutOrder: ICheckoutOrder = {
-      cutrely: this.cutrely,
-    };
+    const checkoutOrder: ICheckoutOrder = { cutrely: this.cutrely, total:this.total };
     const newOrder: IProductResponse = { ...checkoutOrder, ...this.orderForm.value };
-   
-
-    const userOrder: any = {
-      orders: [...basket, newOrder],
-      addresses: [this.orderForm.value],
-    };
-    
+    const userOrder: any = { orders: [...basket, newOrder] };
     this.userOrder = userOrder;
-    //this.saveUser();
-    this.createOrder()
-    console.log('You ordered ==>', basket);
-    console.log('userOrder ==>', userOrder);
-    this.toastr.success('Замовлення прийнято!');
+    this.createOrder();
     this.orderForm.reset();
     localStorage.removeItem('basket');
     this.orderService.changeBasket.next(true);
     this.router.navigateByUrl('/');
   }
 
-   saveUser(): void{
-    this.orderService.updateFirebase(this.userOrder, this.currentUserId as string);
-  }
-
   createOrder():void{
     this.orderService.createFirebaseOrder(this.userOrder, this.currentUserId).then(() => {
-   
-      this.toastr.success('Замовлення прийнято!!');
+      this.toastr.success('Замовлення прийнято!');
       })
   }
-
 
 }

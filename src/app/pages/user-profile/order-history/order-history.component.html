@@ -1,5 +1,5 @@
 <section>
-  <table class="table" *ngIf="user">
+  <table class="table">
     <thead>
       <tr>
         <th scope="col">№</th>
@@ -10,17 +10,35 @@
       </tr>
     </thead>
     <tbody class="table-group-divider">
-      <tr *ngFor="let order of user.orders; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
-        <td>{{ order }}</td>
-        <td>Місто:{{user.address}}, вулиця:{{user.street}}, будинок:{{user.house}}, картира:{{user.flat}},
-          під'їзд:{{user.entrance}}, поверх:{{user.floor}}, домофон:{{user.intercom}} .
-        </td>
-        <td>99999</td>
-        <td>В очікуванні</td>
-      </tr>
+      <ng-container *ngIf="user.orders && user.orders.length > 0">
+        <tr *ngFor="let order of user.orders; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            <div *ngFor="let product of order.orders; let j = index ">
+              <ng-container *ngIf="product.name">
+                {{ j + 1 }}. {{ product.name }}
+              </ng-container>
+            </div>
+          </td>
+          <td>Місто:{{user.address}}, вулиця:{{user.street}}, будинок:{{user.house}}, картира:{{user.flat}},
+            під'їзд:{{user.entrance}}, поверх:{{user.floor}}, домофон:{{user.intercom}} .
+          </td>
+          <td>
+            <div *ngFor="let product of order.orders; let j = index ">
+              <div>
+                {{ product.total }}
+              </div>
+            </div>
+          </td>
+          <td>В очікуванні</td>
+        </tr>
+      </ng-container>
     </tbody>
   </table>
-
-
+  <ng-container *ngIf="!user.orders || user.orders.length === 0">
+    <div class="empty-orders">
+      Поки що ви не зробили жодного замовлення.
+      <a [routerLink]="['/']">Перейдіть в каталог</a>.
+    </div>
+  </ng-container>
 </section>

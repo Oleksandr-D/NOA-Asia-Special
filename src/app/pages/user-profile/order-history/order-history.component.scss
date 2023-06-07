@@ -5,9 +5,19 @@
 
 
 section {
-   font-family: $main-font;
+  font-family: $main-font;
 }
 
-.table-group-divider{
-   border-top: 2px solid $button-secondary-text;
+.table-group-divider {
+  border-top: 2px solid $button-secondary-text;
+}
+
+.empty-orders {
+  padding: 50px;
+  text-align: center;
+
+  a {
+    color: $button-secondary-text;
+    font-weight: bolder;
+  }
 }

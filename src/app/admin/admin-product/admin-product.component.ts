@@ -18,7 +18,6 @@ export class AdminProductComponent implements OnInit {
   public adminProducts:Array <IProductResponse>=[];
   public adminCategories: Array<ICategoryResponse> = [];
   public adminThaiCategories: Array<ICategoryResponse> = [];
-  
   public productForm!:FormGroup;
   public editStatus = false;
   public uploadPercent =0;
@@ -26,7 +25,7 @@ export class AdminProductComponent implements OnInit {
   private currentProductId!: number | string;
   public isOpen = false;
   public allCategories: Array<ICategoryResponse> = [];
-  
+
   constructor(
     private fb:FormBuilder,
     private categoryService: CategoryService,
@@ -42,13 +41,7 @@ export class AdminProductComponent implements OnInit {
     this.initProductForm();
   }
 
-  // loadCategories(): void {
-  //   this.categoryService.getAllFirebase().subscribe(data => {
-  //     this.adminCategories = data as ICategoryResponse[];
-  //   })
-  // }
-
-    loadAllCategories(): void {
+  loadAllCategories(): void {
     this.categoryService.getAllFirebase().subscribe((data) => {
       this.adminCategories = data as ICategoryResponse[];
       this.thaiMarketService.getAllFirebase().subscribe((data) => {
@@ -91,11 +84,11 @@ export class AdminProductComponent implements OnInit {
       this.toastr.success('Товар успішно додано!');
       })
     }
-  this.editStatus = false;
-  this.productForm.reset();
-  this.isUploaded = false;
-  this.uploadPercent = 0;
-  this.isOpen = false;
+    this.editStatus = false;
+    this.productForm.reset();
+    this.isUploaded = false;
+    this.uploadPercent = 0;
+    this.isOpen = false;
   }    
 
   upload(event: any): void {
