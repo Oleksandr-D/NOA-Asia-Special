@@ -5,7 +5,7 @@
       <div>
         <h2 class="title-center">Оформлення замовлення</h2>
       </div>
-      <form class="mt-4" [formGroup]="orderForm" (ngSubmit)="toOrder()">
+      <form class="mt-4 was-validated" [formGroup]="orderForm" (ngSubmit)="toOrder()">
         <div class="row justify-content-center">
           <div class="col-xl-6 col-lg-10 col-12 p-4">
             <div class="basket-products" *ngFor="let products of basket ">
@@ -220,7 +220,7 @@
                 Сума:
                 <b>{{total}}</b> грн
               </div>
-              <button type="submit" class="btns w-100 mt-3">
+              <button type="submit" class="btns w-100 mt-3" [disabled]="orderForm.invalid">
                 ОФОРМИТИ ЗАМОВЛЕННЯ
               </button>
             </div>

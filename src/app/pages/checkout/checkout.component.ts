@@ -5,7 +5,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ICheckoutOrder } from 'src/app/shared/interfaces/checkout-order/order.interface.';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AccountService } from 'src/app/shared/services/account/account.service';
 
 @Component({
   selector: 'app-checkout',
@@ -20,19 +19,33 @@ export class CheckoutComponent implements OnInit {
   public cutrely = 0;
   private currentUserId!: string;
   public userOrder: any= {};
+  public user:any = {};
 
   constructor(
     private orderService: OrderService,
     private fb:FormBuilder,
     private router: Router,
-    private toastr: ToastrService,
-    private accountService: AccountService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
     this.loadBasket();
     this.updateBasket();
     this.initOrderForm();
+    this.update();
+  }
+
+  update(): void {
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+      this.user = JSON.parse(currentUser);
+      this.orderForm.patchValue({
+        firstName: this.user.firstName,
+        surname: this.user.lastName,
+        tel: this.user.phoneNumber,
+        email: this.user.email,
+      });
+    }
   }
 
   initOrderForm(): void {
@@ -41,7 +54,7 @@ export class CheckoutComponent implements OnInit {
       surname: [null, [Validators.required]],
       tel: [null, [Validators.required, Validators.pattern('^[0-9]{9}$') ]],
       email: [null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
-      delivery: [null, [Validators.required]],
+      delivery: ['pickup', [Validators.required]],
       restaurantAddress:[null, [Validators.required]],
       dataPicker:[null, [Validators.required]],
       timeInterval:[null, [Validators.required]],
@@ -114,13 +127,13 @@ export class CheckoutComponent implements OnInit {
     if (currentUser) {
       const user = JSON.parse(currentUser);
       this.currentUserId = user.uid || user.id;
+      const basket: Array<IProductResponse> = JSON.parse(localStorage.getItem('basket') as string);
+      const checkoutOrder: ICheckoutOrder = { cutrely: this.cutrely, total:this.total };
+      const newOrder: IProductResponse = { ...checkoutOrder, ...this.orderForm.value };
+      const userOrder: any = { orders: [...basket, newOrder] };
+      this.userOrder = userOrder;
+      this.createOrder();
     }
-    const basket: Array<IProductResponse> = JSON.parse(localStorage.getItem('basket') as string);
-    const checkoutOrder: ICheckoutOrder = { cutrely: this.cutrely, total:this.total };
-    const newOrder: IProductResponse = { ...checkoutOrder, ...this.orderForm.value };
-    const userOrder: any = { orders: [...basket, newOrder] };
-    this.userOrder = userOrder;
-    this.createOrder();
     this.orderForm.reset();
     localStorage.removeItem('basket');
     this.orderService.changeBasket.next(true);
