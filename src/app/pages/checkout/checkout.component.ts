@@ -124,7 +124,7 @@ export class CheckoutComponent implements OnInit {
 
   toOrder(){
     const currentUser = localStorage.getItem('currentUser');
-    if (currentUser) {
+    if (currentUser && this.basket.length > 0) {
       const user = JSON.parse(currentUser);
       this.currentUserId = user.uid || user.id;
       const basket: Array<IProductResponse> = JSON.parse(localStorage.getItem('basket') as string);
@@ -133,6 +133,9 @@ export class CheckoutComponent implements OnInit {
       const userOrder: any = { orders: [...basket, newOrder] };
       this.userOrder = userOrder;
       this.createOrder();
+    }else{
+      this.toastr.warning('Ви нічого не замовили :(');
+      this.toastr.info('Будь ласка зробіть замовлення!', '', {timeOut:10000});
     }
     this.orderForm.reset();
     localStorage.removeItem('basket');

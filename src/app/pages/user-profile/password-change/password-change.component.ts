@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-password-change',
@@ -12,7 +13,8 @@ export class PasswordChangeComponent implements OnInit {
   public registerForm!: FormGroup;
 
   constructor(
-    private fr: FormBuilder
+    private fr: FormBuilder,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -23,7 +25,7 @@ export class PasswordChangeComponent implements OnInit {
     this.registerForm = this.fr.group({
       password: [null, [Validators.required]],
       confirmPassword: [null, [Validators.required]],
-
+      currentPassword: [null, [Validators.required]],
     });
   }
 
@@ -46,6 +48,11 @@ export class PasswordChangeComponent implements OnInit {
 
   checkVisibilityError(control: string, name: string): boolean | null {
     return this.registerForm.controls[control].errors?.[name];
+  }
+
+  changePassword():void{
+    this.registerForm.reset();
+    this.toastr.success('Пароль змінено!');
   }
 
 }

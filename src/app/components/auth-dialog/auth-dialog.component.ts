@@ -72,7 +72,8 @@ export class AuthDialogComponent implements OnInit  {
         .catch((e) => {
           console.log('error', e);
           this.toastr.error(e.message);
-          this.toastr.error('Перевірте пошту або пароль');
+          this.toastr.info('Перевірте чи правельно введена пошта та пароль','',
+          {timeOut:10000});
         });
     }
   }
