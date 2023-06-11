@@ -5,13 +5,14 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
           aria-current="true" aria-label="Slide 1">
         </button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+          aria-label="Slide 2">
         </button>
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="../../../assets/images/home/noa-stravy-pidtrymky-bannerm-min-1550x630.png" class="d-block w-100"
-            alt="...">
+          <img src="../../../assets/images/home/noa-stravy-pidtrymky-bannerm-min-1550x630.png"
+           class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
           <img src="../../../assets/images/home/noa-culspecial-site-banner-fullhd-min-1-1550x630.png"
@@ -37,7 +38,7 @@
   <div class="categories-menu">
     <ul class="categories-list">
      <li class="categories-list-item" *ngFor="let category of categories">
-        <a [routerLink]="['/product/' + category.path]">{{ category.name }}</a>
+        <a [routerLink]="['/product/' + category.path]" (click)="toTop()">{{ category.name }}</a>
       </li>
     </ul>
   </div>
@@ -47,12 +48,13 @@
         <div class="product-image-wrapper">
           <a class="product-image">
             <picture>
-              <img [routerLink]="['/product/' + product.category.path, product.id ]" [src]="product.imagePath"
-                [alt]="product.name">
+              <img [routerLink]="['/product/' + product.category.path, product.id ]"
+               [src]="product.imagePath" [alt]="product.name" (click)="toTop()">
             </picture>
             <ul class="product-labels">
-              <li>CULINASIA MENU</li>
-              <li>NO RICE</li>
+              <li class="culinasia" *ngIf="product.culinasia" >CULINASIA MENU</li>
+              <li class="rice" *ngIf="product.rice">NO RICE</li>
+              <li class="veggie" *ngIf="product.veggie">VEGGIE</li>
             </ul>
           </a>
           <div class="image-top-right">
@@ -67,7 +69,9 @@
         </div>
         <div class="product-title-wrap">
           <h6>
-            <a [routerLink]="['/product/' + product.category.path, product.id ]">{{product.name}}</a>
+            <a [routerLink]="['/product/' + product.category.path, product.id ]" (click)="toTop()">
+              {{product.name}}
+            </a>
           </h6>
           <div class="product-price-wrap">{{product.price*product.count}}</div>
         </div>

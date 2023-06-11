@@ -78,4 +78,11 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.orderService.changeBasket.next(true);
   }
 
+  toTop():void{
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+
 }

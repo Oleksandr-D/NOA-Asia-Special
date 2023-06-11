@@ -63,4 +63,11 @@ export class HomeComponent implements OnInit {
     this.orderService.changeBasket.next(true);
   }
 
+  toTop():void{
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+
 }

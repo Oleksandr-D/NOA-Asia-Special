@@ -18,7 +18,22 @@ section {
 }
 
 .product-img {
-  height: 50vh;
+  height: 100%;
+}
+
+.product-labels {
+  li {
+    width: fit-content;
+    padding: 8px 10px;
+    font-size: 10px;
+    line-height: 1;
+    color: #fff;
+    border-radius: 3px;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+  }
+
+  @include product-labels-color;
 }
 
 .card-title {
@@ -27,6 +42,8 @@ section {
 
 .card-text {
   @include simple-page-text;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .product-controls {

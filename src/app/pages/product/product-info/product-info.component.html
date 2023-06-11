@@ -18,6 +18,11 @@
 <section class="container">
   <div class="row justify-content-center">
     <div class="col-xl-6 col-md-8 align-self-center">
+      <ul class="product-labels">
+        <li class="culinasia" *ngIf="currentProduct.culinasia" >CULINASIA MENU</li>
+        <li class="rice" *ngIf="currentProduct.rice">NO RICE</li>
+        <li class="veggie" *ngIf="currentProduct.veggie">VEGGIE</li>
+      </ul>
       <img class="product-img" [src]="currentProduct.imagePath" [alt]="currentProduct.name">
     </div>
     <div class=" col-xl-5 col-md-11">
@@ -26,7 +31,7 @@
             <div class="card-text mb-4">{{currentProduct.weight}} г</div>
           </div>
         <h5 class="card-title"> {{currentProduct.name}}</h5>
-        <span class="card-text ms-2">{{currentProduct.description}}</span>
+        <div class="card-text">{{currentProduct.description}}</div>
         <div class="product-controls">
           <div class="product-price">
             <b>{{currentProduct.price*currentProduct.count}}</b> грн
@@ -57,8 +62,9 @@
                    (click)="toTop()" [alt]="product.name">
             </picture>
             <ul class="product-labels">
-              <li>CULINASIA MENU</li>
-              <li>NO RICE</li>
+              <li class="culinasia" *ngIf="product.culinasia" >CULINASIA MENU</li>
+              <li class="rice" *ngIf="product.rice">NO RICE</li>
+              <li class="veggie" *ngIf="product.veggie">VEGGIE</li>
             </ul>
           </a>
           <div class="image-top-right">

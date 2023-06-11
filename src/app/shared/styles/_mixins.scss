@@ -19,7 +19,7 @@
   font-family: $main_font_bold;
 }
 
-@mixin btns2{
+@mixin btns2 {
   width: 100%;
   border: 2px solid $button-secondary-text;
   background-color: $button-secondary-text;
@@ -129,6 +129,7 @@
       flex-direction: column;
       align-items: flex-start;
       padding: 0;
+      @include product-labels-color;
 
       li {
         padding: 8px 10px;
@@ -141,18 +142,24 @@
         letter-spacing: 0.1em;
         font-weight: 700;
       }
-
-      li:first-child {
-        background-color: #ff6400;
-      }
-
-      li:last-child {
-        background-color: #0a0202;
-      }
     }
   }
 }
 
+@mixin product-labels-color {
+  .culinasia {
+    background-color: #ff6400;
+  }
+
+  .rice {
+    background-color: #0a0202;
+  }
+
+  .veggie {
+    background-color: #08a000;
+  }
+
+}
 
 @mixin product-title-wrap {
   .product-title-wrap {
@@ -176,7 +183,6 @@
     }
   }
 }
-
 
 @mixin product-controls {
   .product-controls {
