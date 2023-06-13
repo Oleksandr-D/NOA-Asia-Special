@@ -66,6 +66,7 @@ export class AdminProductComponent implements OnInit {
       culinasia: [null],
       rice: [null],
       veggie:[null],
+      addIngredients:[null],
       weight: [null, Validators.required],
       price: [null, Validators.required],
       imagePath: [null, Validators.required],
@@ -124,6 +125,7 @@ export class AdminProductComponent implements OnInit {
       culinasia:product.culinasia,
       rice:product.rice,
       veggie:product.veggie,
+      addIngredients:product.addIngredients,
       weight:product.weight,
       price:product.price,
       imagePath: product.imagePath

@@ -58,8 +58,9 @@
                    (click)="toTop()" [src]="product.imagePath" [alt]="product.name">
             </picture>
             <ul class="product-labels">
-              <li>CULINASIA MENU</li>
-              <li>NO RICE</li>
+              <li class="culinasia" *ngIf="product.culinasia" >CULINASIA MENU</li>
+              <li class="rice" *ngIf="product.rice">NO RICE</li>
+              <li class="veggie" *ngIf="product.veggie">VEGGIE</li>
             </ul>
           </a>
           <div class="image-top-right">

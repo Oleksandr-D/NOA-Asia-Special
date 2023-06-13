@@ -21,12 +21,20 @@ h1 {
   margin-bottom: 40px;
 }
 
+.empty-favorites {
+  @include title;
+  margin-top: 100px;
+  font-size: 32px;
+}
+
 .product {
   max-width: 380px;
   display: flex;
   flex-direction: column;
   padding: 15px;
   height: 100%;
+  margin-bottom: 50px;
+
   @include product-title-wrap;
   @include product-controls;
 
@@ -37,8 +45,8 @@ h1 {
 
   .image-top-right {
     width: 100%;
-    top: 0;
-    right: 0;
+    top: -20px;
+    right: -20px;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -55,7 +63,6 @@ h1 {
     text-align: center;
     opacity: 0;
     transition: all 0.25s;
-    padding-top: 80px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, white 100%);
 
     .btns {
@@ -82,7 +89,7 @@ h1 {
   .product-desc {
     line-height: 1.5em;
     font-size: 15px;
-    // height: 66px;
+    height: 66px;
   }
 }
 
