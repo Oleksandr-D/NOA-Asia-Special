@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="currentProduct">
   <ul class="breadcrumbs">
     <li class="breadcrumbs-after">
       <a [routerLink]="['/']">
@@ -15,21 +15,25 @@
     </li>
   </ul>
 </div>
-<section class="container">
+<section class="container" *ngIf="currentProduct">
   <div class="row justify-content-center">
-    <div class="col-xl-6 col-md-8 align-self-center">
+    <div class="col-xl-6 col-md-8 align-self-center wraper">
       <ul class="product-labels">
-        <li class="culinasia" *ngIf="currentProduct.culinasia" >CULINASIA MENU</li>
+        <li class="culinasia" *ngIf="currentProduct.culinasia">CULINASIA MENU</li>
         <li class="rice" *ngIf="currentProduct.rice">NO RICE</li>
         <li class="veggie" *ngIf="currentProduct.veggie">VEGGIE</li>
       </ul>
       <img class="product-img" [src]="currentProduct.imagePath" [alt]="currentProduct.name">
+      <div class="favorite">
+        <button *ngIf="!currentProduct.favorites" class="fav-btn" (click)="toFavorites(currentProduct)"></button>
+        <button *ngIf="currentProduct.favorites" class="full-fav-btn" (click)="toFavorites(currentProduct)"></button>
+      </div>
     </div>
     <div class=" col-xl-5 col-md-11">
       <div class="card-body">
-         <div>
-            <div class="card-text mb-4">{{currentProduct.weight}} г</div>
-          </div>
+        <div>
+          <div class="card-text mb-4">{{currentProduct.weight}} г</div>
+        </div>
         <h5 class="card-title"> {{currentProduct.name}}</h5>
         <div class="card-text">{{currentProduct.description}}</div>
         <div class="product-controls">
@@ -50,7 +54,7 @@
   </div>
 </section>
 <div class="spacer-100"></div>
-<section class="container">
+<section class="container" *ngIf="currentProduct">
   <h3 class="title">Інші <span>{{currentProduct.category.name}}</span></h3>
   <div class="row">
     <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of userProducts">
@@ -59,28 +63,29 @@
           <a class="product-image">
             <picture>
               <img [routerLink]="['/product/' + product.category.path, product.id ]" [src]="product.imagePath"
-                   (click)="toTop()" [alt]="product.name">
+                (click)="toTop()" [alt]="product.name">
             </picture>
             <ul class="product-labels">
-              <li class="culinasia" *ngIf="product.culinasia" >CULINASIA MENU</li>
+              <li class="culinasia" *ngIf="product.culinasia">CULINASIA MENU</li>
               <li class="rice" *ngIf="product.rice">NO RICE</li>
               <li class="veggie" *ngIf="product.veggie">VEGGIE</li>
             </ul>
           </a>
           <div class="image-top-right">
-            <button class="fav-btn"></button>
+            <button *ngIf="!product.favorites" class="fav-btn" (click)="toFavorites(product)"></button>
+            <button *ngIf="product.favorites" class="full-fav-btn" (click)="toFavorites(product)"></button>
           </div>
           <div class="floating-buttons">
-            <button class="btns">Додати складники
+            <button class="btns" *ngIf="product.addIngredients">
+              Додати складники
             </button>
-            <button class="btns">Швидке замовлення
+            <button class="btns" (click)="addToBasket(product)" [routerLink]="['/checkout']">Швидке замовлення
             </button>
           </div>
         </div>
         <div class="product-title-wrap">
           <h6>
-            <a [routerLink]="['/product/' + product.category.path, product.id ]"
-                (click)="toTop()">{{product.name}}
+            <a [routerLink]="['/product/' + product.category.path, product.id ]" (click)="toTop()">{{product.name}}
             </a>
           </h6>
           <div class="product-price-wrap">{{product.price*product.count}}</div>

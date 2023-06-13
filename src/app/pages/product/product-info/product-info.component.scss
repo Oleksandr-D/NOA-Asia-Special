@@ -46,6 +46,20 @@ section {
   white-space: normal;
 }
 
+.wraper {
+  position: relative;
+}
+
+.favorite {
+  width: 100%;
+  top: 0;
+  left: -30px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .product-controls {
   display: flex;
   justify-content: space-between;
@@ -180,6 +194,11 @@ section {
 
 .fav-btn {
   @include fav-btn;
+}
+
+.full-fav-btn {
+  @include fav-btn;
+  background-image: url(../../../../assets/images/product/love-icon.svg);
 }
 
 @media screen and (max-width: 770px) {

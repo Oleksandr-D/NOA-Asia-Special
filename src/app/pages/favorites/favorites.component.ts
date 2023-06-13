@@ -9,14 +9,11 @@ import { OrderService } from 'src/app/shared/services/order/order.service';
 })
 export class FavoritesComponent implements OnInit {
  
-
   public favorites: Array < IProductResponse >= [];
 
   constructor(
     private orderService: OrderService
-  ){
-
-  }
+  ){};
 
   ngOnInit(): void {
     const favoritesData = localStorage.getItem('favorites');
@@ -24,7 +21,6 @@ export class FavoritesComponent implements OnInit {
       this.favorites = JSON.parse(favoritesData);
     }
   }
-
 
   addToBasket(product: IProductResponse): void {
     let basket: Array<IProductResponse> = [];
@@ -76,6 +72,5 @@ export class FavoritesComponent implements OnInit {
       behavior: 'smooth',
     });
   }
-
 
 }

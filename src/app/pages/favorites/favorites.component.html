@@ -3,53 +3,53 @@
   <h1>Улюблене</h1>
   <div *ngIf="favorites.length == 0" class="container empty-favorites">Оберіть улюблені страви</div>
   <div class="row">
-      <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of favorites">
-        <div class="product">
-          <div class="product-image-wrapper">
-            <a class="product-image">
-              <picture>
-                <img [routerLink]="['/product/' + product.category.path, product.id ]" [src]="product.imagePath"
-                  [alt]="product.name" (click)="toTop()">
-              </picture>
-              <ul class="product-labels">
-                <li class="culinasia" *ngIf="product.culinasia" >CULINASIA MENU</li>
-                <li class="rice" *ngIf="product.rice">NO RICE</li>
-                <li class="veggie" *ngIf="product.veggie">VEGGIE</li>
-              </ul>
+    <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of favorites">
+      <div class="product">
+        <div class="product-image-wrapper">
+          <a class="product-image">
+            <picture>
+              <img [routerLink]="['/product/' + product.category.path, product.id ]" [src]="product.imagePath"
+                [alt]="product.name" (click)="toTop()">
+            </picture>
+            <ul class="product-labels">
+              <li class="culinasia" *ngIf="product.culinasia">CULINASIA MENU</li>
+              <li class="rice" *ngIf="product.rice">NO RICE</li>
+              <li class="veggie" *ngIf="product.veggie">VEGGIE</li>
+            </ul>
+          </a>
+          <div class="image-top-right">
+            <button *ngIf="product.favorites" class="btn-close" (click)="toFavorites(product)"></button>
+          </div>
+          <div class="floating-buttons">
+            <button class="btns" *ngIf="product.addIngredients">
+              Додати складники
+            </button>
+            <button class="btns" (click)="addToBasket(product)" [routerLink]="['/checkout']">
+              Швидке замовлення
+            </button>
+          </div>
+        </div>
+        <div class="product-title-wrap">
+          <h6>
+            <a [routerLink]="['/product/' + product.category.path, product.id ]" (click)="toTop()">
+              {{product.name}}
             </a>
-            <div class="image-top-right" >
-              <button *ngIf="product.favorites" class="btn-close" (click)="toFavorites(product)"></button>
-            </div>
-            <div class="floating-buttons">
-              <button class="btns" *ngIf="product.addIngredients">
-                Додати складники
-              </button>
-              <button class="btns" (click)="addToBasket(product)" [routerLink]="['/checkout']">
-                Швидке замовлення
-              </button>
-            </div>
+          </h6>
+          <div class="product-price-wrap">{{product.price*product.count}}</div>
+        </div>
+        <div class="product-desc">{{product.description | slice:0:90}}
+          <span *ngIf="product.description.length>90">...</span>
+        </div>
+        <div class="product-controls">
+          <div class="thumb-input-number">
+            <button type="button" (click)="productCount(product, false)">-</button>
+            <input [value]="product.count" readonly="" tabindex="-1" max="99">
+            <button type="button" (click)="productCount(product, true)">+</button>
           </div>
-          <div class="product-title-wrap">
-            <h6>
-              <a [routerLink]="['/product/' + product.category.path, product.id ]" (click)="toTop()">
-                {{product.name}}
-              </a>
-            </h6>
-            <div class="product-price-wrap">{{product.price*product.count}}</div>
-          </div>
-          <div class="product-desc">{{product.description | slice:0:90}}
-            <span *ngIf="product.description.length>90">...</span>
-          </div>
-          <div class="product-controls">
-            <div class="thumb-input-number">
-              <button type="button" (click)="productCount(product, false)">-</button>
-              <input [value]="product.count" readonly="" tabindex="-1" max="99">
-              <button type="button" (click)="productCount(product, true)">+</button>
-            </div>
-            <button class="btns" (click)="addToBasket(product)">Замовити</button>
-          </div>
+          <button class="btns" (click)="addToBasket(product)">Замовити</button>
         </div>
       </div>
     </div>
+  </div>
 </section>
 <div class="spacer-120"></div>
