@@ -66,6 +66,22 @@ export class FavoritesComponent implements OnInit {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }
 
+  getProductLink(product: IProductResponse): string {
+    const basePath = product.category.path === 'product' ? 'thai-product' : '/product';
+    return `${basePath}/${encodeURIComponent(product.category.path)}/${product.id}`;
+
+
+  //   let basePath: string = '';
+  //   if (product.category.path === 'product') {
+  //     basePath = '/product';
+  //   } 
+  //   if (product.category.path === 'thai-product') {
+  //     basePath = '/thai-product';
+  //   }
+  //   return `${basePath}/${product.category.path}/${product.id}`;
+  // }
+  }
+
   toTop():void{
     window.scroll({
       top: 0,

@@ -1,14 +1,14 @@
 <div class="spacer-60"></div>
 <section class="container favourites-sec">
   <h1>Улюблене</h1>
-  <div *ngIf="favorites.length == 0" class="container empty-favorites">Оберіть улюблені страви</div>
+  <div *ngIf="favorites.length === 0" class="container empty-favorites">Оберіть улюблені страви</div>
   <div class="row">
     <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of favorites">
       <div class="product">
         <div class="product-image-wrapper">
           <a class="product-image">
             <picture>
-              <img [routerLink]="['/product/' + product.category.path, product.id ]" [src]="product.imagePath"
+              <img [routerLink]="getProductLink(product)" [src]="product.imagePath"
                 [alt]="product.name" (click)="toTop()">
             </picture>
             <ul class="product-labels">

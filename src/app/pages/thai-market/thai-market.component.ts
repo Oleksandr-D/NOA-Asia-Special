@@ -37,14 +37,23 @@ export class ThaiMarketComponent implements OnInit {
       this.thaiWokProducts = thaiWokProducts as IProductResponse[];
       this.thaiSatayProducts = thaiSatayProducts as IProductResponse[];
       this.thaiLavaGrillProducts = thaiLavaGrillProducts as IProductResponse[];
-      this.productService.getAllByCategoryFirebase('Thai lava grill')
-        .then((data) => {
-          this.thaiLavaGrillProducts = data as IProductResponse[];
-        })
-        .catch((error) => {
-          console.log('Error fetching Thai lava grill products:', error);
-        });
+
+      const favorites: Array<IProductResponse> = JSON.parse(localStorage.getItem('favorites') as string);
+      if (favorites) {
+        this.updateFavoritesStatus(this.thaiWokProducts, favorites);
+        this.updateFavoritesStatus(this.thaiSatayProducts, favorites);
+        this.updateFavoritesStatus(this.thaiLavaGrillProducts, favorites);
+      }
     });
+  }
+
+  private updateFavoritesStatus(products: Array<IProductResponse>, favorites: Array<IProductResponse>): void {
+    for (const product of products) {
+      const favoriteProduct = favorites.find((fav) => fav.id === product.id);
+      if (favoriteProduct) {
+        product.favorites = favoriteProduct.favorites;
+      }
+    }
   }
 
   loadCategories(): void {
@@ -84,6 +93,28 @@ export class ThaiMarketComponent implements OnInit {
       top: 0,
       behavior: 'smooth',
     });
+  }
+
+  toFavorites(product: IProductResponse):void{
+    let favorites: Array<IProductResponse> = [];
+    if (localStorage.length > 0 && localStorage.getItem('favorites')) {
+      favorites = JSON.parse(localStorage.getItem('favorites') as string);
+      if (favorites.some((prod) => prod.id === product.id)) {
+        const index = favorites.findIndex((prod) => prod.id === product.id);
+        favorites[index].favorites = !favorites[index].favorites; 
+        product.favorites = favorites[index].favorites;
+      if (!favorites[index].favorites) {
+        favorites.splice(index, 1);
+        }
+      } else {
+        product.favorites = true;
+        favorites.push(product);
+      }
+    } else {
+      product.favorites = true;
+      favorites.push(product);
+    }
+    localStorage.setItem('favorites', JSON.stringify(favorites));
   }
 
 }

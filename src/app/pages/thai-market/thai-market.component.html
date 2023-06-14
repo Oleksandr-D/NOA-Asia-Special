@@ -10,14 +10,14 @@
      </ul>
    </div>
    <h1>Thai Wok</h1>
-   <div class="row">
+   <div class="row" *ngIf="thaiWokProducts">
      <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of thaiWokProducts">
        <div class="product">
          <div class="product-image-wrapper">
            <a class="product-image">
              <picture>
-               <img [routerLink]="['/thai-market/' + product.category.path, product.id ]"
-                    [src]="product.imagePath" [alt]="product.name">
+               <img [routerLink]="['/thai-product/' + product.category.path, product.id ]"
+                    [src]="product.imagePath" [alt]="product.name" (click)="orderScroll()">
              </picture>
              <ul class="product-labels">
               <li class="culinasia" *ngIf="product.culinasia" >CULINASIA MENU</li>
@@ -25,9 +25,10 @@
               <li class="veggie" *ngIf="product.veggie">VEGGIE</li>
             </ul>
            </a>
-           <div class="image-top-right">
-             <button class="fav-btn"></button>
-           </div>
+           <div class="image-top-right" >
+            <button *ngIf="!product.favorites" class="fav-btn" (click)="toFavorites(product)"></button>
+            <button *ngIf="product.favorites" class="full-fav-btn" (click)="toFavorites(product)"></button>
+          </div>
            <div class="floating-buttons">
              <button class="btns" *ngIf="product.addIngredients">
                Додати складники
@@ -39,7 +40,9 @@
          </div>
          <div class="product-title-wrap">
            <h6>
-             <a [routerLink]="['/thai-market/' + product.category.path, product.id ]">{{product.name}}</a>
+             <a [routerLink]="['/thai-product/' + product.category.path, product.id ]" (click)="orderScroll()">
+                {{product.name}}
+             </a>
            </h6>
            <div class="product-price-wrap">{{product.price*product.count}}</div>
          </div>
@@ -59,7 +62,7 @@
    </div>
 </section>
 <div class="spacer-100"></div>
-<section class="container">
+<section class="container" *ngIf="thaiSatayProducts">
   <h1>Thai Satay</h1>
   <div class="row">
     <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of thaiSatayProducts">
@@ -68,7 +71,7 @@
           <a class="product-image">
             <picture>
               <img [routerLink]="['/thai-product/' + product.category.path, product.id ]"
-                   [src]="product.imagePath" [alt]="product.name">
+                   [src]="product.imagePath" [alt]="product.name" (click)="orderScroll()">
             </picture>
             <ul class="product-labels">
               <li class="culinasia" *ngIf="product.culinasia" >CULINASIA MENU</li>
@@ -76,8 +79,9 @@
               <li class="veggie" *ngIf="product.veggie">VEGGIE</li>
             </ul>
           </a>
-          <div class="image-top-right">
-            <button class="fav-btn"></button>
+          <div class="image-top-right" >
+            <button *ngIf="!product.favorites" class="fav-btn" (click)="toFavorites(product)"></button>
+            <button *ngIf="product.favorites" class="full-fav-btn" (click)="toFavorites(product)"></button>
           </div>
           <div class="floating-buttons">
             <button class="btns" *ngIf="product.addIngredients">
@@ -90,7 +94,9 @@
         </div>
         <div class="product-title-wrap">
           <h6>
-            <a [routerLink]="['/thai-market/' + product.category.path, product.id ]">{{product.name}}</a>
+            <a [routerLink]="['/thai-product/' + product.category.path, product.id ]" (click)="orderScroll()">
+              {{product.name}}
+            </a>
           </h6>
           <div class="product-price-wrap">{{product.price*product.count}}</div>
         </div>
@@ -110,7 +116,7 @@
   </div>
 </section>
 <div class="spacer-100"></div>
-<section class="container">
+<section class="container" *ngIf="thaiLavaGrillProducts">
   <h1>Thai LAVA GRILL</h1>
   <div class="row">
     <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of thaiLavaGrillProducts">
@@ -119,7 +125,7 @@
           <a class="product-image">
             <picture>
               <img [routerLink]="['/thai-product/' + product.category.path, product.id ]"
-                   [src]="product.imagePath" [alt]="product.name">
+                   [src]="product.imagePath" [alt]="product.name" (click)="orderScroll()">
             </picture>
             <ul class="product-labels">
               <li class="culinasia" *ngIf="product.culinasia" >CULINASIA MENU</li>
@@ -127,8 +133,9 @@
               <li class="veggie" *ngIf="product.veggie">VEGGIE</li>
             </ul>
           </a>
-          <div class="image-top-right">
-            <button class="fav-btn"></button>
+          <div class="image-top-right" >
+            <button *ngIf="!product.favorites" class="fav-btn" (click)="toFavorites(product)"></button>
+            <button *ngIf="product.favorites" class="full-fav-btn" (click)="toFavorites(product)"></button>
           </div>
           <div class="floating-buttons">
             <button class="btns" *ngIf="product.addIngredients">
@@ -141,7 +148,7 @@
         </div>
         <div class="product-title-wrap">
           <h6>
-            <a [routerLink]="['/thai-market/' + product.category.path, product.id ]">
+            <a [routerLink]="['/thai-product/' + product.category.path, product.id ]" (click)="orderScroll()">
               {{product.name}}
             </a>
           </h6>

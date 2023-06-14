@@ -30,7 +30,7 @@
             <button class="btns" *ngIf="product.addIngredients">
               Додати складники
             </button>
-            <button class="btns" (click)="addToBasket(product)" [routerLink]="['/checkout']">
+            <button class="btns" (click)="addToBasket(product); toTop()" [routerLink]="['/checkout']">
               Швидке замовлення
             </button>
           </div>

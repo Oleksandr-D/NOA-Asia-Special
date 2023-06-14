@@ -57,13 +57,16 @@
               <li class="veggie" *ngIf="product.veggie">VEGGIE</li>
             </ul>
           </a>
-          <div class="image-top-right">
-            <button class="fav-btn"></button>
+          <div class="image-top-right" >
+            <button *ngIf="!product.favorites" class="fav-btn" (click)="toFavorites(product)"></button>
+            <button *ngIf="product.favorites" class="full-fav-btn" (click)="toFavorites(product)"></button>
           </div>
           <div class="floating-buttons">
-            <button class="btns" *ngIf="product.addIngredients">Додати складники
+            <button class="btns" *ngIf="product.addIngredients">
+              Додати складники
             </button>
-            <button class="btns">Швидке замовлення
+            <button class="btns" (click)="addToBasket(product); toTop()" [routerLink]="['/checkout']">
+              Швидке замовлення 
             </button>
           </div>
         </div>

@@ -40,6 +40,13 @@ export class ThaiProductInfoComponent implements OnInit, OnDestroy {
     const PRODUCT_ID = this.activatedRoute.snapshot.paramMap.get('id');
     this.productService.getOneFirebase(PRODUCT_ID as string).subscribe(data =>{
       this.currentProduct = data as IProductResponse;
+      const favorites: Array<IProductResponse> = JSON.parse(localStorage.getItem('favorites') as string);
+        if (favorites) {
+          const favoriteProduct = favorites.find((fav) => fav.id === this.currentProduct.id);
+          if (favoriteProduct) {
+            this.currentProduct.favorites = favoriteProduct.favorites;
+          }
+        }
     })
   }
 
@@ -47,6 +54,15 @@ export class ThaiProductInfoComponent implements OnInit, OnDestroy {
     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
     this.productService.getAllByCategoryFirebase(categoryName).then(data => {
       this.userProducts = data as IProductResponse[];  
+      const favorites: Array<IProductResponse> = JSON.parse(localStorage.getItem('favorites') as string);
+      if (favorites) {
+        for (const product of this.userProducts) {
+          const favoriteProduct = favorites.find((fav) => fav.id === product.id);
+          if (favoriteProduct) {
+            product.favorites = favoriteProduct.favorites;
+          }
+        }
+      }
     })
   }
 
@@ -82,4 +98,29 @@ export class ThaiProductInfoComponent implements OnInit, OnDestroy {
       behavior: 'smooth',
     });
   }
+
+  toFavorites(product: IProductResponse):void{
+    let favorites: Array<IProductResponse> = [];
+    if (localStorage.length > 0 && localStorage.getItem('favorites')) {
+      favorites = JSON.parse(localStorage.getItem('favorites') as string);
+      if (favorites.some((prod) => prod.id === product.id)) {
+        const index = favorites.findIndex((prod) => prod.id === product.id);
+        favorites[index].favorites = !favorites[index].favorites; 
+        this.currentProduct.favorites = !this.currentProduct.favorites;
+        product.favorites = favorites[index].favorites;
+            if (!favorites[index].favorites) {
+            favorites.splice(index, 1);
+          }
+        } else {
+          this.currentProduct.favorites = !this.currentProduct.favorites;
+            product.favorites = true;
+            favorites.push(product);
+         }
+    } else {
+      product.favorites = true;
+      favorites.push(product);
+    }
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+  }
+
 }

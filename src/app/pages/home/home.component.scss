@@ -200,3 +200,8 @@
     margin-left: 20px;
   }
 }
+
+.full-fav-btn {
+  @include fav-btn;
+  background-image: url(../../../assets/images/product/love-icon.svg);
+}
