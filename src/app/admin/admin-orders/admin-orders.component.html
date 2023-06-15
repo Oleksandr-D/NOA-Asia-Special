@@ -1,1 +1,62 @@
-<p>admin-orders works!</p>
+<section class="container-fluid">
+  <div class="col-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Замовлення</th>
+          <th scope="col">Клієнт та Адреса</th>
+          <th scope="col">Ціна</th>
+          <th scope="col">Дії</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <ng-container *ngFor="let user of adminUserOrders; let i = index">
+          <tr *ngIf="i !== 0">
+            <td>{{ i }}</td>
+            <td>
+              <div *ngFor="let orders of user.orders ; let j = index">
+                <div><b>Замовлення {{ j + 1 }}.</b></div>
+                <div *ngFor="let order of orders.orders">
+                  {{order.name}} - {{order.count}}
+                </div>
+              </div>
+            </td>
+            <td>
+              <div *ngFor="let orders of user.orders ; let i = index">
+                <div><b>Замовлення {{ i + 1 }}.</b></div>
+                <div *ngFor="let order of orders.orders ; let j = index">
+                  {{order.restaurantAddress}}
+                </div>
+                <div *ngFor="let order of orders.orders ; let j = index">
+                  {{order.timeInterval}}
+                </div>
+                <div *ngFor="let order of orders.orders ; let j = index">
+                  {{order.firstName}}
+                </div>
+                <div *ngFor="let order of orders.orders ; let j = index">
+                  {{order.surname}}
+                </div>
+                <div *ngFor="let order of orders.orders ; let j = index">
+                  {{order.tel}}
+                </div>
+              </div>
+            </td>
+            <td>
+              <div *ngFor="let orders of user.orders ; let i = index">
+                <div><b>Замовлення {{ i + 1 }}.</b></div>
+                <div *ngFor="let order of orders.orders ; let j = index">
+                  {{order.total}}
+                </div>
+              </div>
+            </td>
+            <td class="actions">
+              <button class="btn">Редагувати</button>
+              <button class="btn">Видалити</button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</section>

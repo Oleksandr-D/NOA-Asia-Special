@@ -1,0 +1,26 @@
+@import '../../shared/styles/variables';
+@import '../../shared/styles/fonts';
+@import '../../shared/styles/mixins';
+@import '../../shared/styles/base';
+
+.actions {
+  width: 10%;
+}
+
+.btn {
+  @include btn;
+}
+
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.btn:disabled {
+  pointer-events: all;
+  cursor: not-allowed;
+}
+
+.btn:hover {
+  color: $text_main;
+}

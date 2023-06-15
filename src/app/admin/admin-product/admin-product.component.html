@@ -1,126 +1,117 @@
 <section class="row justify-content-center">
-   <p class="coll ">
-     <button *ngIf="!editStatus"  class="btns ms-2 " style="width: 250px;" data-bs-toggle="collapse"
-             href="#collapseExample" role="button" (click)="toggleOpenForm()"
-             aria-expanded="false" aria-controls="collapseExample">
-             {{isOpen ? 'Закрити' : 'Додати товар'}}
-     </button>
-   </p>
-   <div class="collapse row justify-content-center" [ngClass]="{'show':isOpen}"
-    id="collapseExample">
-     <div class="col-lg-11 col-12">
-       <form [formGroup]="productForm" (ngSubmit)="addProduct()" class="was-validated">
-         <div class="row">
-           <div class="col-sm-4 col-12 mb-3">
-             <label for="name" class="form-label">Категорія</label>
-             <select formControlName="category"  class="form-select" required>
-               <option  [ngValue]="category" *ngFor="let category of allCategories">
-                  {{category.name}}
-               </option>
-             </select>
-           </div>
-           <div class="col-sm-4 col-12 mb-3">
-             <label for="name" class="form-label">Назва</label>
-             <input formControlName="name" name="name" type="text"
-                    class="form-control" id="name" required>
-           </div>
-           <div class="col-sm-4 col-12 mb-3">
-             <label for="path" class="form-label">Шлях</label>
-             <input formControlName="path" name="path" type="text"
-                    class="form-control" id="path" required>
-           </div>
-         </div>
-         <div class="row"> 
-         <div class="col-sm-12 col-md-6">
-           <label for="description" class="form-label">Склад</label>
-           <textarea formControlName="description" name="description"
-                    id="description" class="form-control" required>
-           </textarea>
-         </div>
-         <div class="col-sm-4 col-md-6 p-4">
-          <mat-checkbox formControlName="culinasia">Culinasia menu</mat-checkbox>
-          <mat-checkbox formControlName="rice">No rice</mat-checkbox>
-          <mat-checkbox formControlName="veggie">Veggie</mat-checkbox>
-          <mat-checkbox formControlName="addIngredients">Додати складники</mat-checkbox>
-         </div>
-        </div>
-         <div class="row">
-           <div class="col-sm-2 col-12 mb-3">
-             <label for="weight" class="form-label">Вага</label>
-             <input formControlName="weight" name="weight" type="text"
-                    class="form-control" id="weight" required>
-           </div>
-           <div class="col-sm-2 col-12 mb-3">
-             <label for="price" class="form-label">Ціна</label>
-             <input formControlName="price" name="price" type="number"
-                    class="form-control" id="price" required>
-           </div>
-           <div class="col mb-3">
-           <ng-container *ngIf="!isUploaded || editStatus"> 
-               <label for="formFile" class="form-label">Завантажити зображення</label>
-               <input class="form-control" type="file" id="formFile"
-                      (change)="upload($event)" required>
-             <div class="progress mt-3">
-               <div class="progress-bar progress-bar-striped" role="progressbar"
-                    [style.width.%]="uploadPercent"
-                    aria-valuemin="0" aria-valuemax="100" id="formFile">
-               </div>
-             </div>
-           </ng-container>
+  <p class="coll ">
+    <button *ngIf="!editStatus" class="btns ms-2 " style="width: 250px;" data-bs-toggle="collapse"
+      href="#collapseExample" role="button" (click)="toggleOpenForm()" aria-expanded="false"
+      aria-controls="collapseExample">
+      {{isOpen ? 'Закрити' : 'Додати товар'}}
+    </button>
+  </p>
+  <div class="collapse row justify-content-center" [ngClass]="{'show':isOpen}" id="collapseExample">
+    <div class="col-lg-11 col-12">
+      <form [formGroup]="productForm" (ngSubmit)="addProduct()" class="was-validated">
+        <div class="row">
+          <div class="col-sm-4 col-12 mb-3">
+            <label for="name" class="form-label">Категорія</label>
+            <select formControlName="category" class="form-select" required>
+              <option [ngValue]="category" *ngFor="let category of allCategories">
+                {{category.name}}
+              </option>
+            </select>
           </div>
-         </div>
-         <ng-container *ngIf="isUploaded">
-           <div class="image-wraper">
-             <img [src]="valueByControl('imagePath')"  alt="">
-             <button type="button" class="btn ms-5" (click)="deleteImage()">
-               Видалити зображення
-             </button>
-           </div>
-         </ng-container>
-         <button [disabled]="productForm.invalid" type="submit" 
-                  class="btns">
-                 {{ editStatus ? 'ЗБЕРЕГТИ' : 'ДОДАТИ ТОВАР' }}
-         </button>
-       </form>
-     </div>
-   </div>
-   <div class="col-lg-11 col-12">
-     <table class="table mt-4">
-       <thead>
-         <tr>
-           <th scope="col">Id</th>
-           <th scope="col">Категорія</th>
-           <th scope="col">Назва</th>
-           <th scope="col">Склад</th>
-           <th scope="col">Вага</th>
-           <th scope="col">Ціна</th>
-           <th scope="col">Зображення</th>
-           <th scope="col">Дії</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr *ngFor="let product of adminProducts">
-           <td>{{ product.id }}</td>
-           <td>{{ product.category.name }}</td>
-           <td>{{ product.name }}</td>
-           <td>{{ product.description | slice:0:40 }}
-             <span *ngIf="product.description.length > 40">...</span>
-           </td>
-           <td>{{ product.weight }}</td>
-           <td>{{ product.price }}</td>
-           <td>
-             <img [src]="product.imagePath" alt="" class="product-img">
-           </td>
-           <td>
-             <button (click)="editProduct(product)" type="button" class="btn">
-               Редагувати
-             </button>
-             <button [disabled]="editStatus" (click)="deleteProduct(product)" type="button" class="btn">
-               Видалити
-             </button>
-           </td>
-         </tr>
-       </tbody>
-     </table>
-   </div>
- </section>
+          <div class="col-sm-4 col-12 mb-3">
+            <label for="name" class="form-label">Назва</label>
+            <input formControlName="name" name="name" type="text" class="form-control" id="name" required>
+          </div>
+          <div class="col-sm-4 col-12 mb-3">
+            <label for="path" class="form-label">Шлях</label>
+            <input formControlName="path" name="path" type="text" class="form-control" id="path" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <label for="description" class="form-label">Склад</label>
+            <textarea formControlName="description" name="description" id="description" class="form-control" required>
+           </textarea>
+          </div>
+          <div class="col-sm-4 col-md-6 p-4">
+            <mat-checkbox formControlName="culinasia">Culinasia menu</mat-checkbox>
+            <mat-checkbox formControlName="rice">No rice</mat-checkbox>
+            <mat-checkbox formControlName="veggie">Veggie</mat-checkbox>
+            <mat-checkbox formControlName="addIngredients">Додати складники</mat-checkbox>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2 col-12 mb-3">
+            <label for="weight" class="form-label">Вага</label>
+            <input formControlName="weight" name="weight" type="text" class="form-control" id="weight" required>
+          </div>
+          <div class="col-sm-2 col-12 mb-3">
+            <label for="price" class="form-label">Ціна</label>
+            <input formControlName="price" name="price" type="number" class="form-control" id="price" required>
+          </div>
+          <div class="col mb-3">
+            <ng-container *ngIf="!isUploaded || editStatus">
+              <label for="formFile" class="form-label">Завантажити зображення</label>
+              <input class="form-control" type="file" id="formFile" (change)="upload($event)" required>
+              <div class="progress mt-3">
+                <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="uploadPercent"
+                  aria-valuemin="0" aria-valuemax="100" id="formFile">
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <ng-container *ngIf="isUploaded">
+          <div class="image-wraper">
+            <img [src]="valueByControl('imagePath')" alt="">
+            <button type="button" class="btn ms-5" (click)="deleteImage()">
+              Видалити зображення
+            </button>
+          </div>
+        </ng-container>
+        <button [disabled]="productForm.invalid" type="submit" class="btns">
+          {{ editStatus ? 'ЗБЕРЕГТИ' : 'ДОДАТИ ТОВАР' }}
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="col-lg-11 col-12">
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Категорія</th>
+          <th scope="col">Назва</th>
+          <th scope="col">Склад</th>
+          <th scope="col">Вага</th>
+          <th scope="col">Ціна</th>
+          <th scope="col">Зображення</th>
+          <th scope="col">Дії</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of adminProducts">
+          <td>{{ product.id }}</td>
+          <td>{{ product.category.name }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description | slice:0:40 }}
+            <span *ngIf="product.description.length > 40">...</span>
+          </td>
+          <td>{{ product.weight }}</td>
+          <td>{{ product.price }}</td>
+          <td>
+            <img [src]="product.imagePath" alt="" class="product-img">
+          </td>
+          <td>
+            <button (click)="editProduct(product)" type="button" class="btn">
+              Редагувати
+            </button>
+            <button [disabled]="editStatus" (click)="deleteProduct(product)" type="button" class="btn">
+              Видалити
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
