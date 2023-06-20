@@ -119,7 +119,7 @@ header {
 
 .header-submenu {
   position: fixed;
-  top: 175px;
+  top: 178px;
   left: 50%;
   width: 62%;
   display: flex;
@@ -130,17 +130,17 @@ header {
   padding: 10px 9px 10px 10px;
   z-index: 2;
   transform: translateX(-50%);
-  background-color: #F5F5F5;
+  background-color: #f0f0f0;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.2s;
+  transition: opacity 0.5s, top 0, 5s;
 
   .header-item {
     width: 16.6%;
     vertical-align: top;
     padding: 8px 0;
     text-align: center;
-    transition: all 0.3s;
+    transition: background-color 0.5s;
     border-radius: 5px;
 
     span {
@@ -164,12 +164,14 @@ header {
 
 .header-item:hover {
   background-color: #fff;
+  transition: background-color 0.5s;
 }
 
-.show-submenu:hover .header-submenu {
+.header-submenu.hide {
   opacity: 1;
   visibility: visible;
-  top: 163px;
+  top: 162px;
+  transition: opacity 0.5s, top 0.5s;
 }
 
 .header-right {
@@ -299,7 +301,7 @@ header {
     span {
       font-family: $main-font-bold;
       transition: all 0.3s;
-      cursor:pointer;
+      cursor: pointer;
     }
 
     span:hover {

@@ -15,16 +15,18 @@ import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-   public isMenuOpen = false;
+   public isMenuOpen: boolean  = false;
    public categories: Array<ICategoryResponse> = [];
    public thaiMarketCategories: Array<ICategoryResponse> = [];
    public basket: Array<IProductResponse> = [];
    public total = 0;
    public count = 0;
-   public isOpen = false;
+   public isOpen: boolean  = false;
    public currentUser = '';
    public loginUrl = '';
-   public isLogin = false;
+   public isLogin: boolean  = false;
+   public hoverSubMenu: boolean = false;
+   public hoverSubMenuThai: boolean = false;
 
    constructor(
     private categoryService: CategoryService,
@@ -45,6 +47,21 @@ export class HeaderComponent implements OnInit {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  onMouseEnter() {
+    this.hoverSubMenu = true;
+  }
+
+  onMouseLeave() {
+    this.hoverSubMenu = false;
+  }
+  onMouseEnterThai() {
+    this.hoverSubMenuThai = true;
+  }
+
+  onMouseLeaveThai() {
+    this.hoverSubMenuThai = false;
   }
 
   loadCategories(): void {
@@ -165,8 +182,5 @@ export class HeaderComponent implements OnInit {
       .subscribe((result) => {
       });
   }
-
-
-
 
 }

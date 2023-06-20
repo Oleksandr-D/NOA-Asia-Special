@@ -13,11 +13,11 @@
     <div class="header-menu">
       <nav>
         <ul>
-          <li class="show-submenu">
+          <li class="show-submenu" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
             <a class="dropdown-item">Mеню</a>
-            <ul class="header-submenu">
+            <ul class="header-submenu" [ngClass]="{ 'hide': hoverSubMenu }">
               <li class="header-item" *ngFor="let category of categories">
-                <a [routerLink]="['/product/' + category.path]">
+                <a [routerLink]="['/product/' + category.path]" (click)="onMouseLeave()">
                   <div class="header-item-imgs">
                     <img [src]="category.imagePath" alt="" class="category-image">
                   </div>
@@ -26,11 +26,11 @@
               </li>
             </ul>
           </li>
-          <li class="show-submenu">
+          <li class="show-submenu" (mouseenter)="onMouseEnterThai()" (mouseleave)="onMouseLeaveThai()">
             <a [routerLink]="['thai-market']" class="dropdown-item">Thai Market</a>
-            <ul class="header-submenu">
+            <ul class="header-submenu" [ngClass]="{ 'hide': hoverSubMenuThai }">
               <li class="header-item" *ngFor="let category of thaiMarketCategories">
-                <a [routerLink]="['/thai-product/' + category.path]">
+                <a [routerLink]="['/thai-product/' + category.path]" (click)="onMouseLeaveThai()">
                   <div class="header-item-imgs">
                     <img [src]="category.imagePath" alt="" class="category-image">
                   </div>
