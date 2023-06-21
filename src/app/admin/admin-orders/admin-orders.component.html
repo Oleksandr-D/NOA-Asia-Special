@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Замовлення</th>
+          <th scope="col">Замовлення/шт.</th>
           <th scope="col">Клієнт та Адреса</th>
           <th scope="col">Ціна</th>
           <th scope="col">Дії</th>
@@ -12,7 +12,7 @@
       </thead>
       <tbody class="table-group-divider">
         <ng-container *ngFor="let user of adminUserOrders; let i = index">
-          <tr *ngIf="i !== 0">
+          <tr *ngIf="user.orders.length > 0">
             <td>{{ i }}</td>
             <td>
               <div *ngFor="let orders of user.orders ; let j = index">

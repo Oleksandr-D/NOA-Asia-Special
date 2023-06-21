@@ -26,7 +26,7 @@
               </li>
             </ul>
           </li>
-          <li class="show-submenu" (mouseenter)="onMouseEnterThai()" (mouseleave)="onMouseLeaveThai()">
+          <li id="thai-market" class="show-submenu" (mouseenter)="onMouseEnterThai()" (mouseleave)="onMouseLeaveThai()">
             <a [routerLink]="['thai-market']" class="dropdown-item">Thai Market</a>
             <ul class="header-submenu" [ngClass]="{ 'hide': hoverSubMenuThai }">
               <li class="header-item" *ngFor="let category of thaiMarketCategories">
@@ -39,7 +39,7 @@
               </li>
             </ul>
           </li>
-          <li>
+          <li id="delivery">
             <a [routerLink]="['/delivery']" class="dropdown-item">Доставка</a>
           </li>
         </ul>

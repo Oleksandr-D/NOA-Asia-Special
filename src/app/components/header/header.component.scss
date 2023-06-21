@@ -77,20 +77,11 @@ header {
 }
 
 .header-logo {
+  margin-left: 50px;
+
   a {
     position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    width: 180px;
-    height: 105px;
-
-    img {
-      position: absolute;
-      display: block;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
+    display: flex;
   }
 }
 
@@ -852,4 +843,149 @@ header {
     font-size: 22px;
   }
 
+}
+
+
+@media screen and (max-width:1199px) {
+  .wrapper-languague {
+    display: none;
+  }
+
+  header {
+    height: 80px;
+  }
+
+  .btn-grey {
+    display: none;
+  }
+
+  .header-submenu.hide {
+    top: 135px;
+  }
+
+}
+
+@media screen and (max-width:949px) {
+
+  .header-logo {
+    margin-left: 20px;
+  }
+
+  .header-right .phone {
+    display: none;
+  }
+
+  #delivery {
+    display: none;
+  }
+
+  .dropdown-item {
+    padding: 30px 20px;
+  }
+
+
+}
+
+
+@media screen and (max-width:636px) {
+
+  header {
+    height: 60px;
+  }
+
+  .header-logo a img {
+    width: 80%;
+  }
+
+  #thai-market {
+    display: none;
+  }
+
+  .header-right {
+    height: 100%;
+  }
+
+  .header-right a {
+    margin-right: 20px;
+  }
+
+  .burger {
+    margin-right: 20px;
+  }
+
+}
+
+@media screen and (max-width:427px) {
+
+  .header-informer {
+    background-color: #141414;
+    color: #fff;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    padding: 5px 0;
+    font-size: 16px;
+
+    a {
+      margin: 0px;
+    }
+  }
+
+  .header-logo {
+    margin-left: 5px;
+
+    a img {
+      width: 65px;
+    }
+  }
+
+  .burger {
+    margin-right: 5px;
+    width: 23%;
+  }
+
+  .header-right a {
+    width: 23%;
+  }
+
+  .header-menu ul {
+    padding: 0px;
+  }
+
+  .dropdown-item {
+    padding: 0px;
+    font-size: 11px;
+  }
+
+  .login-wraper .user-login span {
+    font-size: 11px;
+  }
+
+  .menu {
+    padding: 50px 30px;
+  }
+
+  .menu-open {
+    width: 100%;
+    right: 0;
+  }
+
+  .menu-list ul {
+    width: 100%;
+    padding: 0px;
+  }
+
+  .menu-close-btn {
+    top: 20px;
+    right: 20px;
+  }
+}
+
+@media screen and (max-width:350px) {
+  .header-logo a img {
+    width: 50px;
+  }
 }
