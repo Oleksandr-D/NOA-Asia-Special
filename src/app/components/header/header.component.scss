@@ -161,7 +161,7 @@ header {
 .header-submenu.hide {
   opacity: 1;
   visibility: visible;
-  top: 162px;
+  top: 160px;
   transition: opacity 0.5s, top 0.5s;
 }
 
@@ -842,9 +842,7 @@ header {
   .card-total-price {
     font-size: 22px;
   }
-
 }
-
 
 @media screen and (max-width:1199px) {
   .wrapper-languague {
@@ -863,6 +861,9 @@ header {
     top: 135px;
   }
 
+  .header-submenu {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width:949px) {
@@ -883,7 +884,25 @@ header {
     padding: 30px 20px;
   }
 
+  .burger {
+    margin-right: 15px;
+  }
 
+  .header-submenu {
+    .header-item {
+      width: 20%;
+      padding: 7px 0px;
+    }
+  }
+
+  .header-menu nav ul li a:last-child {
+    padding: 0px 0px;
+  }
+
+  .header-submenu .header-item .header-item-imgs {
+    width: 70px;
+    height: 70px;
+  }
 }
 
 
@@ -893,8 +912,25 @@ header {
     height: 60px;
   }
 
+  .header-informer {
+    font-size: 11px;
+
+    a {
+      font-size: 11px;
+    }
+  }
+
   .header-logo a img {
     width: 80%;
+  }
+
+  .header-submenu .header-item .header-item-imgs {
+    width: 60px;
+    height: 50px;
+  }
+
+  .header-submenu .header-item span {
+    font-size: 11px;
   }
 
   #thai-market {
@@ -909,28 +945,29 @@ header {
     margin-right: 20px;
   }
 
-  .burger {
-    margin-right: 20px;
+  .header-submenu.hide {
+    top: 110px;
   }
 
+  .header-submenu {
+    width: 100%;
+
+    .header-item {
+      width: 25%;
+    }
+  }
 }
 
 @media screen and (max-width:427px) {
 
   .header-informer {
-    background-color: #141414;
-    color: #fff;
-    z-index: 9;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
     padding: 5px 0;
-    font-size: 16px;
+    font-size: 11px;
+    flex-direction: column;
 
     a {
       margin: 0px;
+      font-size: 11px;
     }
   }
 
@@ -960,8 +997,21 @@ header {
     font-size: 11px;
   }
 
+  .header-submenu .header-item {
+    width: 33%;
+  }
+
+  .header-submenu .header-item span {
+    display: block;
+    line-height: 20px;
+  }
+
   .login-wraper .user-login span {
     font-size: 11px;
+  }
+
+  .header-submenu.hide {
+    top: 100px;
   }
 
   .menu {
@@ -988,4 +1038,9 @@ header {
   .header-logo a img {
     width: 50px;
   }
+
+  .header-submenu .header-item span {
+    font-size: 9px;
+  }
+
 }
