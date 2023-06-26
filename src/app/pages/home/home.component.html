@@ -5,14 +5,13 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
           aria-current="true" aria-label="Slide 1">
         </button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-          aria-label="Slide 2">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2">
         </button>
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="../../../assets/images/home/noa-stravy-pidtrymky-bannerm-min-1550x630.png"
-           class="d-block w-100" alt="...">
+          <img src="../../../assets/images/home/noa-stravy-pidtrymky-bannerm-min-1550x630.png" class="d-block w-100"
+            alt="...">
         </div>
         <div class="carousel-item">
           <img src="../../../assets/images/home/noa-culspecial-site-banner-fullhd-min-1-1550x630.png"
@@ -31,33 +30,46 @@
       </button>
     </div>
   </div>
+  <div class="home-baner-mobile">
+    <div class="modile-baner-img"></div>
+  </div>
 </section>
 <section class="products container">
   <h1>Особлива <span>Азія</span>
   </h1>
   <div class="categories-menu">
     <ul class="categories-list">
-     <li class="categories-list-item" *ngFor="let category of categories">
+      <li class="categories-list-item" *ngFor="let category of categories">
         <a [routerLink]="['/product/' + category.path]" (click)="toTop()">{{ category.name }}</a>
       </li>
     </ul>
   </div>
+  <div class="categories-menu-mobile">
+    <mat-form-field appearance="outline">
+      <mat-select placeholder="Mеню">
+        <mat-option *ngFor="let category of categories" class="category-link"
+         [routerLink]="['/product/' + category.path]" (click)="toTop()" >
+         {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
   <div class="row">
-    <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of userProducts">
+    <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of userProducts">
       <div class="product">
         <div class="product-image-wrapper">
           <a class="product-image">
             <picture>
-              <img [routerLink]="['/product/' + product.category.path, product.id ]"
-               [src]="product.imagePath" [alt]="product.name" (click)="toTop()">
+              <img [routerLink]="['/product/' + product.category.path, product.id ]" [src]="product.imagePath"
+                [alt]="product.name" (click)="toTop()">
             </picture>
             <ul class="product-labels">
-              <li class="culinasia" *ngIf="product.culinasia" >CULINASIA MENU</li>
+              <li class="culinasia" *ngIf="product.culinasia">CULINASIA MENU</li>
               <li class="rice" *ngIf="product.rice">NO RICE</li>
               <li class="veggie" *ngIf="product.veggie">VEGGIE</li>
             </ul>
           </a>
-          <div class="image-top-right" >
+          <div class="image-top-right">
             <button *ngIf="!product.favorites" class="fav-btn" (click)="toFavorites(product)"></button>
             <button *ngIf="product.favorites" class="full-fav-btn" (click)="toFavorites(product)"></button>
           </div>
@@ -66,7 +78,7 @@
               Додати складники
             </button>
             <button class="btns" (click)="addToBasket(product); toTop()" [routerLink]="['/checkout']">
-              Швидке замовлення 
+              Швидке замовлення
             </button>
           </div>
         </div>
