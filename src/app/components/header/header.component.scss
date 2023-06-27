@@ -903,6 +903,14 @@ header {
     width: 70px;
     height: 70px;
   }
+
+  .basket-modal-wraper {
+    width: 100%;
+  }
+
+  .basket-modal-wraper .cart-bottom {
+    width: 100%;
+  }
 }
 
 
@@ -955,6 +963,46 @@ header {
     .header-item {
       width: 25%;
     }
+  }
+
+  .basket-modal-wraper .basket-header {
+    padding: 20px 20px 0px 15px;
+  }
+
+  .basket-modal-wraper .basket-header .clear-basket {
+    width: 100%;
+    font-size: 8px;
+  }
+
+  .basket-modal-wraper .basket-products {
+    padding: 10px 10px;
+  }
+
+  .basket-modal-wraper .title-basket {
+    margin: 0 5px 0px 0;
+    font-size: 12px;
+  }
+
+  .basket-modal-wraper .basket-products-controls {
+    justify-content: space-around;
+  }
+
+  .basket-modal-wraper .btn-basket {
+    font-size: 12px;
+    padding: 15px 5px;
+  }
+
+  .basket-modal-wraper .thumb-input-number {
+    width: 55%;
+    margin: 0px;
+  }
+
+  .basket-modal-wraper .basket-products-price {
+    width: 30px;
+  }
+
+  .basket-modal-wraper .basket-products-desc {
+    padding: 0 0px 0 10px;
   }
 }
 
@@ -1032,6 +1080,13 @@ header {
     top: 20px;
     right: 20px;
   }
+
+  .basket {
+    top: 92px;
+    right: 34px;
+    width: 100px;
+    height: 90px;
+  }
 }
 
 @media screen and (max-width:350px) {
@@ -1043,4 +1098,13 @@ header {
     font-size: 9px;
   }
 
+  .basket-modal-wraper .btn-basket {
+    font-size: 10px;
+    padding: 10px 5px;
+  }
+
+  .basket-modal-wraper .title-basket {
+    margin: 0 0px 0px 0;
+    font-size: 8px;
+  }
 }

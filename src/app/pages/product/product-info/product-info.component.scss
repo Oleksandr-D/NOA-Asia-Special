@@ -18,6 +18,7 @@ section {
 }
 
 .product-img {
+  width: 100%;
   height: 100%;
 }
 
@@ -119,7 +120,7 @@ section {
 }
 
 .product {
-  max-width: 380px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 15px;
@@ -180,6 +181,7 @@ section {
     line-height: 1.5em;
     font-size: 15px;
     height: 66px;
+    overflow: hidden;
   }
 }
 
@@ -201,13 +203,48 @@ section {
   background-image: url(../../../../assets/images/product/love-icon.svg);
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width:949px) {
+
+  .breadcrumbs {
+    position: relative;
+    top: 10px;
+    left: 0px;
+    margin-bottom: 50px;
+  }
+
+  ol,
+  ul {
+    padding-left: 0px;
+  }
+
+  .product {
+    width: 100%;
+
+    .product-title-wrap {
+      margin: 0px;
+
+      h6 {
+        margin: 0px;
+      }
+    }
+
+    .product-controls {
+      width: 100%;
+
+      .btns {
+        padding: 10px 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 636px) {
   .breadcrumb-item {
     font-size: 10px;
   }
 
   .card-title {
-    font-size: 34px;
+    font-size: 28px;
     margin: 10px 0px;
   }
 
@@ -218,11 +255,21 @@ section {
   .container {
     width: 70%;
   }
+
+  .btn-order {
+    margin-left: 10px;
+    padding: 20px 5px;
+  }
+
+  .thumb-input-number {
+    margin-left: 10px;
+  }
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 427px) {
   .container {
     width: 100%;
+    position: relative;
   }
 
   .card-body {
@@ -240,7 +287,7 @@ section {
   }
 
   .thumb-input-number {
-    width: 120px;
+    width: 40%;
     justify-content: space-evenly;
 
     button {
@@ -250,12 +297,29 @@ section {
     }
 
     input {
-      height: 45px;
-      font-size: 18px;
+      height: 40px;
+      font-size: 16px;
     }
   }
 
   .btn-order {
-    padding: 10px 5px;
+    padding: 8px 5px;
+    font-size: 12px;
   }
+
+  .product .floating-buttons .btns {
+    padding: 12px 0;
+    font-size: 9px;
+  }
+
+  .product .product-controls {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .card-text{
+    font-size: 15px;
+  }
+
+
 }

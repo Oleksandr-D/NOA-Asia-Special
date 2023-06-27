@@ -18,7 +18,8 @@ section {
 }
 
 .product-img {
-  height: 50vh;
+  width: 100%;
+  height: 100%;
 }
 
 .card-title {
@@ -163,6 +164,7 @@ section {
     line-height: 1.5em;
     font-size: 15px;
     height: 66px;
+    overflow: hidden;
   }
 }
 
@@ -184,9 +186,21 @@ section {
   background-image: url(../../../../assets/images/product/love-icon.svg);
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 949px) {
   .breadcrumb-item {
     font-size: 10px;
+  }
+
+  .product {
+    width: 100%;
+
+    .product-title-wrap {
+      margin: 0px;
+
+      h6 {
+        margin: 0px;
+      }
+    }
   }
 
   .card-title {
@@ -203,13 +217,56 @@ section {
   }
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 636px) {
+  .breadcrumb-item {
+    font-size: 10px;
+  }
+
+  .card-title {
+    font-size: 34px;
+    margin: 10px 0px;
+  }
+
+  .product-controls {
+    margin-top: 20px;
+  }
+
+  .container {
+    width: 70%;
+  }
+
+  .btn-order {
+    margin-left: 10px;
+    padding: 20px 5px;
+  }
+
+  .thumb-input-number {
+    margin-left: 10px;
+  }
+
+
+}
+
+@media screen and (max-width: 427px) {
   .container {
     width: 100%;
+    position: relative;
   }
 
   .card-body {
     padding: 5px;
+  }
+
+  .breadcrumbs {
+    position: relative;
+    top: 10px;
+    left: 0px;
+    margin-bottom: 50px;
+  }
+
+  ol,
+  ul {
+    padding-left: 0px;
   }
 
   .product-price {
@@ -241,4 +298,18 @@ section {
   .btn-order {
     padding: 10px 5px;
   }
+
+  .product .floating-buttons .btns {
+    padding: 12px 0;
+    font-size: 9px;
+  }
+
+  .product .product-controls {
+    margin-top: 30px;
+  }
+
+  .card-text {
+    font-size: 16px;
+  }
+
 }

@@ -204,3 +204,44 @@ h1 {
   @include fav-btn;
   background-image: url(../../../assets/images/product/love-icon.svg);
 }
+
+.categories-menu-mobile {
+  display: none;
+}
+
+@media screen and (max-width:949px) {
+
+  .categories-menu {
+    display: none;
+  }
+
+  .categories-menu-mobile {
+    display: block;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .product {
+    max-width: none;
+    width: 100%;
+
+    .product-title-wrap {
+      margin: 0px;
+
+      h6 {
+        margin: 0px;
+      }
+    }
+  }
+
+  .seo-decor-leaf,
+  .seo-decor {
+    display: none;
+  }
+
+  .seo .text {
+    padding: 0 20px;
+  }
+}

@@ -54,10 +54,10 @@
   </div>
 </section>
 <div class="spacer-100"></div>
-<section class="container" *ngIf="currentProduct">
+<section class="container-fluid" *ngIf="currentProduct">
   <h3 class="title">Інші <span>{{currentProduct.category.name}}</span></h3>
   <div class="row">
-    <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of userProducts">
+    <div class="col-12 col-sm-6 col-lg-6 col-xl-3 mb-4" *ngFor="let product of userProducts">
       <div class="product">
         <div class="product-image-wrapper">
           <a class="product-image">

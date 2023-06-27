@@ -329,3 +329,19 @@ hr {
     margin-bottom: 14px;
   }
 }
+
+@media screen and (max-width:427px) {
+
+  .p-4 {
+    padding: 1rem !important;
+  }
+
+  .basket-products {
+    padding: 0px;
+  }
+
+  mat-form-field {
+    width: 100%;
+    margin: 0%;
+  }
+}

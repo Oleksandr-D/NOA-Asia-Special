@@ -164,11 +164,12 @@ h2.title {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 50px;
+  flex-wrap: wrap;
 }
 
 .pay-page-block {
   display: flex;
+  margin-bottom: 20px;
 }
 
 .pay-imgs {
@@ -191,4 +192,71 @@ h5.title {
   font-size: 20px;
   letter-spacing: 0.03em;
   margin-bottom: 15px;
+}
+
+@media screen and (max-width:949px) {
+
+  .about-info {
+    padding: 0 10px;
+    margin: 0px 0;
+  }
+
+  .breadcrumbs {
+    position: relative;
+    top: 10px;
+    left: 0px;
+    margin-bottom: 50px;
+  }
+
+  ol,
+  ul {
+    padding-left: 0px;
+  }
+
+  .pay-inputs {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    width: 50%;
+    z-index: 1;
+  }
+}
+
+@media screen and (max-width:427px) {
+
+  h1 {
+    font-size: 26px;
+  }
+
+  h2.title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .bike-cont ul li,
+  .text ul li {
+    padding-left: 15px;
+    margin-bottom: 15px;
+    font-size: 11px;
+  }
+
+  .text {
+    font-size: 12px;
+  }
+
+  .text h2 {
+    font-size: 24px;
+  }
+
+  .pay-cont {
+    width: 100%;
+
+    .text {
+      font-size: 12px;
+    }
+  }
 }

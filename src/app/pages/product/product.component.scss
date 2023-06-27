@@ -105,6 +105,7 @@
     line-height: 1.5em;
     font-size: 15px;
     height: 66px;
+    overflow: hidden;
   }
 }
 
@@ -124,4 +125,49 @@
 .full-fav-btn {
   @include fav-btn;
   background-image: url(../../../assets/images/product/love-icon.svg);
+}
+
+@media screen and (max-width:949px) {
+
+  .categories-menu {
+    display: none;
+  }
+
+  .categories-menu-mobile {
+    display: block;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .product {
+    max-width: none;
+    width: 100%;
+
+    .product-title-wrap {
+      margin: 0px;
+
+      h6 {
+        margin: 0px;
+      }
+    }
+  }
+}
+
+
+
+@media screen and (max-width:427px) {
+  .product .floating-buttons .btns {
+    padding: 12px 0;
+    font-size: 9px;
+  }
+
+  .product .product-controls {
+    margin-top: 30px;
+  }
+
+  .spacer-140 {
+    height: 70px;
+  }
 }

@@ -46,3 +46,39 @@ h1.title {
 .spacer-100 {
   height: 100px;
 }
+
+@media screen and (max-width:949px) {
+
+  .about-info {
+    padding: 0 10px;
+    margin: 0px 0;
+  }
+
+  .breadcrumbs {
+    position: relative;
+    top: 10px;
+    left: 0px;
+    margin-bottom: 50px;
+  }
+
+  ol,
+  ul {
+    padding-left: 0px;
+  }
+}
+
+@media screen and (max-width:427px) {
+
+  h1.title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+}

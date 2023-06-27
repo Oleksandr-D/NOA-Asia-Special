@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+
+  toTop():void{
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+
 }
