@@ -31,7 +31,28 @@
   }
 }
 
+@media screen and (max-width:949px) {
+
+  .breadcrumbs {
+    position: relative;
+    top: 10px;
+    left: 0px;
+    margin-bottom: 50px;
+  }
+
+  ol,
+  ul {
+    padding-left: 0px;
+  }
+}
+
 @media screen and (max-width: 427px) {
+
+  .title {
+    font-size: 32px;
+    margin-bottom: 0px;
+  }
+
   .simple-page-text p {
     font-size: 14px;
   }

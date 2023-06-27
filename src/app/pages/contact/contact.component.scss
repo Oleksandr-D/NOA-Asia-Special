@@ -161,3 +161,34 @@ form {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+@media screen and (max-width:949px) {
+
+  .breadcrumbs {
+    position: relative;
+    top: 10px;
+    left: 0px;
+    margin-bottom: 50px;
+  }
+
+  ol,
+  ul {
+    padding-left: 0px;
+  }
+}
+
+@media screen and (max-width:427px) {
+
+  h1.title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .text-style-2 {
+    font-size: 14px;
+  }
+
+  .conatct-grey {
+    padding: 20px 10px;
+  }
+}
