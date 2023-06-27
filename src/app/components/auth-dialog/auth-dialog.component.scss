@@ -122,3 +122,35 @@ mat-form-field {
   cursor: pointer;
   color: $button-secondary-text;
 }
+
+@media screen and (max-width:949px) {
+
+  .form-wrap {
+    padding: 60px 20px;
+  }
+}
+
+@media screen and (max-width:427px) {
+
+  .form-wrap {
+    padding: 20px 20px;
+    height: 100%;
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    .btns {
+      padding: 16px 10px;
+    }
+
+    .password-confirmation-error {
+      padding: 0px;
+    }
+  }
+}

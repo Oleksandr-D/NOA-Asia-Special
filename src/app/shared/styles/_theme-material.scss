@@ -3,8 +3,7 @@
 @import 'mixins';
 @import 'fonts';
 
-$primary-default-value: (
-  50: #caefef,
+$primary-default-value: (50: #caefef,
   100: #9fc6c6,
   200: #88b7b7,
   300: #567d7d,
@@ -61,12 +60,20 @@ $custom-theme: mat.define-light-theme((color: (primary: $custom-theme-primary,
 }
 
 .auth-dialog {
-  min-width: 50%;
-  min-height: 400px;
+  width: 50%;
+  height: fit-content;
 }
 
 @media screen and (max-width:770px) {
+
   .auth-dialog {
     width: 100%;
+  }
+}
+
+@media screen and (max-width:427px) {
+
+  .auth-dialog {
+    min-width: 100%;
   }
 }

@@ -145,3 +145,34 @@ footer {
     color: $button-secondary-text;
   }
 }
+
+@media screen and (max-width:427px) {
+  .menu-item {
+    padding: 0px;
+
+    li {
+      margin-bottom: 15px;
+    }
+  }
+
+  .footer-icon-block {
+    margin-bottom: 15px;
+  }
+
+  .footer-info-block {
+    margin-bottom: 15px;
+  }
+
+  .footer-bottom {
+    padding: 15px 0 30px 0;
+  }
+
+  .footer-dev-logo-wrapper {
+    font-size: 12px;
+    margin-top: 15px;
+  }
+
+  .footer-spacer {
+    margin-top: 15px;
+  }
+}
