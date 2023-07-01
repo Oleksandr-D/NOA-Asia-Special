@@ -40,6 +40,7 @@
 }
 
 @mixin breadcrumbs {
+  width: 100%;
   font-family: $main-font;
   position: relative;
   top: 20px;
