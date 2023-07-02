@@ -234,3 +234,26 @@
     }
   }
 }
+
+@mixin mobile-mat-form-field {
+  mat-label {
+    font-size: 12px;
+  }
+
+  input {
+    font-size: 12px;
+  }
+
+  .ng-tns-c9-2 {
+    font-size: 12px;
+  }
+
+  mat-error {
+    font-size: 10px;
+    line-height: 1.2em;
+  }
+
+  textarea{
+    font-size: 13px;
+  }
+}

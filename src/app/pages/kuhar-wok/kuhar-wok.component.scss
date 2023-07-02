@@ -387,6 +387,10 @@ form {
     height: 300px;
   }
 
+  mat-form-field {
+    @include mobile-mat-form-field;
+  }
+
   .spacer-120 {
     display: none;
   }

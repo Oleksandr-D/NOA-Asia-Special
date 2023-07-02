@@ -359,6 +359,12 @@ form {
     width: 100%;
     height: 100%;
   }
+
+  .cv-form .upload-wrapper .file-name {
+    width: 100%;
+    padding: 0px;
+    white-space: pre-wrap;
+  }
 }
 
 @media screen and (max-width:427px) {
@@ -380,11 +386,6 @@ form {
     }
   }
 
-  .cv-form .upload-wrapper .file-name {
-    width: 100%;
-    padding: 0px;
-  }
-
   .simple-page-text h5 {
     font-size: 16px;
     line-height: 1.3em;
@@ -404,6 +405,10 @@ form {
 
   .advantages-item {
     height: 300px;
+  }
+
+  mat-form-field {
+    @include mobile-mat-form-field;
   }
 
   .spacer-120 {
