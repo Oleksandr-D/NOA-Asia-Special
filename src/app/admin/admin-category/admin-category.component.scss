@@ -55,7 +55,7 @@ th:last-child {
   height: 50px;
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 949px) {
   .table> :not(caption)>*>* {
     padding: 0px 2px;
     font-size: 10px;
@@ -72,7 +72,7 @@ th:last-child {
   }
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 427px) {
   .btn {
     font-size: 100%;
   }

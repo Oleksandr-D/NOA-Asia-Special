@@ -24,3 +24,25 @@
 .btn:hover {
   color: $text_main;
 }
+
+@media screen and (max-width:636px) {
+
+  .container-fluid {
+    padding: 0px;
+  }
+
+  th {
+    padding: 3px;
+    font-size: 12px;
+  }
+
+  td {
+    padding: 3px;
+    font-size: 10px;
+  }
+
+  .btn {
+    padding: 0px;
+    font-size: 10px;
+  }
+}

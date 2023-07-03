@@ -67,15 +67,33 @@ table {
   height: 50px;
 }
 
-@media screen and (max-width:770px) {
+@media screen and (max-width:1199px) {
   .table>:not(caption)>*>* {
-    padding: 0px 2px;
-    font-size: 10px;
+    padding: 0px 0px;
+    font-size: 12px;
+  }
+
+  .btn {
+    padding: 4px;
+    font-size: 100%;
+  }
+}
+
+@media screen and (max-width:949px) {
+
+  .table>:not(caption)>*>* {
+    padding: 0px 0px;
+    font-size: 8px;
   }
 
   .btn {
     padding: 2px;
-    font-size: 100%;
+  }
+
+  .btns {
+    font-size: 10px;
+    padding: 10px 0px;
+    margin-top: 20px;
   }
 
   .discount-image {
@@ -91,27 +109,22 @@ table {
     margin-top: 5px;
   }
 
+  .container-fluid {
+    padding: 0px;
+  }
+
   form {
     font-size: 12px;
   }
 }
 
-@media screen and (max-width:380px) {
+@media screen and (max-width:427px) {
   .btn {
-    padding: 0.5rem 0 0 0;
     font-size: 8px;
   }
 
-  .product-img {
-    margin-top: 10px;
-  }
-
-  .row {
-    flex-direction: column;
-  }
-
-  .btns {
-    font-size: 14px;
-    padding: 10px 0px;
+  .table>:not(caption)>*>* {
+    padding: 0px 0px;
+    font-size: 6px;
   }
 }
