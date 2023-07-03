@@ -22,3 +22,47 @@ section {
     font-weight: bolder;
   }
 }
+
+@media screen and (max-width:636px) {
+  table {
+    width: 100%;
+    padding: 0px;
+
+    th {
+      padding: 2px;
+    }
+
+    td {
+      font-size: 14px;
+      padding: 2px;
+    }
+  }
+}
+
+@media screen and (max-width:427px) {
+
+  table {
+    padding: 0px;
+
+    th {
+      font-size: 14px;
+    }
+
+    td {
+      font-size: 12px;
+    }
+  }
+}
+
+@media screen and (max-width:350px) {
+
+  table {
+    th {
+      font-size: 10px;
+    }
+
+    td {
+      font-size: 8px;
+    }
+  }
+}

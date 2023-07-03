@@ -102,3 +102,13 @@
     margin-top: 20px;
   }
 }
+
+@media screen and (max-width:427px) {
+  .p-4 {
+    padding: 0.0rem !important;
+  }
+
+  mat-form-field {
+    @include mobile-mat-form-field;
+  }
+}

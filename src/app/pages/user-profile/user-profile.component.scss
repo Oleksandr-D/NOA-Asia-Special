@@ -67,15 +67,99 @@ ul {
   font-weight: bolder;
 }
 
+.btns-mob {
+  display: none;
+}
+
 @media screen and (max-width: 1199px) {
   section {
     margin: 5px 0px 100px;
   }
 
-  .categories-list-item {
-    a {
+  .categories-menu {
+    margin: 20px 0 20px;
+
+    ul {
+      display: flex;
+    }
+
+    .btns-mob {
+      display: block;
+      @include btns2;
+      @include btns;
       padding: 10px 10px;
       font-size: 16px;
     }
+
+    .categories-list-item.line::before {
+      content: none;
+    }
+
+    .categories-list-item {
+      a {
+        padding: 10px 10px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .btns2 {
+    display: none;
+  }
+}
+
+@media screen and (max-width:949px) {
+
+  .categories-list {
+    min-width: 100%;
+
+    .categories-list-item {
+      min-width: 20%;
+    }
+  }
+}
+
+@media screen and (max-width:636px) {
+
+  .categories-list {
+    .categories-list-item {
+      a {
+        font-size: 14px;
+      }
+
+      .btns-mob {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:427px) {
+  .categories-menu {
+    margin: 85px 0 20px;
+  }
+
+  .categories-list {
+    .categories-list-item {
+      a {
+        font-size: 12px;
+        padding: 8px;
+      }
+
+      .btns-mob {
+        height: 100%;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:350px) {
+  .categories-list .categories-list-item .btns-mob {
+    padding: 0px;
+  }
+
+  .categories-list .categories-list-item a {
+    padding: 0px;
   }
 }
