@@ -13,6 +13,7 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 export class HomeComponent implements OnInit {
   public userProducts: Array<IProductResponse> = [];
   public categories: Array<ICategoryResponse> = [];
+  public sortOption: string = '1';
 
   constructor(
     private productService: ProductService,
@@ -100,5 +101,4 @@ export class HomeComponent implements OnInit {
     }
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }
-
 }

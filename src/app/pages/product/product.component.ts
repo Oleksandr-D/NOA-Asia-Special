@@ -16,6 +16,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   public userProducts: Array < IProductResponse >= [];
   private eventSubscription!: Subscription;
   public categories: Array<ICategoryResponse> = [];
+  public sortOption: string = '1';
   
   constructor(
     private productService: ProductService,
@@ -115,5 +116,4 @@ export class ProductComponent implements OnInit, OnDestroy {
     }
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }
-
 }

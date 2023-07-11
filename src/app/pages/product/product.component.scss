@@ -47,6 +47,28 @@
   }
 }
 
+.filters-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+
+  .sort-wrapper {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+
+    select {
+      width: 210px;
+    }
+
+    div {
+      width: 50%;
+      font-size: 14px;
+    }
+  }
+}
+
 .product {
   max-width: 380px;
   display: flex;
@@ -169,6 +191,20 @@
 
   .product .product-controls {
     margin-top: 30px;
+  }
+
+  .filters-list {
+    .sort-wrapper {
+      select {
+        width: 180px;
+        font-size: 12px;
+      }
+
+      div {
+        width: 50%;
+        font-size: 12px;
+      }
+    }
   }
 
   .spacer-140 {

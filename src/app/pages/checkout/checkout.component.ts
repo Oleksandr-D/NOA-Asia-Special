@@ -133,9 +133,13 @@ export class CheckoutComponent implements OnInit {
       const userOrder: any = { orders: [...basket, newOrder] };
       this.userOrder = userOrder;
       this.createOrder();
-    }else{
+    }
+    if (this.basket.length == 0){
       this.toastr.warning('Ви нічого не замовили :(');
       this.toastr.info('Будь ласка зробіть замовлення!', '', {timeOut:10000});
+    }
+    else{
+      this.toastr.success('Замовлення прийнято!');
     }
     this.orderForm.reset();
     localStorage.removeItem('basket');

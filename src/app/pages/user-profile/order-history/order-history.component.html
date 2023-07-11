@@ -5,6 +5,7 @@
         <th scope="col">№</th>
         <th scope="col">Замовлення</th>
         <th scope="col">Адреса</th>
+        <th scope="col">Самовивіз</th>
         <th scope="col">Сума</th>
         <th scope="col">Статус</th>
       </tr>
@@ -16,12 +17,20 @@
           <td>
             <div *ngFor="let product of order.orders; let j = index ">
               <ng-container *ngIf="product.name">
-                {{ j + 1 }}. {{ product.name }}
+                {{ j + 1 }}. {{ product.name }} - {{product.count}}шт.
               </ng-container>
             </div>
           </td>
           <td>Місто:{{user.address}}, вулиця:{{user.street}}, будинок:{{user.house}}, картира:{{user.flat}},
             під'їзд:{{user.entrance}}, поверх:{{user.floor}}, домофон:{{user.intercom}} .
+          </td>
+          <td>
+            <div *ngFor="let product of order.orders">
+              <ng-container *ngIf="product.delivery">
+                {{product.restaurantAddress}}. Час отримання
+                {{product.timeInterval}},
+              </ng-container>
+            </div>
           </td>
           <td>
             <div *ngFor="let product of order.orders; let j = index ">

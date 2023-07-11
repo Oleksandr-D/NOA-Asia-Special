@@ -62,12 +62,13 @@ export class AuthDialogComponent implements OnInit  {
     });
   }
 
-  loginUser(): void {
+  async loginUser() {
     const { email, password } = this.authForm.value;
     if (email !== 'admin@gmail.com') {
-      this.login(email, password)
+     await this.login(email, password)
         .then(() => {
           this.toastr.success('Ви ввійшли в свій кабінет!');
+          this.registerForm.reset();
         })
         .catch((e) => {
           console.log('error', e);
@@ -78,6 +79,24 @@ export class AuthDialogComponent implements OnInit  {
     }
   }
 
+  async registerUser() {
+    const { email, password, firstName, lastName, phoneNumber } = this.registerForm.value;
+    
+    try {
+      await this.emailSignUp(email, password, firstName, lastName, phoneNumber);
+      this.toastr.success('Користувача успішно створено');
+      this.isLogin = !this.isLogin;
+      this.registerForm.reset();
+      
+      await this.login(email, password);
+      this.toastr.success('Ви ввійшли в свій кабінет!');
+      this.router.navigate(['/user-profile']);
+    } catch (e) {
+      console.log('error', e);
+      this.toastr.error((e as any).message);
+    }
+  }
+  
   async login(email: string, password: string): Promise<void> {
     const credential = await signInWithEmailAndPassword(this.auth, email, password);
     this.loginSubscription = docData(doc(this.afs, 'users', credential.user.uid)
@@ -94,19 +113,6 @@ export class AuthDialogComponent implements OnInit  {
         console.log('error', e);
       }
     );
-  }
-
-  registerUser() {
-    const { email, password, firstName, lastName, phoneNumber } = this.registerForm.value;
-    this.emailSignUp(email, password, firstName, lastName, phoneNumber)
-      .then(() => {
-        this.toastr.success('Користувача успішно створено');
-        this.isLogin = !this.isLogin;
-        this.registerForm.reset();
-      })
-      .catch((e) => {
-        this.toastr.error(e.message);
-      });
   }
 
   async emailSignUp(

@@ -17,8 +17,18 @@
       </mat-select>
     </mat-form-field>
   </div>
+  <div class="filters-list">
+    <div class="sort-wrapper">
+      <div>Сортувати по:</div>
+      <select class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="sortOption">
+        <option value="1">Від дешевих до дроргих</option>
+        <option value="2">Від дорогих до дешевих</option>
+        <option value="3">NO RISE</option>
+      </select>
+    </div>
+  </div>
   <div class="row">
-    <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of userProducts">
+    <div class="col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let product of userProducts | sort: sortOption">
       <div class="product">
         <div class="product-image-wrapper">
           <a class="product-image">

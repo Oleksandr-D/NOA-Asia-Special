@@ -11,6 +11,7 @@ import { registerLocaleData } from '@angular/common';
 import localeUk from '@angular/common/locales/uk';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
+import { SortPipe } from './pipes/sort.pipe';
 
 registerLocaleData(localeUk);
 
@@ -24,11 +25,10 @@ const MATERIAL = [
   MatRadioModule
 ];
 
-
 @NgModule({
-  declarations: [],
+  declarations: [ SortPipe ],
   imports: [MATERIAL, FormsModule, ReactiveFormsModule],
-  exports: [MATERIAL, FormsModule, ReactiveFormsModule],
+  exports: [MATERIAL, FormsModule, ReactiveFormsModule, SortPipe],
   providers: [
     { provide: DateAdapter, useClass: NativeDateAdapter },
     { provide: MAT_DATE_FORMATS, useValue: MAT_NATIVE_DATE_FORMATS },
